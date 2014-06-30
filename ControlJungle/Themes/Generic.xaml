@@ -3,42 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cj="clr-namespace:ControlJungle"
     xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase">
-
-    <Style TargetType="{x:Type cj:PropertySheet}">
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type cj:PropertySheet}">
-                    <DataGrid ItemsSource="{Binding Items, RelativeSource={RelativeSource TemplatedParent}}" AutoGenerateColumns="False" EnableRowVirtualization="False" IsReadOnly="True" HeadersVisibility="None" GridLinesVisibility="None" Background="Transparent" RowBackground="Transparent" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
-                        <DataGrid.CellStyle>
-                            <Style TargetType="{x:Type DataGridCell}">
-                                <Setter Property="Background" Value="Transparent" />
-                                <Setter Property="Foreground" Value="Black" />
-                                <Setter Property="BorderThickness" Value="0" />
-                            </Style>
-                        </DataGrid.CellStyle>
-                        <DataGrid.Columns>
-                            <DataGridTemplateColumn>
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <ContentPresenter Content="{Binding Parent.DataContext.Header, RelativeSource={RelativeSource Self}}" DataContext="{Binding DataContext.DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" />
-                                        </Grid>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                            <DataGridTemplateColumn>
-                                <DataGridTemplateColumn.CellTemplate>
-                                    <DataTemplate>
-                                        <Grid>
-                                            <ContentPresenter Content="{Binding Parent.DataContext.Content, RelativeSource={RelativeSource Self}}" DataContext="{Binding DataContext.DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" />
-                                        </Grid>
-                                    </DataTemplate>
-                                </DataGridTemplateColumn.CellTemplate>
-                            </DataGridTemplateColumn>
-                        </DataGrid.Columns>
-                    </DataGrid>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/ControlJungle;component/PropertySheet.xaml" />
+    </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>
