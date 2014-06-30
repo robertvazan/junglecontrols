@@ -7,7 +7,7 @@
         <TabItem Header="PropertySheet">
             <cj:PropertySheet>
                 <TextBlock cj:PropertySheet.Header="Label1" Text="Item1" />
-                <TextBlock cj:PropertySheet.Header="Otherlabel" Text="Item2" />
+                <TextBlock cj:PropertySheet.Header="Otherlabel" Text="Item2 well something much longer" />
             </cj:PropertySheet>
         </TabItem>
     </TabControl>
