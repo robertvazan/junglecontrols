@@ -15,6 +15,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UpdateControls.XAML;
 
 namespace ControlJungle
 {
@@ -28,28 +29,27 @@ namespace ControlJungle
         public static void SetHeader(UIElement element, object value) { element.SetValue(HeaderProperty, value); }
         public static object GetHeader(UIElement element) { return element.GetValue(HeaderProperty); }
 
+        readonly PropertySheetViewModel ViewModel = new PropertySheetViewModel();
         readonly List<Action> HeaderHandlers = new List<Action>();
 
         public PropertySheet()
         {
             InitializeComponent();
+            View.DataContext = ForView.Wrap(ViewModel);
             Items.CollectionChanged += (s, a) => RefreshList();
         }
 
         void RefreshList()
         {
-            foreach (var item in Items.Skip(SheetGrid.RowDefinitions.Count))
+            foreach (var item in Items.Skip(ViewModel.Rows.Count))
             {
-                int offset = SheetGrid.RowDefinitions.Count;
-                SheetGrid.RowDefinitions.Add(new RowDefinition() { Height = GridLength.Auto });
-                var label = new ContentPresenter() { Content = GetHeader(item) };
-                var content = new ContentPresenter() { Content = item };
-                Grid.SetColumn(content, 1);
-                Grid.SetRow(content, offset);
-                Grid.SetRow(label, offset);
-                SheetGrid.Children.Add(label);
-                SheetGrid.Children.Add(content);
-                HeaderHandlers.Add(() => label.Content = GetHeader(item));
+                var row = new PropertySheetRowViewModel(ViewModel)
+                {
+                    Header = GetHeader(item),
+                    Content = item
+                };
+                ViewModel.Rows.Add(row);
+                HeaderHandlers.Add(() => row.Header = GetHeader(item));
                 DependencyPropertyDescriptor.FromProperty(HeaderProperty, item.GetType()).AddValueChanged(item, (s, a) => RefreshHeaders());
             }
         }
