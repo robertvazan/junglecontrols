@@ -12,14 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UpdateControls.XAML;
 
-namespace ControlJungle
+namespace TestApp
 {
-    public partial class PropertySheetView : UserControl
+    public partial class PropertySheetSampleView : UserControl
     {
-        public PropertySheetView()
+        public PropertySheetSampleView()
         {
             InitializeComponent();
+            DataContext = ForView.Wrap(new PropertySheetSampleViewModel());
         }
     }
 }

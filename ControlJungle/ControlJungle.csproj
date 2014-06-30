@@ -66,14 +66,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="PropertySheet.xaml.cs">
-      <DependentUpon>PropertySheet.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PropertySheetRowViewModel.cs" />
-    <Compile Include="PropertySheetView.xaml.cs">
-      <DependentUpon>PropertySheetView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PropertySheetViewModel.cs" />
+    <Compile Include="PropertySheet.cs" />
+    <Compile Include="PropertySheetRow.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -86,13 +80,9 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="PropertySheet.xaml">
-      <SubType>Designer</SubType>
+    <Page Include="Themes\Generic.xaml">
       <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="PropertySheetView.xaml">
       <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

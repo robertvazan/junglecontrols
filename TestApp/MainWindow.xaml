@@ -2,13 +2,11 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:cj="clr-namespace:ControlJungle;assembly=ControlJungle"
+        xmlns:a="clr-namespace:TestApp"
         Title="MainWindow" Height="350" Width="525">
     <TabControl>
         <TabItem Header="PropertySheet">
-            <cj:PropertySheet>
-                <TextBlock cj:PropertySheet.Header="Label1" Text="Item1" />
-                <TextBlock cj:PropertySheet.Header="Otherlabel" Text="Item2 well something much longer" />
-            </cj:PropertySheet>
+            <a:PropertySheetSampleView />
         </TabItem>
     </TabControl>
 </Window>
