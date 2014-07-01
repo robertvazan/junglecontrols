@@ -5,7 +5,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type jc:PropertySheetRow}">
-                    <ContentPresenter Content="{TemplateBinding Content}" />
+                    <ContentPresenter ContentSource="Content" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

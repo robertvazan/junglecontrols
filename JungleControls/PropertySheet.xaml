@@ -24,7 +24,9 @@
                                                         <Setter Property="ContentTemplate">
                                                             <Setter.Value>
                                                                 <DataTemplate>
-                                                                    <ContentPresenter Content="{Binding (jc:PropertySheet.Header)}" />
+                                                                    <Grid>
+                                                                        <ContentPresenter Content="{Binding Parent.DataContext.(jc:PropertySheet.Header), RelativeSource={RelativeSource Self}}" DataContext="{Binding DataContext.DataContext, ElementName=GridRoot}" />
+                                                                    </Grid>
                                                                 </DataTemplate>
                                                             </Setter.Value>
                                                         </Setter>
@@ -34,7 +36,7 @@
                                                                     <Setter.Value>
                                                                         <DataTemplate>
                                                                             <Grid>
-                                                                                <ContentPresenter Content="{Binding Header}" />
+                                                                                <ContentPresenter Content="{Binding Parent.DataContext.Header, RelativeSource={RelativeSource Self}}" DataContext="{Binding DataContext.DataContext, ElementName=GridRoot}" />
                                                                             </Grid>
                                                                         </DataTemplate>
                                                                     </Setter.Value>
