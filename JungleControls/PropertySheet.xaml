@@ -17,18 +17,14 @@
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Grid>
-                                            <ContentPresenter  Content="{Binding Parent.DataContext.(jc:PropertySheet.Header), RelativeSource={RelativeSource Self}}" DataContext="{Binding DataContext.DataContext, ElementName=GridRoot}" />
-                                        </Grid>
+                                        <ContentPresenter Content="{Binding (jc:PropertySheet.Header)}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
                             <DataGridTemplateColumn Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Grid>
-                                            <ContentPresenter Content="{Binding Parent.DataContext, RelativeSource={RelativeSource Self}}" DataContext="{Binding DataContext.DataContext, ElementName=GridRoot}" />
-                                        </Grid>
+                                        <ContentPresenter Content="{Binding}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
