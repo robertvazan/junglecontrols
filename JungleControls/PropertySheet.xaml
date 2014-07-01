@@ -18,14 +18,18 @@
             <DataGridTemplateColumn>
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
-                        <TextBlock Text="{Binding Header}" />
+                        <Grid>
+                            <ContentPresenter Content="{Binding Parent.DataContext.Header, RelativeSource={RelativeSource Self}}" DataContext="{Binding Sheet.OuterDataContext}" />
+                        </Grid>
                     </DataTemplate>
                 </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
             <DataGridTemplateColumn Width="*">
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
-                        <ContentPresenter Content="{Binding Content}" />
+                        <Grid>
+                            <ContentPresenter Content="{Binding Parent.DataContext.Content, RelativeSource={RelativeSource Self}}" DataContext="{Binding Sheet.OuterDataContext}" />
+                        </Grid>
                     </DataTemplate>
                 </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
