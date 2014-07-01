@@ -8,11 +8,11 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <jc:PropertySheet>
-        <jc:PropertySheet.ItemTemplate>
+        <!--<jc:PropertySheet.ItemTemplate>
             <DataTemplate>
                 <TextBlock Text="{Binding}" Foreground="Gray" />
             </DataTemplate>
-        </jc:PropertySheet.ItemTemplate>
+        </jc:PropertySheet.ItemTemplate>-->
         <TextBlock jc:PropertySheet.Header="Label 1:" Text="Item1" />
         <TextBlock jc:PropertySheet.Header="Other label:" Text="Item2 well something much longer" />
         <TextBox jc:PropertySheet.Header="Input:" Text="{Binding Input, UpdateSourceTrigger=PropertyChanged}" />
