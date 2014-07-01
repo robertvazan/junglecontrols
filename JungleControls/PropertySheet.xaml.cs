@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UpdateControls.XAML;
 
 namespace JungleControls
 {
@@ -30,9 +31,7 @@ namespace JungleControls
         public PropertySheet()
         {
             InitializeComponent();
-            var vm = new PropertySheetViewModel();
-            ControlFacade.Lift(Items, vm.Rows, elem => new PropertySheetRowViewModel(elem));
-            ((FrameworkElement)Content).DataContext = vm;
+            ((FrameworkElement)Content).DataContext = ForView.Wrap(new PropertySheetViewModel(this));
         }
     }
 }

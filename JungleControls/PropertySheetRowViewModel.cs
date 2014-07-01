@@ -12,13 +12,15 @@ namespace JungleControls
     class PropertySheetRowViewModel
     {
         readonly FrameworkElement Element;
-        readonly Independent<string> HeaderIndependent = new Independent<string>();
+        readonly Independent<object> HeaderIndependent = new Independent<object>();
 
-        public string Header { get { return HeaderIndependent.Value; } }
+        public PropertySheetViewModel Sheet { get; private set; }
+        public object Header { get { return HeaderIndependent.Value; } }
         public FrameworkElement Content { get { return Element; } }
 
-        public PropertySheetRowViewModel(FrameworkElement element)
+        public PropertySheetRowViewModel(PropertySheetViewModel sheet, FrameworkElement element)
         {
+            Sheet = sheet;
             Element = element;
             ControlFacade.Lift(element, PropertySheet.HeaderProperty, HeaderIndependent);
         }
