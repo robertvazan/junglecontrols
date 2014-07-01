@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:jc="clr-namespace:JungleControls"
+             xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <DataGrid x:Name="GridRoot" ItemsSource="{Binding Rows}" AutoGenerateColumns="False" EnableRowVirtualization="False" IsReadOnly="True" HeadersVisibility="None" GridLinesVisibility="None" Background="Transparent" RowBackground="Transparent" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
@@ -18,18 +19,14 @@
             <DataGridTemplateColumn>
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <ContentPresenter Content="{Binding Parent.DataContext.Header, RelativeSource={RelativeSource Self}}" DataContext="{Binding Sheet.OuterDataContext}" />
-                        </Grid>
+                        <jc:DataPresenter Inner="{Binding Header}" InnerDataContext="{Binding Sheet.OuterDataContext}" />
                     </DataTemplate>
                 </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
             <DataGridTemplateColumn Width="*">
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <ContentPresenter Content="{Binding Parent.DataContext.Content, RelativeSource={RelativeSource Self}}" DataContext="{Binding Sheet.OuterDataContext}" />
-                        </Grid>
+                        <jc:DataPresenter Inner="{Binding Content}" InnerDataContext="{Binding Sheet.OuterDataContext}" />
                     </DataTemplate>
                 </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
