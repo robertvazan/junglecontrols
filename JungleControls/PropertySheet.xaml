@@ -17,7 +17,7 @@
                             <DataGridTemplateColumn>
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <ContentPresenter Content="{Binding (jc:PropertySheet.Header)}" />
+                                        <ContentPresenter Content="{Binding (jc:PropertySheet.Header)}" ContentTemplate="{Binding ItemTemplate, RelativeSource={RelativeSource AncestorType={x:Type jc:PropertySheet}}}" />
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>
