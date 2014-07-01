@@ -20,6 +20,9 @@ namespace JungleControls
         public static readonly DependencyProperty InnerProperty = DependencyProperty.Register("Inner", typeof(object), typeof(DataPresenter));
         public object Inner { get { return GetValue(InnerProperty); } set { SetValue(InnerProperty, value); } }
 
+        public static readonly DependencyProperty InnerTemplateProperty = DependencyProperty.Register("InnerTemplate", typeof(FrameworkTemplate), typeof(DataPresenter));
+        public FrameworkTemplate InnerTemplate { get { return (FrameworkTemplate)GetValue(InnerTemplateProperty); } set { SetValue(InnerTemplateProperty, value); } }
+
         public static readonly DependencyProperty InnerDataContextProperty = DependencyProperty.Register("InnerDataContext", typeof(object), typeof(DataPresenter));
         public object InnerDataContext { get { return GetValue(InnerDataContextProperty); } set { SetValue(InnerDataContextProperty, value); } }
 

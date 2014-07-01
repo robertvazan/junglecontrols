@@ -7,5 +7,5 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              x:Name="ControlRoot">
-    <ContentControl Content="{Binding Inner, ElementName=ControlRoot}" DataContext="{Binding InnerDataContext, ElementName=ControlRoot}" />
+    <ContentControl Content="{Binding Inner, ElementName=ControlRoot}" ContentTemplate="{Binding InnerTemplate, ElementName=ControlRoot}" DataContext="{Binding InnerDataContext, ElementName=ControlRoot}" />
 </UserControl>

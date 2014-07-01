@@ -21,8 +21,18 @@ namespace JungleControls
     [ContentProperty("Items")]
     public partial class PropertySheet : UserControl
     {
-        public static readonly DependencyProperty ItemsProperty = DependencyProperty.RegisterReadOnly("Items", typeof(ObservableCollection<FrameworkElement>), typeof(PropertySheet), new FrameworkPropertyMetadata(new ObservableCollection<FrameworkElement>())).DependencyProperty;
-        public ObservableCollection<FrameworkElement> Items { get { return (ObservableCollection<FrameworkElement>)GetValue(ItemsProperty); } }
+        static readonly DependencyPropertyKey ItemsPropertyKey = DependencyProperty.RegisterReadOnly("Items", typeof(ObservableCollection<FrameworkElement>), typeof(PropertySheet), new FrameworkPropertyMetadata());
+        public static readonly DependencyProperty ItemsProperty = ItemsPropertyKey.DependencyProperty;
+        public ObservableCollection<FrameworkElement> Items
+        {
+            get
+            {
+                var result = (ObservableCollection<FrameworkElement>)GetValue(ItemsProperty);
+                if (result == null)
+                    SetValue(ItemsPropertyKey, result = new ObservableCollection<FrameworkElement>());
+                return result;
+            }
+        }
         
         public static readonly DependencyProperty HeaderProperty = DependencyProperty.RegisterAttached("Header", typeof(object), typeof(PropertySheet));
         public static void SetHeader(FrameworkElement element, object value) { element.SetValue(HeaderProperty, value); }
