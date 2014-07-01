@@ -75,6 +75,7 @@
     </Compile>
     <Compile Include="PropertySheetRowViewModel.cs" />
     <Compile Include="PropertySheetViewModel.cs" />
+    <Compile Include="VisibilityEx.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
