@@ -18,6 +18,7 @@ namespace JungleControls
         readonly Independent<Thickness> HeaderMarginIndependent = new Independent<Thickness>();
         readonly Independent<Brush> HeaderForegroundIndependent = new Independent<Brush>();
         readonly Independent<FontWeight> HeaderFontWeightIndependent = new Independent<FontWeight>();
+        readonly Independent<Thickness> CellMarginIndependent = new Independent<Thickness>();
 
         public object OuterDataContext { get { return OuterDataContextIndependent.Value; } }
         public IList<PropertySheetRowViewModel> Rows { get { return RowsIndependent; } }
@@ -25,6 +26,7 @@ namespace JungleControls
         public Thickness HeaderMargin { get { return HeaderMarginIndependent.Value; } }
         public Brush HeaderForeground { get { return HeaderForegroundIndependent.Value; } }
         public FontWeight HeaderFontWeight { get { return HeaderFontWeightIndependent.Value; } }
+        public Thickness CellMargin { get { return CellMarginIndependent.Value; } }
 
         public PropertySheetViewModel(PropertySheet element)
         {
@@ -34,6 +36,7 @@ namespace JungleControls
             ControlFacade.Lift(element, PropertySheet.HeaderMarginProperty, HeaderMarginIndependent);
             ControlFacade.Lift(element, PropertySheet.HeaderForegroundProperty, HeaderForegroundIndependent);
             ControlFacade.Lift(element, PropertySheet.HeaderFontWeightProperty, HeaderFontWeightIndependent);
+            ControlFacade.Lift(element, PropertySheet.CellMarginProperty, CellMarginIndependent);
         }
     }
 }
