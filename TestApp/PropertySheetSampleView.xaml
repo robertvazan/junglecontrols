@@ -3,23 +3,23 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:cj="clr-namespace:ControlJungle;assembly=ControlJungle"
+             xmlns:jc="clr-namespace:JungleControls;assembly=JungleControls"
              xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <cj:PropertySheet>
-        <cj:PropertySheetRow Header="Label1">
+    <jc:PropertySheet>
+        <jc:PropertySheetRow Header="Label1">
             <TextBlock Text="Item1" />
-        </cj:PropertySheetRow>
-        <cj:PropertySheetRow Header="Input">
+        </jc:PropertySheetRow>
+        <jc:PropertySheetRow Header="Input">
             <TextBox Text="{Binding Input, UpdateSourceTrigger=PropertyChanged}" />
-        </cj:PropertySheetRow>
-        <cj:PropertySheetRow Header="{Binding Input}">
+        </jc:PropertySheetRow>
+        <jc:PropertySheetRow Header="{Binding Input}">
             <TextBlock Text="{Binding Input}" />
-        </cj:PropertySheetRow>
-        <cj:PropertySheetRow Header="Otherlabel">
+        </jc:PropertySheetRow>
+        <jc:PropertySheetRow Header="Otherlabel">
             <TextBlock Text="Item2 well something much longer" />
-        </cj:PropertySheetRow>
-        <TextBlock cj:PropertySheet.Header="Attached"  Text="{Binding Input}" />
-    </cj:PropertySheet>
+        </jc:PropertySheetRow>
+        <TextBlock jc:PropertySheet.Header="Attached"  Text="{Binding Input}" />
+    </jc:PropertySheet>
 </UserControl>

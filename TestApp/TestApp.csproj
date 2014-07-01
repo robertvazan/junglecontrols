@@ -109,9 +109,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ControlJungle\ControlJungle.csproj">
+    <ProjectReference Include="..\JungleControls\JungleControls.csproj">
       <Project>{066a2de0-c17e-4ff6-bd9d-792dbc93f6a8}</Project>
-      <Name>ControlJungle</Name>
+      <Name>JungleControls</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
