@@ -19,7 +19,10 @@
             <DataGridTemplateColumn>
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
-                        <jc:DataPresenter Inner="{Binding Header}" InnerDataContext="{Binding Sheet.OuterDataContext}" />
+                        <Grid>
+                            <TextBlock Visibility="{Binding SimpleHeaderVisible}" Text="{Binding Header}" Margin="{Binding Sheet.HeaderMargin}" Foreground="{Binding Sheet.HeaderForeground}" FontWeight="{Binding Sheet.HeaderFontWeight}" />
+                            <jc:DataPresenter Visibility="{Binding TemplatedHeaderVisible}" Inner="{Binding Header}" InnerDataContext="{Binding Sheet.OuterDataContext}" />
+                        </Grid>
                     </DataTemplate>
                 </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>

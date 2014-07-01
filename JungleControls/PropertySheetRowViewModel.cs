@@ -17,6 +17,9 @@ namespace JungleControls
         public PropertySheetViewModel Sheet { get; private set; }
         public object Header { get { return HeaderIndependent.Value; } }
         public FrameworkElement Content { get { return Element; } }
+        public bool IsSimpleHeader { get { return Header is string && Sheet.HeaderTemplate == null; } }
+        public Visibility SimpleHeaderVisible { get { return VisibilityEx.If(IsSimpleHeader); } }
+        public Visibility TemplatedHeaderVisible { get { return VisibilityEx.If(!IsSimpleHeader); } }
 
         public PropertySheetRowViewModel(PropertySheetViewModel sheet, FrameworkElement element)
         {
