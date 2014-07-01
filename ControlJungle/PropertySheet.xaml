@@ -5,7 +5,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type cj:PropertySheet}">
-                    <DataGrid ItemsSource="{Binding Items, RelativeSource={RelativeSource TemplatedParent}}" AutoGenerateColumns="False" EnableRowVirtualization="False" IsReadOnly="True" HeadersVisibility="None" GridLinesVisibility="None" Background="Transparent" RowBackground="Transparent" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
+                    <DataGrid x:Name="GridRoot" ItemsSource="{Binding Items, RelativeSource={RelativeSource TemplatedParent}}" AutoGenerateColumns="False" EnableRowVirtualization="False" IsReadOnly="True" HeadersVisibility="None" GridLinesVisibility="None" Background="Transparent" RowBackground="Transparent" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
                         <DataGrid.CellStyle>
                             <Style TargetType="{x:Type DataGridCell}">
                                 <Setter Property="Background" Value="Transparent" />
@@ -18,7 +18,14 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <ContentPresenter Content="{Binding Parent.DataContext.Header, RelativeSource={RelativeSource Self}}" DataContext="{Binding DataContext.DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" />
+                                            <ContentPresenter DataContext="{Binding DataContext.DataContext, ElementName=GridRoot}">
+                                                <ContentPresenter.Content>
+                                                    <PriorityBinding>
+                                                        <Binding Path="Parent.DataContext.Header" RelativeSource="{RelativeSource Self}" />
+                                                        <Binding Path="Parent.DataContext.(cj:PropertySheet.Header)" RelativeSource="{RelativeSource Self}" />
+                                                    </PriorityBinding>
+                                                </ContentPresenter.Content>
+                                            </ContentPresenter>
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
@@ -27,7 +34,7 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <ContentPresenter Content="{Binding Parent.DataContext.Content, RelativeSource={RelativeSource Self}}" DataContext="{Binding DataContext.DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DataGrid}}}" />
+                                            <ContentPresenter Content="{Binding Parent.DataContext, RelativeSource={RelativeSource Self}}" DataContext="{Binding DataContext.DataContext, ElementName=GridRoot}" />
                                         </Grid>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
