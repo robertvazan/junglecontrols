@@ -7,32 +7,21 @@
              xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <DataGrid x:Name="GridRoot" ItemsSource="{Binding Rows}" AutoGenerateColumns="False" EnableRowVirtualization="False" IsReadOnly="True" HeadersVisibility="None" GridLinesVisibility="None" Background="Transparent" RowBackground="Transparent" VerticalScrollBarVisibility="Disabled" HorizontalScrollBarVisibility="Disabled" BorderThickness="0">
-        <DataGrid.CellStyle>
-            <Style TargetType="{x:Type DataGridCell}">
-                <Setter Property="Background" Value="Transparent" />
-                <Setter Property="Foreground" Value="Black" />
-                <Setter Property="BorderThickness" Value="0" />
-            </Style>
-        </DataGrid.CellStyle>
-        <DataGrid.Columns>
-            <DataGridTemplateColumn>
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <Grid Margin="{Binding Sheet.HeaderMargin}">
-                            <TextBlock Visibility="{Binding SimpleHeaderVisible}" Text="{Binding Header}" Foreground="{Binding Sheet.HeaderForeground}" FontWeight="{Binding Sheet.HeaderFontWeight}" />
-                            <jc:DataPresenter Visibility="{Binding TemplatedHeaderVisible}" Inner="{Binding Header}" InnerTemplate="{Binding Sheet.HeaderTemplate}" InnerDataContext="{Binding Sheet.OuterDataContext}" />
-                        </Grid>
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn>
-            <DataGridTemplateColumn Width="*">
-                <DataGridTemplateColumn.CellTemplate>
-                    <DataTemplate>
-                        <jc:DataPresenter Inner="{Binding Content}" InnerDataContext="{Binding Sheet.OuterDataContext}" Margin="{Binding Sheet.CellMargin}" />
-                    </DataTemplate>
-                </DataGridTemplateColumn.CellTemplate>
-            </DataGridTemplateColumn>
-        </DataGrid.Columns>
-    </DataGrid>
+    <ItemsControl x:Name="GridRoot" Grid.IsSharedSizeScope="True" ItemsSource="{Binding Rows}">
+        <ItemsControl.ItemTemplate>
+            <DataTemplate>
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" SharedSizeGroup="HeaderSizeGroup" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Grid Margin="{Binding Sheet.HeaderMargin}">
+                        <TextBlock Visibility="{Binding SimpleHeaderVisible}" Text="{Binding Header}" Foreground="{Binding Sheet.HeaderForeground}" FontWeight="{Binding Sheet.HeaderFontWeight}" />
+                        <jc:DataPresenter Visibility="{Binding TemplatedHeaderVisible}" Inner="{Binding Header}" InnerTemplate="{Binding Sheet.HeaderTemplate}" InnerDataContext="{Binding Sheet.OuterDataContext}" />
+                    </Grid>
+                    <jc:DataPresenter Grid.Column="1" Inner="{Binding Content}" InnerDataContext="{Binding Sheet.OuterDataContext}" Margin="{Binding Sheet.CellMargin}" />
+                </Grid>
+            </DataTemplate>
+        </ItemsControl.ItemTemplate>
+    </ItemsControl>
 </UserControl>
