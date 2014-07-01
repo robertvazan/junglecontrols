@@ -19,8 +19,8 @@
             <DataGridTemplateColumn>
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
-                        <Grid>
-                            <TextBlock Visibility="{Binding SimpleHeaderVisible}" Text="{Binding Header}" Margin="{Binding Sheet.HeaderMargin}" Foreground="{Binding Sheet.HeaderForeground}" FontWeight="{Binding Sheet.HeaderFontWeight}" />
+                        <Grid Margin="{Binding Sheet.HeaderMargin}">
+                            <TextBlock Visibility="{Binding SimpleHeaderVisible}" Text="{Binding Header}" Foreground="{Binding Sheet.HeaderForeground}" FontWeight="{Binding Sheet.HeaderFontWeight}" />
                             <jc:DataPresenter Visibility="{Binding TemplatedHeaderVisible}" Inner="{Binding Header}" InnerTemplate="{Binding Sheet.HeaderTemplate}" InnerDataContext="{Binding Sheet.OuterDataContext}" />
                         </Grid>
                     </DataTemplate>
@@ -29,7 +29,7 @@
             <DataGridTemplateColumn Width="*">
                 <DataGridTemplateColumn.CellTemplate>
                     <DataTemplate>
-                        <jc:DataPresenter Inner="{Binding Content}" InnerDataContext="{Binding Sheet.OuterDataContext}" />
+                        <jc:DataPresenter Inner="{Binding Content}" InnerDataContext="{Binding Sheet.OuterDataContext}" Margin="{Binding Sheet.CellMargin}" />
                     </DataTemplate>
                 </DataGridTemplateColumn.CellTemplate>
             </DataGridTemplateColumn>
