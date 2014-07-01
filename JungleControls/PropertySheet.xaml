@@ -18,13 +18,31 @@
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Grid>
-                                            <ContentPresenter DataContext="{Binding DataContext.DataContext, ElementName=GridRoot}">
-                                                <ContentPresenter.Content>
-                                                    <PriorityBinding>
-                                                        <Binding Path="Parent.DataContext.Header" RelativeSource="{RelativeSource Self}" />
-                                                        <Binding Path="Parent.DataContext.(jc:PropertySheet.Header)" RelativeSource="{RelativeSource Self}" />
-                                                    </PriorityBinding>
-                                                </ContentPresenter.Content>
+                                            <ContentPresenter Content="{Binding}">
+                                                <ContentPresenter.Style>
+                                                    <Style TargetType="{x:Type ContentPresenter}">
+                                                        <Setter Property="ContentTemplate">
+                                                            <Setter.Value>
+                                                                <DataTemplate>
+                                                                    <ContentPresenter Content="{Binding (jc:PropertySheet.Header)}" />
+                                                                </DataTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding Converter={x:Static jc:TypeOfConverter.Instance}}" Value="{x:Type jc:PropertySheetRow}">
+                                                                <Setter Property="ContentTemplate">
+                                                                    <Setter.Value>
+                                                                        <DataTemplate>
+                                                                            <Grid>
+                                                                                <ContentPresenter Content="{Binding Header}" />
+                                                                            </Grid>
+                                                                        </DataTemplate>
+                                                                    </Setter.Value>
+                                                                </Setter>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </ContentPresenter.Style>
                                             </ContentPresenter>
                                         </Grid>
                                     </DataTemplate>

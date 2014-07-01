@@ -4,7 +4,7 @@
     xmlns:cj="clr-namespace:JungleControls"
     xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase">
     <ResourceDictionary.MergedDictionaries>
-        <ResourceDictionary Source="/ControlJungle;component/PropertySheet.xaml" />
-        <ResourceDictionary Source="/ControlJungle;component/PropertySheetRow.xaml" />
+        <ResourceDictionary Source="/JungleControls;component/PropertySheet.xaml" />
+        <ResourceDictionary Source="/JungleControls;component/PropertySheetRow.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

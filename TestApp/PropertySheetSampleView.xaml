@@ -20,6 +20,6 @@
         <jc:PropertySheetRow Header="Otherlabel">
             <TextBlock Text="Item2 well something much longer" />
         </jc:PropertySheetRow>
-        <TextBlock jc:PropertySheet.Header="Attached"  Text="{Binding Input}" />
+        <TextBlock jc:PropertySheet.Header="{Binding Input}"  Text="{Binding Input}" />
     </jc:PropertySheet>
 </UserControl>

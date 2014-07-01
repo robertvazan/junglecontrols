@@ -68,6 +68,7 @@
     </Compile>
     <Compile Include="PropertySheet.cs" />
     <Compile Include="PropertySheetRow.cs" />
+    <Compile Include="TypeOfConverter.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
