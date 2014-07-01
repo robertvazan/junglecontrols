@@ -67,7 +67,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="PropertySheet.cs" />
-    <Compile Include="PropertySheetRow.cs" />
     <Compile Include="TypeOfConverter.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -82,10 +81,6 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="PropertySheet.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="PropertySheetRow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

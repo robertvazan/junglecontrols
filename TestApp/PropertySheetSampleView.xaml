@@ -8,18 +8,9 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <jc:PropertySheet>
-        <jc:PropertySheetRow Header="Label1">
-            <TextBlock Text="Item1" />
-        </jc:PropertySheetRow>
-        <jc:PropertySheetRow Header="Input">
-            <TextBox Text="{Binding Input, UpdateSourceTrigger=PropertyChanged}" />
-        </jc:PropertySheetRow>
-        <jc:PropertySheetRow Header="{Binding Input}">
-            <TextBlock Text="{Binding Input}" />
-        </jc:PropertySheetRow>
-        <jc:PropertySheetRow Header="Otherlabel">
-            <TextBlock Text="Item2 well something much longer" />
-        </jc:PropertySheetRow>
-        <TextBlock jc:PropertySheet.Header="{Binding Input}"  Text="{Binding Input}" />
+        <TextBlock jc:PropertySheet.Header="Label1" Text="Item1" />
+        <TextBlock jc:PropertySheet.Header="Otherlabel" Text="Item2 well something much longer" />
+        <TextBox jc:PropertySheet.Header="Input" Text="{Binding Input, UpdateSourceTrigger=PropertyChanged}" />
+        <TextBlock jc:PropertySheet.Header="{Binding Input}" Text="{Binding Input}" />
     </jc:PropertySheet>
 </UserControl>
