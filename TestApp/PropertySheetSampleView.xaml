@@ -11,14 +11,15 @@
         <cj:PropertySheetRow Header="Label1">
             <TextBlock Text="Item1" />
         </cj:PropertySheetRow>
-        <cj:PropertySheetRow Header="Otherlabel">
-            <TextBlock Text="Item2 well something much longer" />
-        </cj:PropertySheetRow>
         <cj:PropertySheetRow Header="Input">
             <TextBox Text="{Binding Input, UpdateSourceTrigger=PropertyChanged}" />
         </cj:PropertySheetRow>
         <cj:PropertySheetRow Header="{Binding Input}">
             <TextBlock Text="{Binding Input}" />
         </cj:PropertySheetRow>
+        <cj:PropertySheetRow Header="Otherlabel">
+            <TextBlock Text="Item2 well something much longer" />
+        </cj:PropertySheetRow>
+        <TextBlock cj:PropertySheet.Header="Attached"  Text="{Binding Input}" />
     </cj:PropertySheet>
 </UserControl>
