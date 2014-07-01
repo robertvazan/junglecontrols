@@ -75,6 +75,11 @@
     </Compile>
     <Compile Include="PropertySheetRowViewModel.cs" />
     <Compile Include="PropertySheetViewModel.cs" />
+    <Compile Include="StatCounter.xaml.cs">
+      <DependentUpon>StatCounter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="StatCounterHeaderPosition.cs" />
+    <Compile Include="StatCounterViewModel.cs" />
     <Compile Include="VisibilityEx.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -93,6 +98,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="PropertySheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StatCounter.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
