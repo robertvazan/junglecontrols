@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UpdateControls.XAML;
 
 namespace TestApp
 {
@@ -20,6 +21,7 @@ namespace TestApp
         public StatCounterSampleView()
         {
             InitializeComponent();
+            DataContext = ForView.Wrap(new StatCounterSampleViewModel());
         }
     }
 }

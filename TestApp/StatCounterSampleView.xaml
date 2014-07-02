@@ -4,8 +4,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:jc="clr-namespace:JungleControls;assembly=JungleControls"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="400" d:DesignWidth="500">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*" />
@@ -22,6 +23,67 @@
             <jc:StatCounter Header="Medium data" Data="12%" DataFontWeight="Medium" DataAlignment="Right" />
             <jc:StatCounter Header="Spaced" Data="XXX" Spacing="10" />
             <jc:StatCounter Header="Crammed" Data="XXX" Spacing="-5" />
+            <jc:StatCounter Header="Null" Data="{x:Null}" />
+            <jc:StatCounter Header="Int32">
+                <jc:StatCounter.Data>
+                    <sys:Int32>-1234</sys:Int32>
+                </jc:StatCounter.Data>
+            </jc:StatCounter>
+            <jc:StatCounter Header="Double">
+                <jc:StatCounter.Data>
+                    <sys:Double>-1234.567</sys:Double>
+                </jc:StatCounter.Data>
+            </jc:StatCounter>
+            <jc:StatCounter Header="Decimal">
+                <jc:StatCounter.Data>
+                    <sys:Decimal>-1234.567</sys:Decimal>
+                </jc:StatCounter.Data>
+            </jc:StatCounter>
+            <jc:StatCounter Header="Fraction">
+                <jc:StatCounter.Data>
+                    <sys:Decimal>0.37</sys:Decimal>
+                </jc:StatCounter.Data>
+            </jc:StatCounter>
+            <jc:StatCounter Header="Fraction">
+                <jc:StatCounter.Data>
+                    <sys:Decimal>0.037</sys:Decimal>
+                </jc:StatCounter.Data>
+            </jc:StatCounter>
+            <jc:StatCounter Header="Fraction">
+                <jc:StatCounter.Data>
+                    <sys:Double>0.0037</sys:Double>
+                </jc:StatCounter.Data>
+            </jc:StatCounter>
+            <jc:StatCounter Header="Fraction">
+                <jc:StatCounter.Data>
+                    <sys:Single>0.00037</sys:Single>
+                </jc:StatCounter.Data>
+            </jc:StatCounter>
+            <jc:StatCounter Header="Full">
+                <jc:StatCounter.Data>
+                    <sys:Double>1</sys:Double>
+                </jc:StatCounter.Data>
+            </jc:StatCounter>
+            <jc:StatCounter Header="Zero">
+                <jc:StatCounter.Data>
+                    <sys:Double>0</sys:Double>
+                </jc:StatCounter.Data>
+            </jc:StatCounter>
+            <jc:StatCounter Header="Whole Double">
+                <jc:StatCounter.Data>
+                    <sys:Double>1234</sys:Double>
+                </jc:StatCounter.Data>
+            </jc:StatCounter>
+            <jc:StatCounter Header="Days" Data="{Binding Days}" />
+            <jc:StatCounter Header="Few Days" Data="{Binding FewDays}" />
+            <jc:StatCounter Header="Hours" Data="{Binding Hours}" />
+            <jc:StatCounter Header="Whole Hours" Data="{Binding WholeHours}" />
+            <jc:StatCounter Header="Minutes" Data="{Binding Minutes}" />
+            <jc:StatCounter Header="Whole Minutes" Data="{Binding WholeMinutes}" />
+            <jc:StatCounter Header="Seconds" Data="{Binding Seconds}" />
+            <jc:StatCounter Header="Few Seconds" Data="{Binding FewSeconds}" />
+            <jc:StatCounter Header="Fractional Seconds" Data="{Binding FractionalSeconds}" />
+            <jc:StatCounter Header="Milliseconds" Data="{Binding Milliseconds}" />
         </WrapPanel>
         <jc:StatCounter Grid.Row="1" Header="Header" Data="75%" />
     </Grid>

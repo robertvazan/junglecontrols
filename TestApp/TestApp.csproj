@@ -66,6 +66,7 @@
     <Compile Include="StatCounterSampleView.xaml.cs">
       <DependentUpon>StatCounterSampleView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StatCounterSampleViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

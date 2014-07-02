@@ -45,6 +45,9 @@ namespace JungleControls
         public static readonly DependencyProperty DataProperty = DependencyProperty.Register("Data", typeof(object), typeof(StatCounter));
         public object Data { get { return GetValue(DataProperty); } set { SetValue(DataProperty, value); } }
 
+        public static readonly DependencyProperty DataStringFormatProperty = DependencyProperty.Register("DataStringFormat", typeof(string), typeof(StatCounter));
+        public string DataStringFormat { get { return (string)GetValue(DataStringFormatProperty); } set { SetValue(DataStringFormatProperty, value); } }
+
         public static readonly DependencyProperty DataForegroundProperty = DependencyProperty.Register("DataForeground", typeof(Brush), typeof(StatCounter), new FrameworkPropertyMetadata(Brushes.Black));
         public Brush DataForeground { get { return (Brush)GetValue(DataForegroundProperty); } set { SetValue(DataForegroundProperty, value); } }
 
@@ -69,16 +72,68 @@ namespace JungleControls
             readonly Independent<StatCounterHeaderPosition> HeaderPositionIndependent = new Independent<StatCounterHeaderPosition>();
             readonly Independent<double> SpacingIndependent = new Independent<double>();
             readonly Independent<object> DataIndependent = new Independent<object>();
+            readonly Independent<string> DataStringFormatIndependent = new Independent<string>();
 
             public StatCounter Control { get; private set; }
             public bool IsTop { get { return HeaderPositionIndependent.Value == StatCounterHeaderPosition.Top; } }
             public bool IsBottom { get { return HeaderPositionIndependent.Value == StatCounterHeaderPosition.Bottom; } }
             public int HeaderRow { get { return IsTop ? 0 : 1; } }
-            public string Data { get { return DataIndependent.Value != null ? DataIndependent.Value.ToString() : ""; } }
             public int DataRow { get { return 1 - HeaderRow; } }
             public double HalfSpacing { get { return SpacingIndependent.Value / 2; } }
             public Thickness HeaderMargin { get { return new Thickness(0, IsBottom ? HalfSpacing : 0, 0, IsTop ? HalfSpacing : 0); } }
             public Thickness DataMargin { get { return new Thickness(0, IsTop ? HalfSpacing : 0, 0, IsBottom ? HalfSpacing : 0); } }
+
+            public string Data
+            {
+                get
+                {
+                    var value = DataIndependent.Value;
+                    if (value == null)
+                        return "";
+                    if (DataStringFormatIndependent.Value != null)
+                        return String.Format("{0:" + DataStringFormatIndependent.Value + "}", value);
+                    if (value is int || value is long || value is short || value is byte || value is sbyte || value is uint || value is ulong || value is ushort)
+                        return String.Format("{0:N0}", value);
+                    if (value is double || value is float || value is decimal)
+                    {
+                        var fp = Convert.ToDouble(value);
+                        if (fp >= 0.1 && fp <= 1)
+                            return fp.ToString("P0");
+                        if (fp >= 0.01 && fp < 0.1)
+                            return fp.ToString("P1");
+                        if (fp > 0 && fp < 0.01)
+                            return fp.ToString("P");
+                        if (fp == 0)
+                            return "0";
+                        return fp.ToString("#,##0.##");
+                    }
+                    if (value is TimeSpan)
+                    {
+                        var ts = (TimeSpan)value;
+                        string sign = ts < TimeSpan.Zero ? "-" : "";
+                        ts = ts < TimeSpan.Zero ? -ts : ts;
+                        string positive;
+                        if (ts >= TimeSpan.FromDays(10) || ts >= TimeSpan.FromDays(1) && ts.Hours == 0)
+                            positive = String.Format("{0}d", ts.Days);
+                        else if (ts >= TimeSpan.FromDays(1))
+                            positive = String.Format("{0}d {1}h", ts.Days, ts.Hours);
+                        else if (ts >= TimeSpan.FromHours(1))
+                            positive = ts.Minutes == 0 ? String.Format("{0}h", ts.Hours) : String.Format("{0}h {1}m", ts.Hours, ts.Minutes);
+                        else if (ts >= TimeSpan.FromMinutes(1))
+                            positive = ts.Seconds == 0 ? String.Format("{0}m", ts.Minutes) : String.Format("{0}m {1}s", ts.Minutes, ts.Seconds);
+                        else if (ts >= TimeSpan.FromSeconds(10))
+                            positive = String.Format("{0}s", ts.Seconds);
+                        else if (ts >= TimeSpan.FromSeconds(1))
+                            positive = String.Format("{0:0.#}s", ts.TotalSeconds);
+                        else if (ts > TimeSpan.Zero)
+                            positive = String.Format("{0}ms", ts.Milliseconds);
+                        else
+                            positive = "0";
+                        return sign + positive;
+                    }
+                    return value.ToString();
+                }
+            }
 
             public ViewModel(StatCounter element)
             {
