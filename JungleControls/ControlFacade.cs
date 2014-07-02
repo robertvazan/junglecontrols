@@ -4,9 +4,11 @@ using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using UpdateControls;
 using UpdateControls.Collections;
 using UpdateControls.Fields;
 
@@ -57,6 +59,38 @@ namespace JungleControls
             EventHandler handler = (sender, args) => independent.Value = (T)view.GetValue(property);
             DependencyPropertyDescriptor.FromProperty(property, view.GetType()).AddValueChanged(view, handler);
             handler(null, EventArgs.Empty);
+        }
+
+        class LiftAllHelper<T>
+        {
+            public static void ForwardLift(DependencyObject view, DependencyProperty property, Independent independent)
+            {
+                Lift(view, property, (Independent<T>)independent);
+            }
+        }
+
+        public static void LiftAll(DependencyObject view, object model, Func<string, string, bool> matcher)
+        {
+            var fields = (from field in model.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
+                          where field.FieldType.IsGenericType && field.FieldType.GetGenericTypeDefinition() == typeof(Independent<>) && field.GetValue(model) != null
+                          select field).ToList();
+            var properties = (from field in view.GetType().GetFields(BindingFlags.Public | BindingFlags.Static)
+                              where field.FieldType == typeof(DependencyProperty) && field.Name.EndsWith("Property")
+                              select (DependencyProperty)field.GetValue(null)).ToList();
+            foreach (var property in properties)
+            {
+                var field = fields.SingleOrDefault(f => matcher(property.Name, f.Name));
+                if (field != null)
+                {
+                    typeof(LiftAllHelper<>).MakeGenericType(field.FieldType.GetGenericArguments()[0]).GetMethod("ForwardLift")
+                        .Invoke(null, new object[] { view, property, field.GetValue(model) });
+                }
+            }
+        }
+
+        public static void LiftAll(DependencyObject view, object model)
+        {
+            LiftAll(view, model, (property, field) => field == property + "Independent");
         }
     }
 }

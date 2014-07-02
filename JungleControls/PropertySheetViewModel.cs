@@ -32,11 +32,7 @@ namespace JungleControls
         {
             ControlFacade.Lift(element, FrameworkElement.DataContextProperty, OuterDataContextIndependent);
             ControlFacade.Lift(element.Items, RowsIndependent, elem => new PropertySheetRowViewModel(this, elem));
-            ControlFacade.Lift(element, PropertySheet.HeaderTemplateProperty, HeaderTemplateIndependent);
-            ControlFacade.Lift(element, PropertySheet.HeaderMarginProperty, HeaderMarginIndependent);
-            ControlFacade.Lift(element, PropertySheet.HeaderForegroundProperty, HeaderForegroundIndependent);
-            ControlFacade.Lift(element, PropertySheet.HeaderFontWeightProperty, HeaderFontWeightIndependent);
-            ControlFacade.Lift(element, PropertySheet.CellMarginProperty, CellMarginIndependent);
+            ControlFacade.LiftAll(element, this);
         }
     }
 }
