@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UpdateControls.Fields;
 using UpdateControls.XAML;
 
 namespace JungleControls
@@ -30,7 +31,24 @@ namespace JungleControls
         public StatCounter()
         {
             InitializeComponent();
-            ((FrameworkElement)Content).DataContext = ForView.Wrap(new StatCounterViewModel(this));
+            ((FrameworkElement)Content).DataContext = ForView.Wrap(new ViewModel(this));
+        }
+
+        class ViewModel
+        {
+            readonly Independent<string> HeaderIndependent = new Independent<string>();
+            readonly Independent<StatCounterHeaderPosition> HeaderPositionIndependent = new Independent<StatCounterHeaderPosition>();
+            readonly Independent<object> DataIndependent = new Independent<object>();
+
+            public string Header { get { return HeaderIndependent.Value; } }
+            public int HeaderRow { get { return HeaderPositionIndependent.Value == StatCounterHeaderPosition.Top ? 0 : 1; } }
+            public string Data { get { return DataIndependent.Value != null ? DataIndependent.Value.ToString() : ""; } }
+            public int DataRow { get { return 1 - HeaderRow; } }
+
+            public ViewModel(StatCounter element)
+            {
+                ControlFacade.LiftAll(element, this);
+            }
         }
     }
 }

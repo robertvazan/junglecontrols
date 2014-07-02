@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UpdateControls.Collections;
+using UpdateControls.Fields;
 using UpdateControls.XAML;
 
 namespace JungleControls
@@ -56,7 +58,53 @@ namespace JungleControls
         public PropertySheet()
         {
             InitializeComponent();
-            ((FrameworkElement)Content).DataContext = ForView.Wrap(new PropertySheetViewModel(this));
+            ((FrameworkElement)Content).DataContext = ForView.Wrap(new ViewModel(this));
+        }
+
+        class ViewModel
+        {
+            readonly Independent<object> OuterDataContextIndependent = new Independent<object>();
+            readonly IndependentList<RowViewModel> RowsIndependent = new IndependentList<RowViewModel>();
+            readonly Independent<FrameworkTemplate> HeaderTemplateIndependent = new Independent<FrameworkTemplate>();
+            readonly Independent<Thickness> HeaderMarginIndependent = new Independent<Thickness>();
+            readonly Independent<Brush> HeaderForegroundIndependent = new Independent<Brush>();
+            readonly Independent<FontWeight> HeaderFontWeightIndependent = new Independent<FontWeight>();
+            readonly Independent<Thickness> CellMarginIndependent = new Independent<Thickness>();
+
+            public object OuterDataContext { get { return OuterDataContextIndependent.Value; } }
+            public IList<RowViewModel> Rows { get { return RowsIndependent; } }
+            public FrameworkTemplate HeaderTemplate { get { return HeaderTemplateIndependent.Value; } }
+            public Thickness HeaderMargin { get { return HeaderMarginIndependent.Value; } }
+            public Brush HeaderForeground { get { return HeaderForegroundIndependent.Value; } }
+            public FontWeight HeaderFontWeight { get { return HeaderFontWeightIndependent.Value; } }
+            public Thickness CellMargin { get { return CellMarginIndependent.Value; } }
+
+            public ViewModel(PropertySheet element)
+            {
+                ControlFacade.Lift(element, FrameworkElement.DataContextProperty, OuterDataContextIndependent);
+                ControlFacade.Lift(element.Items, RowsIndependent, elem => new RowViewModel(this, elem));
+                ControlFacade.LiftAll(element, this);
+            }
+        }
+
+        class RowViewModel
+        {
+            readonly FrameworkElement Element;
+            readonly Independent<object> HeaderIndependent = new Independent<object>();
+
+            public ViewModel Sheet { get; private set; }
+            public object Header { get { return HeaderIndependent.Value; } }
+            public FrameworkElement Content { get { return Element; } }
+            public bool IsSimpleHeader { get { return Header is string && Sheet.HeaderTemplate == null; } }
+            public Visibility SimpleHeaderVisible { get { return VisibilityEx.If(IsSimpleHeader); } }
+            public Visibility TemplatedHeaderVisible { get { return VisibilityEx.If(!IsSimpleHeader); } }
+
+            public RowViewModel(ViewModel sheet, FrameworkElement element)
+            {
+                Sheet = sheet;
+                Element = element;
+                ControlFacade.Lift(element, PropertySheet.HeaderProperty, HeaderIndependent);
+            }
         }
     }
 }
