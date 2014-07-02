@@ -20,9 +20,7 @@ namespace JungleControls
 
         public StatCounterViewModel(StatCounter element)
         {
-            ControlFacade.Lift(element, StatCounter.HeaderProperty, HeaderIndependent);
-            ControlFacade.Lift(element, StatCounter.HeaderPositionProperty, HeaderPositionIndependent);
-            ControlFacade.Lift(element, StatCounter.DataProperty, DataIndependent);
+            ControlFacade.LiftAll(element, this);
         }
     }
 }
