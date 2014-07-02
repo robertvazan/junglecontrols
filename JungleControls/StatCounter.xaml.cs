@@ -25,8 +25,14 @@ namespace JungleControls
         public static readonly DependencyProperty HeaderPositionProperty = DependencyProperty.Register("HeaderPosition", typeof(StatCounterHeaderPosition), typeof(StatCounter));
         public StatCounterHeaderPosition HeaderPosition { get { return (StatCounterHeaderPosition)GetValue(HeaderPositionProperty); } set { SetValue(HeaderPositionProperty, value); } }
 
+        public static readonly DependencyProperty HeaderFontSizeProperty = DependencyProperty.Register("HeaderFontSize", typeof(double), typeof(StatCounter), new FrameworkPropertyMetadata(SystemFonts.MessageFontSize));
+        public double HeaderFontSize { get { return (double)GetValue(HeaderFontSizeProperty); } set { SetValue(HeaderFontSizeProperty, value); } }
+
         public static readonly DependencyProperty DataProperty = DependencyProperty.Register("Data", typeof(object), typeof(StatCounter));
         public object Data { get { return GetValue(DataProperty); } set { SetValue(DataProperty, value); } }
+
+        public static readonly DependencyProperty DataFontSizeProperty = DependencyProperty.Register("DataFontSize", typeof(double), typeof(StatCounter), new FrameworkPropertyMetadata(2 * SystemFonts.MessageFontSize));
+        public double DataFontSize { get { return (double)GetValue(DataFontSizeProperty); } set { SetValue(DataFontSizeProperty, value); } }
 
         public StatCounter()
         {
@@ -40,6 +46,7 @@ namespace JungleControls
             readonly Independent<StatCounterHeaderPosition> HeaderPositionIndependent = new Independent<StatCounterHeaderPosition>();
             readonly Independent<object> DataIndependent = new Independent<object>();
 
+            public StatCounter Control { get; private set; }
             public string Header { get { return HeaderIndependent.Value; } }
             public int HeaderRow { get { return HeaderPositionIndependent.Value == StatCounterHeaderPosition.Top ? 0 : 1; } }
             public string Data { get { return DataIndependent.Value != null ? DataIndependent.Value.ToString() : ""; } }
@@ -47,6 +54,7 @@ namespace JungleControls
 
             public ViewModel(StatCounter element)
             {
+                Control = element;
                 ControlFacade.LiftAll(element, this);
             }
         }
