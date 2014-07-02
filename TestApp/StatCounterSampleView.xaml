@@ -6,5 +6,23 @@
              xmlns:jc="clr-namespace:JungleControls;assembly=JungleControls"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <jc:StatCounter Header="Header" Data="75%" />
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <WrapPanel>
+            <jc:StatCounter Header="Resized" Data="123" HeaderFontSize="10" DataFontSize="25" />
+            <jc:StatCounter Header="Pt size" Data="123" HeaderFontSize="10pt" DataFontSize="25pt" />
+            <jc:StatCounter Header="Colored" Data="15s" HeaderForeground="Blue" DataForeground="Green" />
+            <jc:StatCounter Header="Bottom" Data="ABC" HeaderPosition="Bottom" />
+            <jc:StatCounter Header="Alignment" Data="5" DataAlignment="Right" />
+            <jc:StatCounter Header="Center" Data="1,234,567" HeaderAlignment="Center" />
+            <jc:StatCounter Header="Bold" Data="June 14" HeaderFontWeight="Bold" HeaderAlignment="Center" />
+            <jc:StatCounter Header="Medium data" Data="12%" DataFontWeight="Medium" DataAlignment="Right" />
+            <jc:StatCounter Header="Spaced" Data="XXX" Spacing="10" />
+            <jc:StatCounter Header="Crammed" Data="XXX" Spacing="-5" />
+        </WrapPanel>
+        <jc:StatCounter Grid.Row="1" Header="Header" Data="75%" />
+    </Grid>
 </UserControl>

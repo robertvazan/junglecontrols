@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace TestApp
 {
-    /// <summary>
-    /// Interaction logic for StatCounterSampleView.xaml
-    /// </summary>
     public partial class StatCounterSampleView : UserControl
     {
         public StatCounterSampleView()

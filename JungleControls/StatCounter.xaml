@@ -10,7 +10,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="{Binding HeaderRow}" Text="{Binding Control.Header}" FontSize="{Binding Control.HeaderFontSize}" />
-        <TextBlock Grid.Row="{Binding DataRow}" Text="{Binding Data}" FontSize="{Binding Control.DataFontSize}" />
+        <TextBlock Grid.Row="{Binding HeaderRow}" Text="{Binding Control.Header}" FontSize="{Binding Control.HeaderFontSize}" Foreground="{Binding Control.HeaderForeground}" HorizontalAlignment="{Binding Control.HeaderAlignment}" FontWeight="{Binding Control.HeaderFontWeight}" Margin="{Binding HeaderMargin}" />
+        <TextBlock Grid.Row="{Binding DataRow}" Text="{Binding Data}" FontSize="{Binding Control.DataFontSize}" Foreground="{Binding Control.DataForeground}" HorizontalAlignment="{Binding Control.DataAlignment}" FontWeight="{Binding Control.DataFontWeight}" Margin="{Binding DataMargin}" />
     </Grid>
 </UserControl>
