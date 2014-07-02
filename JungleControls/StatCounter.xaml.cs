@@ -42,12 +42,10 @@ namespace JungleControls
 
         class ViewModel
         {
-            readonly Independent<string> HeaderIndependent = new Independent<string>();
             readonly Independent<StatCounterHeaderPosition> HeaderPositionIndependent = new Independent<StatCounterHeaderPosition>();
             readonly Independent<object> DataIndependent = new Independent<object>();
 
             public StatCounter Control { get; private set; }
-            public string Header { get { return HeaderIndependent.Value; } }
             public int HeaderRow { get { return HeaderPositionIndependent.Value == StatCounterHeaderPosition.Top ? 0 : 1; } }
             public string Data { get { return DataIndependent.Value != null ? DataIndependent.Value.ToString() : ""; } }
             public int DataRow { get { return 1 - HeaderRow; } }

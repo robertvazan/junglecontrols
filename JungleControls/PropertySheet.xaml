@@ -15,11 +15,11 @@
                         <ColumnDefinition Width="Auto" SharedSizeGroup="HeaderSizeGroup" />
                         <ColumnDefinition />
                     </Grid.ColumnDefinitions>
-                    <Grid Margin="{Binding Sheet.HeaderMargin}">
-                        <TextBlock Visibility="{Binding SimpleHeaderVisible}" Text="{Binding Header}" Foreground="{Binding Sheet.HeaderForeground}" FontWeight="{Binding Sheet.HeaderFontWeight}" />
-                        <jc:DataPresenter Visibility="{Binding TemplatedHeaderVisible}" Inner="{Binding Header}" InnerTemplate="{Binding Sheet.HeaderTemplate}" InnerDataContext="{Binding Sheet.OuterDataContext}" />
+                    <Grid Margin="{Binding Control.HeaderMargin}">
+                        <TextBlock Visibility="{Binding SimpleHeaderVisible}" Text="{Binding Header}" Foreground="{Binding Control.HeaderForeground}" FontWeight="{Binding Control.HeaderFontWeight}" />
+                        <jc:DataPresenter Visibility="{Binding TemplatedHeaderVisible}" Inner="{Binding Header}" InnerTemplate="{Binding Control.HeaderTemplate}" InnerDataContext="{Binding Control.DataContext}" />
                     </Grid>
-                    <jc:DataPresenter Grid.Column="1" Inner="{Binding Content}" InnerDataContext="{Binding Sheet.OuterDataContext}" Margin="{Binding Sheet.CellMargin}" />
+                    <jc:DataPresenter Grid.Column="1" Inner="{Binding Content}" InnerDataContext="{Binding Control.DataContext}" Margin="{Binding Control.CellMargin}" />
                 </Grid>
             </DataTemplate>
         </ItemsControl.ItemTemplate>
