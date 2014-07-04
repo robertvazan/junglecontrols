@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -17,7 +18,8 @@ namespace JungleControls
 {
     static class FacadeMapper
     {
-        public static void Lift<TViewItem, TModelItem>(ObservableCollection<TViewItem> collection, IList<TModelItem> list, Func<TViewItem, TModelItem> converter)
+        public static void Lift<TViewCollection, TModelItem>(TViewCollection collection, IList<TModelItem> list, Func<object, TModelItem> converter)
+            where TViewCollection : IList, INotifyCollectionChanged
         {
             NotifyCollectionChangedEventHandler handler = (sender, args) =>
             {

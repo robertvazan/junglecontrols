@@ -10,7 +10,6 @@ namespace JungleControls
     public interface IFacadeControl
     {
         Type FacadeType { get; }
-        DependencyProperty FacadeStyleKey { get; }
 
         DependencyObject GetFacadeChild(string name);
     }

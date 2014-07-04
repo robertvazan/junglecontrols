@@ -53,6 +53,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FacadeControls\FacadeItemsControl.cs" />
     <Compile Include="FacadeMapper.cs" />
     <Compile Include="DataContentControl\DataContentControl.cs" />
     <Compile Include="DataContentControl\DataContentControlView.xaml.cs">
@@ -75,9 +76,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="PropertySheet.xaml.cs">
-      <DependentUpon>PropertySheet.xaml</DependentUpon>
+    <Compile Include="PropertySheet\PropertySheet.cs" />
+    <Compile Include="PropertySheet\PropertySheetView.xaml.cs">
+      <DependentUpon>PropertySheetView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PropertySheet\PropertySheetRowViewModel.cs" />
+    <Compile Include="PropertySheet\PropertySheetViewModel.cs" />
     <Compile Include="SelectableTextBlock\SelectableTextBlock.cs" />
     <Compile Include="SelectableTextBlock\SelectableTextBlockView.xaml.cs">
       <DependentUpon>SelectableTextBlockView.xaml</DependentUpon>
@@ -103,7 +107,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PropertySheet.xaml">
+    <Page Include="PropertySheet\PropertySheetView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

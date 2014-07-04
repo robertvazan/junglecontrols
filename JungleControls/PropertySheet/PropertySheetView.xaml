@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="JungleControls.PropertySheet"
+﻿<UserControl x:Class="JungleControls.PropertySheetView"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,8 @@
              xmlns:jc="clr-namespace:JungleControls"
              xmlns:diagnostics="clr-namespace:System.Diagnostics;assembly=WindowsBase"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="300"
+             x:ClassModifier="internal">
     <ItemsControl x:Name="GridRoot" Grid.IsSharedSizeScope="True" ItemsSource="{Binding Rows}">
         <ItemsControl.ItemTemplate>
             <DataTemplate>

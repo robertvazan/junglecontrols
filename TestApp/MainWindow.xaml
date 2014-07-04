@@ -4,13 +4,13 @@
         xmlns:a="clr-namespace:TestApp"
         Title="MainWindow" Height="350" Width="525">
     <TabControl>
-        <TabItem Header="PropertySheet">
+        <TabItem Header="PropertySheet" IsSelected="True">
             <a:PropertySheetSampleView />
         </TabItem>
         <TabItem Header="StatCounter">
             <a:StatCounterSampleView />
         </TabItem>
-        <TabItem Header="SelectableTextBlock" IsSelected="True">
+        <TabItem Header="SelectableTextBlock">
             <a:SelectableTextBlockSample />
         </TabItem>
     </TabControl>
