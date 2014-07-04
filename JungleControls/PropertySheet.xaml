@@ -17,9 +17,9 @@
                     </Grid.ColumnDefinitions>
                     <Grid Margin="{Binding Control.HeaderMargin}">
                         <TextBlock Visibility="{Binding SimpleHeaderVisible}" Text="{Binding Header}" Foreground="{Binding Control.HeaderForeground}" FontWeight="{Binding Control.HeaderFontWeight}" />
-                        <jc:DataPresenter Visibility="{Binding TemplatedHeaderVisible}" Inner="{Binding Header}" InnerTemplate="{Binding Control.HeaderTemplate}" InnerDataContext="{Binding Control.DataContext}" />
+                        <jc:DataContentControl Visibility="{Binding TemplatedHeaderVisible}" Content="{Binding Header}" ContentTemplate="{Binding Control.HeaderTemplate}" ContentDataContext="{Binding Control.DataContext}" />
                     </Grid>
-                    <jc:DataPresenter Grid.Column="1" Inner="{Binding Content}" InnerDataContext="{Binding Control.DataContext}" Margin="{Binding Control.CellMargin}" />
+                    <jc:DataContentControl Grid.Column="1" Content="{Binding Content}" ContentDataContext="{Binding Control.DataContext}" Margin="{Binding Control.CellMargin}" />
                 </Grid>
             </DataTemplate>
         </ItemsControl.ItemTemplate>
