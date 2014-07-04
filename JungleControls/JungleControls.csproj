@@ -58,6 +58,10 @@
     <Compile Include="DataContentControl\DataContentControlView.xaml.cs">
       <DependentUpon>DataContentControlView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FacadeControls\FacadeContentControl.cs" />
+    <Compile Include="FacadeControls\FacadeControl.cs" />
+    <Compile Include="FacadeControls\FacadeHelpers.cs" />
+    <Compile Include="FacadeControls\IFacadeControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
