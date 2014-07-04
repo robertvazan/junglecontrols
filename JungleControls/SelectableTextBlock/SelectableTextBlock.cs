@@ -9,7 +9,7 @@ using System.Windows.Markup;
 
 namespace JungleControls
 {
-    public class SelectableTextBlock : Control
+    public class SelectableTextBlock : FacadeControl
     {
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register("Text", typeof(string), typeof(SelectableTextBlock), new FrameworkPropertyMetadata(""));
         public string Text { get { return (string)GetValue(TextProperty); } set { SetValue(TextProperty, value); } }
@@ -23,19 +23,10 @@ namespace JungleControls
         public static readonly DependencyProperty TextWrappingProperty = DependencyProperty.Register("TextWrapping", typeof(TextWrapping), typeof(SelectableTextBlock), new FrameworkPropertyMetadata(TextWrapping.NoWrap));
         public TextWrapping TextWrapping { get { return (TextWrapping)GetValue(TextWrappingProperty); } set { SetValue(TextWrappingProperty, value); } }
 
-        static SelectableTextBlock()
-        {
-            ControlFacade.InitializeFacade<SelectableTextBlock>();
-        }
-
         public SelectableTextBlock()
+            : base(typeof(SelectableTextBlock))
         {
             TextDecorations = new TextDecorationCollection();
-        }
-
-        public override void OnApplyTemplate()
-        {
-            ControlFacade.TemplateFacade<SelectableTextBlockView>(GetTemplateChild("InternalPresenter"), this);
         }
     }
 }

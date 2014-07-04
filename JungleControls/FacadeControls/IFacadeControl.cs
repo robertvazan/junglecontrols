@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+
+namespace JungleControls
+{
+    public interface IFacadeControl
+    {
+        Type FacadeType { get; }
+        DependencyProperty FacadeStyleKey { get; }
+
+        DependencyObject GetFacadeChild(string name);
+    }
+}
