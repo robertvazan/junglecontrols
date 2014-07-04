@@ -138,7 +138,7 @@ namespace JungleControls
             public ViewModel(StatCounter element)
             {
                 Control = element;
-                ControlFacade.LiftAll(element, this);
+                DependencyInverter.LiftAll(element, this);
             }
         }
     }

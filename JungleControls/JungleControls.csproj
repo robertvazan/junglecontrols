@@ -53,7 +53,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ControlFacade.cs" />
+    <Compile Include="DependencyInverter.cs" />
     <Compile Include="DataContentControl\DataContentControl.cs" />
     <Compile Include="DataContentControl\DataContentControlView.xaml.cs">
       <DependentUpon>DataContentControlView.xaml</DependentUpon>
