@@ -54,8 +54,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControlFacade.cs" />
-    <Compile Include="DataPresenter.xaml.cs">
-      <DependentUpon>DataPresenter.xaml</DependentUpon>
+    <Compile Include="DataContentControl\DataContentControl.cs" />
+    <Compile Include="DataContentControl\DataContentControlView.xaml.cs">
+      <DependentUpon>DataContentControlView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -94,7 +95,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="DataPresenter.xaml">
+    <Page Include="DataContentControl\DataContentControlView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
