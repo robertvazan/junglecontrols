@@ -6,5 +6,5 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300"
              x:ClassModifier="internal">
-    <TextBox Background="Transparent" BorderThickness="0" Text="{Binding Text, Mode=OneWay}" IsReadOnly="True" />
+    <TextBox BorderThickness="0" Text="{Binding Text, Mode=OneWay}" IsReadOnly="True" Background="{Binding Background}" Foreground="{Binding Foreground}" Padding="{Binding Padding}" TextAlignment="{Binding TextAlignment}" TextDecorations="{Binding TextDecorations}" TextWrapping="{Binding TextWrapping}" />
 </UserControl>
