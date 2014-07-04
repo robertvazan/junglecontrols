@@ -73,6 +73,10 @@
     <Compile Include="PropertySheet.xaml.cs">
       <DependentUpon>PropertySheet.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SelectableTextBlock\SelectableTextBlock.cs" />
+    <Compile Include="SelectableTextBlock\SelectableTextBlockView.xaml.cs">
+      <DependentUpon>SelectableTextBlockView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StatCounter.xaml.cs">
       <DependentUpon>StatCounter.xaml</DependentUpon>
     </Compile>
@@ -98,7 +102,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="SelectableTextBlock\SelectableTextBlockView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="StatCounter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UniversalTemplate.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
