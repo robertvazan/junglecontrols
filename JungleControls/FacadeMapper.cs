@@ -15,7 +15,7 @@ using UpdateControls.Fields;
 
 namespace JungleControls
 {
-    static class DependencyInverter
+    static class FacadeMapper
     {
         public static void Lift<TViewItem, TModelItem>(ObservableCollection<TViewItem> collection, IList<TModelItem> list, Func<TViewItem, TModelItem> converter)
         {
