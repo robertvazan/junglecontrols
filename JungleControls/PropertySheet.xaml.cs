@@ -71,7 +71,7 @@ namespace JungleControls
             public ViewModel(PropertySheet element)
             {
                 Control = element;
-                ControlFacade.Lift(element.Items, RowsIndependent, elem => new RowViewModel(this, elem));
+                DependencyInverter.Lift(element.Items, RowsIndependent, elem => new RowViewModel(this, elem));
             }
         }
 
@@ -91,7 +91,7 @@ namespace JungleControls
             {
                 Sheet = sheet;
                 Content = element;
-                ControlFacade.Lift(element, PropertySheet.HeaderProperty, HeaderIndependent);
+                DependencyInverter.Lift(element, PropertySheet.HeaderProperty, HeaderIndependent);
             }
         }
     }
