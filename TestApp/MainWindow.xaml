@@ -7,8 +7,11 @@
         <TabItem Header="PropertySheet">
             <a:PropertySheetSampleView />
         </TabItem>
-        <TabItem Header="StatCounter" IsSelected="True">
+        <TabItem Header="StatCounter">
             <a:StatCounterSampleView />
+        </TabItem>
+        <TabItem Header="SelectableTextBlock" IsSelected="True">
+            <a:SelectableTextBlockSample />
         </TabItem>
     </TabControl>
 </Window>

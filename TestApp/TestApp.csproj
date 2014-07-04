@@ -63,6 +63,9 @@
       <DependentUpon>PropertySheetSampleView.xaml</DependentUpon>
     </Compile>
     <Compile Include="PropertySheetSampleViewModel.cs" />
+    <Compile Include="SelectableTextBlockSample.xaml.cs">
+      <DependentUpon>SelectableTextBlockSample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="StatCounterSampleView.xaml.cs">
       <DependentUpon>StatCounterSampleView.xaml</DependentUpon>
     </Compile>
@@ -80,6 +83,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="PropertySheetSampleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SelectableTextBlockSample.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

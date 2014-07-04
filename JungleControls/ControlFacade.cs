@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using UpdateControls;
 using UpdateControls.Collections;
 using UpdateControls.Fields;
@@ -91,6 +92,24 @@ namespace JungleControls
         public static void LiftAll(DependencyObject view, object model)
         {
             LiftAll(view, model, (property, field) => field == property + "Independent");
+        }
+
+        public static void InitializeFacade<T>()
+        {
+            var resources = (ResourceDictionary)Application.LoadComponent(new Uri("/JungleControls;component/UniversalTemplate.xaml", UriKind.Relative));
+            Control.TemplateProperty.OverrideMetadata(typeof(T), new FrameworkPropertyMetadata((ControlTemplate)resources["JungleControlsUniversalTemplate"]));
+        }
+
+        public static void TemplateFacade<T>(DependencyObject placeholder, object data)
+            where T : FrameworkElement
+        {
+            var presenter = placeholder as ContentPresenter;
+            if (presenter != null)
+            {
+                var view = (FrameworkElement)Activator.CreateInstance(typeof(T));
+                view.DataContext = data;
+                presenter.Content = view;
+            }
         }
     }
 }
