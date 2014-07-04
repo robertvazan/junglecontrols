@@ -7,7 +7,26 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <StackPanel>
-        <jc:SelectableTextBlock Text="Hello" />
+        <jc:SelectableTextBlock Text="Simple single line" />
         <jc:SelectableTextBlock Text="Veeeeeeeeeery long text blah blah blah blah blah blah blah blah blah blah blah blah blah" />
+        <jc:SelectableTextBlock Text="Wrapping this text round and round, round, round, round, round, round, round, round, round, round, round, round" TextWrapping="Wrap" />
+        <jc:SelectableTextBlock Text="TextAlignment" TextAlignment="Right" />
+        <WrapPanel>
+            <jc:SelectableTextBlock Text="Colored" Background="Black" Foreground="White" />
+            <jc:SelectableTextBlock Text="FontFamily" FontFamily="Georgia" />
+            <jc:SelectableTextBlock Text="FontSize" FontSize="8" />
+            <StackPanel Orientation="Horizontal">
+                <jc:SelectableTextBlock Text="FontStretch" FontFamily="DejaVu Sans" FontStretch="Condensed" />
+                <jc:SelectableTextBlock Text="/ FontStretch" FontFamily="DejaVu Sans" />
+            </StackPanel>
+            <jc:SelectableTextBlock Text="FontStyle" FontStyle="Italic" />
+            <jc:SelectableTextBlock Text="FontWeight" FontWeight="Bold" />
+            <jc:SelectableTextBlock Text="Padding" Padding="5" />
+            <jc:SelectableTextBlock Text="TextDecorations" >
+                <jc:SelectableTextBlock.TextDecorations>
+                    <TextDecoration/>
+                </jc:SelectableTextBlock.TextDecorations>
+            </jc:SelectableTextBlock>
+        </WrapPanel>
     </StackPanel>
 </UserControl>
