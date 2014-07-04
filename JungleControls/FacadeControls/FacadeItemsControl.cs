@@ -8,12 +8,12 @@ using System.Windows.Controls;
 
 namespace JungleControls
 {
-    public class FacadeContentControl : ContentControl, IFacadeControl
+    public class FacadeItemsControl : ItemsControl, IFacadeControl
     {
         public Type FacadeType { get; private set; }
 
-        static FacadeContentControl() { FacadeHelpers.Initialize<FacadeContentControl>(DefaultStyleKeyProperty); }
-        public FacadeContentControl(Type type) { FacadeType = type; }
+        static FacadeItemsControl() { FacadeHelpers.Initialize<FacadeItemsControl>(DefaultStyleKeyProperty); }
+        public FacadeItemsControl(Type type) { FacadeType = type; }
 
         public DependencyObject GetFacadeChild(string name) { return GetTemplateChild(name); }
         public override void OnApplyTemplate() { FacadeHelpers.ApplyTemplate(this); }

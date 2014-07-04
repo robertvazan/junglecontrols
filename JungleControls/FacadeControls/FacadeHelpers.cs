@@ -5,26 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using UpdateControls.XAML;
 
 namespace JungleControls
 {
     static class FacadeHelpers
     {
-        static HashSet<Type> Initialized = new HashSet<Type>();
-
-        public static void Initialize(IFacadeControl control)
+        public static void Initialize<T>(DependencyProperty styleKey)
         {
-            if (!Initialized.Contains(control.FacadeType))
-            {
-                Initialized.Add(control.FacadeType);
-                var resources = (ResourceDictionary)Application.LoadComponent(new Uri("/JungleControls;component/UniversalTemplate.xaml", UriKind.Relative));
-                Control.TemplateProperty.OverrideMetadata(control.FacadeType, new FrameworkPropertyMetadata((ControlTemplate)resources["JungleControlsUniversalTemplate"]));
-                control.FacadeStyleKey.OverrideMetadata(control.FacadeType, new FrameworkPropertyMetadata((object)null));
-            }
+            var resources = (ResourceDictionary)Application.LoadComponent(new Uri("/JungleControls;component/UniversalTemplate.xaml", UriKind.Relative));
+            Control.TemplateProperty.OverrideMetadata(typeof(T), new FrameworkPropertyMetadata((ControlTemplate)resources["JungleControlsUniversalTemplate"]));
+            styleKey.OverrideMetadata(typeof(T), new FrameworkPropertyMetadata((object)null));
         }
 
-        public static void ApplyTemplate<T>(T control)
-            where T : Control, IFacadeControl
+        public static void ApplyTemplate(IFacadeControl control)
         {
             var presenter = control.GetFacadeChild("InternalPresenter") as ContentPresenter;
             if (presenter != null)
@@ -32,7 +26,7 @@ namespace JungleControls
                 var view = (FrameworkElement)Activator.CreateInstance(control.FacadeType.Assembly.GetType(control.FacadeType.FullName + "View"));
                 var modelType = control.FacadeType.Assembly.GetType(control.FacadeType.FullName + "ViewModel");
                 if (modelType != null)
-                    view.DataContext = Activator.CreateInstance(modelType, control);
+                    view.DataContext = ForView.Wrap(Activator.CreateInstance(modelType, control));
                 else
                     view.DataContext = control;
                 presenter.Content = view;
