@@ -87,6 +87,7 @@
     <Compile Include="SelectableTextBlock\SelectableTextBlockView.xaml.cs">
       <DependentUpon>SelectableTextBlockView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StatCounter\StatCounterMode.cs" />
     <Compile Include="StatCounter\StatCounter.cs" />
     <Compile Include="StatCounter\StatCounterView.xaml.cs">
       <DependentUpon>StatCounterView.xaml</DependentUpon>

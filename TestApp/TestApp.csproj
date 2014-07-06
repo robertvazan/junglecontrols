@@ -59,6 +59,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DesignViewModelLocator.cs" />
     <Compile Include="PropertySheetSampleView.xaml.cs">
       <DependentUpon>PropertySheetSampleView.xaml</DependentUpon>
     </Compile>
