@@ -31,7 +31,5 @@ namespace JungleControls
 
         public static readonly DependencyProperty CellMarginProperty = DependencyProperty.Register("CellMargin", typeof(Thickness), typeof(PropertySheet), new FrameworkPropertyMetadata(new Thickness(5)));
         public Thickness CellMargin { get { return (Thickness)GetValue(CellMarginProperty); } set { SetValue(CellMarginProperty, value); } }
-
-        public PropertySheet() : base(typeof(PropertySheet)) { }
     }
 }

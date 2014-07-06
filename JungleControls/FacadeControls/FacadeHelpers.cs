@@ -18,6 +18,15 @@ namespace JungleControls
             styleKey.OverrideMetadata(typeof(T), new FrameworkPropertyMetadata((object)null));
         }
 
+        public static Type GetFacadeType<T>(T facade)
+            where T : Control
+        {
+            for (Type type = facade.GetType(); type != null && type != typeof(object) && type.BaseType != null; type = type.BaseType)
+                if (type.BaseType == typeof(T))
+                    return type;
+            throw new ArgumentException();
+        }
+
         public static void ApplyTemplate(IFacadeControl control)
         {
             var presenter = control.GetFacadeChild("InternalPresenter") as ContentPresenter;
