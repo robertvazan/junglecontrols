@@ -13,14 +13,17 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <WrapPanel>
-            <jc:StatCounter Header="Resized" Content="123" HeaderFontSize="10" ContentFontSize="25" />
+            <jc:StatCounter Header="Resized" Content="123" HeaderFontSize="10" ContentFontSize="30" />
             <jc:StatCounter Header="Pt size" Content="123" HeaderFontSize="10pt" ContentFontSize="25pt" />
+            <jc:StatCounter Header="Resized together" Content="123" FontSize="8" />
             <jc:StatCounter Header="Colored" Content="15s" HeaderForeground="Blue" ContentForeground="Green" />
+            <jc:StatCounter Header="Inherit Color" Content="16s" Foreground="Cyan" />
             <jc:StatCounter Header="Bottom" Content="ABC" HeaderPosition="Bottom" />
             <jc:StatCounter Header="Alignment" Content="5" ContentAlignment="Right" />
             <jc:StatCounter Header="Center" Content="1,234,567" HeaderAlignment="Center" />
             <jc:StatCounter Header="Bold" Content="June 14" HeaderFontWeight="Bold" HeaderAlignment="Center" />
             <jc:StatCounter Header="Medium data" Content="12%" ContentFontWeight="Medium" ContentAlignment="Right" />
+            <jc:StatCounter Header="Both Bold" Content="ABC" FontWeight="Bold" />
             <jc:StatCounter Header="Spaced" Content="XXX" Spacing="10" />
             <jc:StatCounter Header="Crammed" Content="XXX" Spacing="-5" />
             <jc:StatCounter Header="Null" Content="{x:Null}" />

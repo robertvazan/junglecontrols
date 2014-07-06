@@ -4,16 +4,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Media;
 using UpdateControls.Fields;
 
 namespace JungleControls
 {
     class StatCounterViewModel
     {
+        readonly Independent<Brush> ForegroundIndependent = new Independent<Brush>();
+        readonly Independent<double> FontSizeIndependent = new Independent<double>();
+        readonly Independent<FontWeight> FontWeightIndependent = new Independent<FontWeight>();
         readonly Independent<StatCounterHeaderPosition> HeaderPositionIndependent = new Independent<StatCounterHeaderPosition>();
+        readonly Independent<Brush> HeaderForegroundIndependent = new Independent<Brush>();
+        readonly Independent<double?> HeaderFontSizeIndependent = new Independent<double?>();
+        readonly Independent<FontWeight?> HeaderFontWeightIndependent = new Independent<FontWeight?>();
         readonly Independent<double> SpacingIndependent = new Independent<double>();
         readonly Independent<object> ContentIndependent = new Independent<object>();
         readonly Independent<string> ContentStringFormatIndependent = new Independent<string>();
+        readonly Independent<Brush> ContentForegroundIndependent = new Independent<Brush>();
+        readonly Independent<double?> ContentFontSizeIndependent = new Independent<double?>();
+        readonly Independent<FontWeight?> ContentFontWeightIndependent = new Independent<FontWeight?>();
 
         public StatCounter Control { get; private set; }
         public bool IsTop { get { return HeaderPositionIndependent.Value == StatCounterHeaderPosition.Top; } }
@@ -23,6 +33,12 @@ namespace JungleControls
         public double HalfSpacing { get { return SpacingIndependent.Value / 2; } }
         public Thickness HeaderMargin { get { return new Thickness(0, IsBottom ? HalfSpacing : 0, 0, IsTop ? HalfSpacing : 0); } }
         public Thickness ContentMargin { get { return new Thickness(0, IsTop ? HalfSpacing : 0, 0, IsBottom ? HalfSpacing : 0); } }
+        public Brush HeaderForeground { get { return HeaderForegroundIndependent.Value ?? ForegroundIndependent.Value; } }
+        public Brush ContentForeground { get { return ContentForegroundIndependent.Value ?? ForegroundIndependent.Value; } }
+        public double HeaderFontSize { get { return HeaderFontSizeIndependent.Value ?? FontSizeIndependent.Value; } }
+        public double ContentFontSize { get { return ContentFontSizeIndependent.Value ?? 2 * FontSizeIndependent.Value; } }
+        public FontWeight HeaderFontWeight { get { return HeaderFontWeightIndependent.Value ?? FontWeightIndependent.Value; } }
+        public FontWeight ContentFontWeight { get { return ContentFontWeightIndependent.Value ?? FontWeightIndependent.Value; } }
 
         public string Content
         {
