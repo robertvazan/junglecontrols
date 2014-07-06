@@ -13,78 +13,78 @@
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
         <WrapPanel>
-            <jc:StatCounter Header="Resized" Data="123" HeaderFontSize="10" DataFontSize="25" />
-            <jc:StatCounter Header="Pt size" Data="123" HeaderFontSize="10pt" DataFontSize="25pt" />
-            <jc:StatCounter Header="Colored" Data="15s" HeaderForeground="Blue" DataForeground="Green" />
-            <jc:StatCounter Header="Bottom" Data="ABC" HeaderPosition="Bottom" />
-            <jc:StatCounter Header="Alignment" Data="5" DataAlignment="Right" />
-            <jc:StatCounter Header="Center" Data="1,234,567" HeaderAlignment="Center" />
-            <jc:StatCounter Header="Bold" Data="June 14" HeaderFontWeight="Bold" HeaderAlignment="Center" />
-            <jc:StatCounter Header="Medium data" Data="12%" DataFontWeight="Medium" DataAlignment="Right" />
-            <jc:StatCounter Header="Spaced" Data="XXX" Spacing="10" />
-            <jc:StatCounter Header="Crammed" Data="XXX" Spacing="-5" />
-            <jc:StatCounter Header="Null" Data="{x:Null}" />
+            <jc:StatCounter Header="Resized" Content="123" HeaderFontSize="10" ContentFontSize="25" />
+            <jc:StatCounter Header="Pt size" Content="123" HeaderFontSize="10pt" ContentFontSize="25pt" />
+            <jc:StatCounter Header="Colored" Content="15s" HeaderForeground="Blue" ContentForeground="Green" />
+            <jc:StatCounter Header="Bottom" Content="ABC" HeaderPosition="Bottom" />
+            <jc:StatCounter Header="Alignment" Content="5" ContentAlignment="Right" />
+            <jc:StatCounter Header="Center" Content="1,234,567" HeaderAlignment="Center" />
+            <jc:StatCounter Header="Bold" Content="June 14" HeaderFontWeight="Bold" HeaderAlignment="Center" />
+            <jc:StatCounter Header="Medium data" Content="12%" ContentFontWeight="Medium" ContentAlignment="Right" />
+            <jc:StatCounter Header="Spaced" Content="XXX" Spacing="10" />
+            <jc:StatCounter Header="Crammed" Content="XXX" Spacing="-5" />
+            <jc:StatCounter Header="Null" Content="{x:Null}" />
             <jc:StatCounter Header="Int32">
-                <jc:StatCounter.Data>
+                <jc:StatCounter.Content>
                     <sys:Int32>-1234</sys:Int32>
-                </jc:StatCounter.Data>
+                </jc:StatCounter.Content>
             </jc:StatCounter>
             <jc:StatCounter Header="Double">
-                <jc:StatCounter.Data>
+                <jc:StatCounter.Content>
                     <sys:Double>-1234.567</sys:Double>
-                </jc:StatCounter.Data>
+                </jc:StatCounter.Content>
             </jc:StatCounter>
             <jc:StatCounter Header="Decimal">
-                <jc:StatCounter.Data>
+                <jc:StatCounter.Content>
                     <sys:Decimal>-1234.567</sys:Decimal>
-                </jc:StatCounter.Data>
+                </jc:StatCounter.Content>
             </jc:StatCounter>
             <jc:StatCounter Header="Fraction">
-                <jc:StatCounter.Data>
+                <jc:StatCounter.Content>
                     <sys:Decimal>0.37</sys:Decimal>
-                </jc:StatCounter.Data>
+                </jc:StatCounter.Content>
             </jc:StatCounter>
             <jc:StatCounter Header="Fraction">
-                <jc:StatCounter.Data>
+                <jc:StatCounter.Content>
                     <sys:Decimal>0.037</sys:Decimal>
-                </jc:StatCounter.Data>
+                </jc:StatCounter.Content>
             </jc:StatCounter>
             <jc:StatCounter Header="Fraction">
-                <jc:StatCounter.Data>
+                <jc:StatCounter.Content>
                     <sys:Double>0.0037</sys:Double>
-                </jc:StatCounter.Data>
+                </jc:StatCounter.Content>
             </jc:StatCounter>
             <jc:StatCounter Header="Fraction">
-                <jc:StatCounter.Data>
+                <jc:StatCounter.Content>
                     <sys:Single>0.00037</sys:Single>
-                </jc:StatCounter.Data>
+                </jc:StatCounter.Content>
             </jc:StatCounter>
             <jc:StatCounter Header="Full">
-                <jc:StatCounter.Data>
+                <jc:StatCounter.Content>
                     <sys:Double>1</sys:Double>
-                </jc:StatCounter.Data>
+                </jc:StatCounter.Content>
             </jc:StatCounter>
             <jc:StatCounter Header="Zero">
-                <jc:StatCounter.Data>
+                <jc:StatCounter.Content>
                     <sys:Double>0</sys:Double>
-                </jc:StatCounter.Data>
+                </jc:StatCounter.Content>
             </jc:StatCounter>
             <jc:StatCounter Header="Whole Double">
-                <jc:StatCounter.Data>
+                <jc:StatCounter.Content>
                     <sys:Double>1234</sys:Double>
-                </jc:StatCounter.Data>
+                </jc:StatCounter.Content>
             </jc:StatCounter>
-            <jc:StatCounter Header="Days" Data="{Binding Days}" />
-            <jc:StatCounter Header="Few Days" Data="{Binding FewDays}" />
-            <jc:StatCounter Header="Hours" Data="{Binding Hours}" />
-            <jc:StatCounter Header="Whole Hours" Data="{Binding WholeHours}" />
-            <jc:StatCounter Header="Minutes" Data="{Binding Minutes}" />
-            <jc:StatCounter Header="Whole Minutes" Data="{Binding WholeMinutes}" />
-            <jc:StatCounter Header="Seconds" Data="{Binding Seconds}" />
-            <jc:StatCounter Header="Few Seconds" Data="{Binding FewSeconds}" />
-            <jc:StatCounter Header="Fractional Seconds" Data="{Binding FractionalSeconds}" />
-            <jc:StatCounter Header="Milliseconds" Data="{Binding Milliseconds}" />
+            <jc:StatCounter Header="Days" Content="{Binding Days}" />
+            <jc:StatCounter Header="Few Days" Content="{Binding FewDays}" />
+            <jc:StatCounter Header="Hours" Content="{Binding Hours}" />
+            <jc:StatCounter Header="Whole Hours" Content="{Binding WholeHours}" />
+            <jc:StatCounter Header="Minutes" Content="{Binding Minutes}" />
+            <jc:StatCounter Header="Whole Minutes" Content="{Binding WholeMinutes}" />
+            <jc:StatCounter Header="Seconds" Content="{Binding Seconds}" />
+            <jc:StatCounter Header="Few Seconds" Content="{Binding FewSeconds}" />
+            <jc:StatCounter Header="Fractional Seconds" Content="{Binding FractionalSeconds}" />
+            <jc:StatCounter Header="Milliseconds" Content="{Binding Milliseconds}" />
         </WrapPanel>
-        <jc:StatCounter Grid.Row="1" Header="Header" Data="75%" />
+        <jc:StatCounter Grid.Row="1" Header="Header" Content="75%" />
     </Grid>
 </UserControl>
