@@ -24,6 +24,7 @@ namespace JungleControls
         readonly Independent<Brush> ContentForegroundIndependent = new Independent<Brush>();
         readonly Independent<double?> ContentFontSizeIndependent = new Independent<double?>();
         readonly Independent<FontWeight?> ContentFontWeightIndependent = new Independent<FontWeight?>();
+        readonly Independent<StatCounterMode> ModeIndependent = new Independent<StatCounterMode>();
 
         public StatCounter Control { get; private set; }
         public bool IsTop { get { return HeaderPositionIndependent.Value == StatCounterHeaderPosition.Top; } }
@@ -45,50 +46,66 @@ namespace JungleControls
             get
             {
                 var value = ContentIndependent.Value;
-                if (value == null)
-                    return "";
                 if (ContentStringFormatIndependent.Value != null)
                     return String.Format("{0:" + ContentStringFormatIndependent.Value + "}", value);
-                if (value is int || value is long || value is short || value is byte || value is sbyte || value is uint || value is ulong || value is ushort)
-                    return String.Format("{0:N0}", value);
-                if (value is double || value is float || value is decimal)
+                if (value == null)
+                    return "";
+                var mode = ModeIndependent.Value;
+                if (mode == StatCounterMode.Auto)
                 {
-                    var fp = Convert.ToDouble(value);
-                    if (fp >= 0.1 && fp <= 1)
-                        return fp.ToString("P0");
-                    if (fp >= 0.01 && fp < 0.1)
-                        return fp.ToString("P1");
-                    if (fp > 0 && fp < 0.01)
-                        return fp.ToString("P");
-                    if (fp == 0)
-                        return "0";
-                    return fp.ToString("#,##0.##");
-                }
-                if (value is TimeSpan)
-                {
-                    var ts = (TimeSpan)value;
-                    string sign = ts < TimeSpan.Zero ? "-" : "";
-                    ts = ts < TimeSpan.Zero ? -ts : ts;
-                    string positive;
-                    if (ts >= TimeSpan.FromDays(10) || ts >= TimeSpan.FromDays(1) && ts.Hours == 0)
-                        positive = String.Format("{0}d", ts.Days);
-                    else if (ts >= TimeSpan.FromDays(1))
-                        positive = String.Format("{0}d {1}h", ts.Days, ts.Hours);
-                    else if (ts >= TimeSpan.FromHours(1))
-                        positive = ts.Minutes == 0 ? String.Format("{0}h", ts.Hours) : String.Format("{0}h {1}m", ts.Hours, ts.Minutes);
-                    else if (ts >= TimeSpan.FromMinutes(1))
-                        positive = ts.Seconds == 0 ? String.Format("{0}m", ts.Minutes) : String.Format("{0}m {1}s", ts.Minutes, ts.Seconds);
-                    else if (ts >= TimeSpan.FromSeconds(10))
-                        positive = String.Format("{0}s", ts.Seconds);
-                    else if (ts >= TimeSpan.FromSeconds(1))
-                        positive = String.Format("{0:0.#}s", ts.TotalSeconds);
-                    else if (ts > TimeSpan.Zero)
-                        positive = String.Format("{0}ms", ts.Milliseconds);
+                    if (value is int || value is long || value is short || value is byte || value is sbyte || value is uint || value is ulong || value is ushort)
+                        mode = StatCounterMode.Integer;
+                    else if (value is double || value is float || value is decimal)
+                    {
+                        var fp = Convert.ToDouble(value);
+                        if (fp > 0 && fp < 1)
+                            mode = StatCounterMode.Percent;
+                        else
+                            mode = StatCounterMode.Float;
+                    }
+                    else if (value is TimeSpan)
+                        mode = StatCounterMode.TimeSpan;
                     else
-                        positive = "0";
-                    return sign + positive;
+                        mode = StatCounterMode.String;
                 }
-                return value.ToString();
+                switch (mode)
+                {
+                    case StatCounterMode.Integer:
+                        return String.Format("{0:N0}", value);
+                    case StatCounterMode.Float:
+                        return Convert.ToDouble(value).ToString("#,##0.##");
+                    case StatCounterMode.Percent:
+                        var fp = Convert.ToDouble(value);
+                        if (fp >= 0.1 && fp <= 1 || fp == 0)
+                            return fp.ToString("P0");
+                        if (fp >= 0.01 && fp < 0.1)
+                            return fp.ToString("P1");
+                        return fp.ToString("P");
+                    case StatCounterMode.TimeSpan:
+                        var ts = (TimeSpan)value;
+                        string sign = ts < TimeSpan.Zero ? "-" : "";
+                        ts = ts < TimeSpan.Zero ? -ts : ts;
+                        string positive;
+                        if (ts >= TimeSpan.FromDays(10) || ts >= TimeSpan.FromDays(1) && ts.Hours == 0)
+                            positive = String.Format("{0} d", ts.Days);
+                        else if (ts >= TimeSpan.FromDays(1))
+                            positive = String.Format("{0} d {1} hr", ts.Days, ts.Hours);
+                        else if (ts >= TimeSpan.FromHours(1))
+                            positive = ts.Minutes == 0 ? String.Format("{0} hr", ts.Hours) : String.Format("{0} hr {1} min", ts.Hours, ts.Minutes);
+                        else if (ts >= TimeSpan.FromMinutes(1))
+                            positive = ts.Seconds == 0 ? String.Format("{0} min", ts.Minutes) : String.Format("{0} min {1} s", ts.Minutes, ts.Seconds);
+                        else if (ts >= TimeSpan.FromSeconds(10))
+                            positive = String.Format("{0} s", ts.Seconds);
+                        else if (ts >= TimeSpan.FromSeconds(1))
+                            positive = String.Format("{0:0.#} s", ts.TotalSeconds);
+                        else if (ts > TimeSpan.Zero)
+                            positive = String.Format("{0} ms", ts.Milliseconds);
+                        else
+                            positive = "0";
+                        return sign + positive;
+                    default:
+                        return value.ToString();
+                }
             }
         }
 

@@ -21,7 +21,6 @@ namespace TestApp
         public PropertySheetSampleView()
         {
             InitializeComponent();
-            DataContext = ForView.Wrap(new PropertySheetSampleViewModel());
         }
     }
 }

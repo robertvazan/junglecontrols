@@ -21,7 +21,6 @@ namespace TestApp
         public StatCounterSampleView()
         {
             InitializeComponent();
-            DataContext = ForView.Wrap(new StatCounterSampleViewModel());
         }
     }
 }

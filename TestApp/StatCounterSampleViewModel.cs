@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TestApp
 {
-    class StatCounterSampleViewModel
+    public class StatCounterSampleViewModel
     {
         public TimeSpan Days { get { return new TimeSpan(15, 12, 0, 0); } }
         public TimeSpan FewDays { get { return new TimeSpan(5, 12, 0, 0); } }
