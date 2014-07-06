@@ -13,7 +13,7 @@ namespace JungleControls
         public Type FacadeType { get; private set; }
 
         static FacadeItemsControl() { FacadeHelpers.Initialize<FacadeItemsControl>(DefaultStyleKeyProperty); }
-        public FacadeItemsControl(Type type) { FacadeType = type; }
+        public FacadeItemsControl() { FacadeType = FacadeHelpers.GetFacadeType(this); }
 
         public DependencyObject GetFacadeChild(string name) { return GetTemplateChild(name); }
         public override void OnApplyTemplate() { FacadeHelpers.ApplyTemplate(this); }

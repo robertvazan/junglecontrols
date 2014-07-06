@@ -42,7 +42,5 @@ namespace JungleControls
 
         public static readonly DependencyProperty ContentFontWeightProperty = DependencyProperty.Register("ContentFontWeight", typeof(FontWeight), typeof(StatCounter), new FrameworkPropertyMetadata(FontWeights.Normal));
         public FontWeight ContentFontWeight { get { return (FontWeight)GetValue(ContentFontWeightProperty); } set { SetValue(ContentFontWeightProperty, value); } }
-
-        public StatCounter() : base(typeof(StatCounter)) { }
     }
 }

@@ -24,7 +24,6 @@ namespace JungleControls
         public TextWrapping TextWrapping { get { return (TextWrapping)GetValue(TextWrappingProperty); } set { SetValue(TextWrappingProperty, value); } }
 
         public SelectableTextBlock()
-            : base(typeof(SelectableTextBlock))
         {
             TextDecorations = new TextDecorationCollection();
         }
