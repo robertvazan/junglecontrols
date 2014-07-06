@@ -11,7 +11,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <TextBlock Grid.Row="{Binding HeaderRow}" Text="{Binding Control.Header}" FontSize="{Binding Control.HeaderFontSize}" Foreground="{Binding Control.HeaderForeground}" HorizontalAlignment="{Binding Control.HeaderAlignment}" FontWeight="{Binding Control.HeaderFontWeight}" Margin="{Binding HeaderMargin}" />
-        <TextBlock Grid.Row="{Binding ContentRow}" Text="{Binding Content}" FontSize="{Binding Control.ContentFontSize}" Foreground="{Binding Control.ContentForeground}" HorizontalAlignment="{Binding Control.ContentAlignment}" FontWeight="{Binding Control.ContentFontWeight}" Margin="{Binding ContentMargin}" />
+        <TextBlock Grid.Row="{Binding HeaderRow}" Text="{Binding Control.Header}" FontSize="{Binding HeaderFontSize}" Foreground="{Binding HeaderForeground}" HorizontalAlignment="{Binding Control.HeaderAlignment}" FontWeight="{Binding HeaderFontWeight}" Margin="{Binding HeaderMargin}" />
+        <TextBlock Grid.Row="{Binding ContentRow}" Text="{Binding Content}" FontSize="{Binding ContentFontSize}" Foreground="{Binding ContentForeground}" HorizontalAlignment="{Binding Control.ContentAlignment}" FontWeight="{Binding ContentFontWeight}" Margin="{Binding ContentMargin}" />
     </Grid>
 </UserControl>

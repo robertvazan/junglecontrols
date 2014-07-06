@@ -2,12 +2,12 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:a="clr-namespace:TestApp"
-        Title="MainWindow" Height="350" Width="525">
+        Title="MainWindow" Height="500" Width="600">
     <TabControl>
-        <TabItem Header="PropertySheet" IsSelected="True">
+        <TabItem Header="PropertySheet">
             <a:PropertySheetSampleView />
         </TabItem>
-        <TabItem Header="StatCounter">
+        <TabItem Header="StatCounter" IsSelected="True">
             <a:StatCounterSampleView />
         </TabItem>
         <TabItem Header="SelectableTextBlock">
