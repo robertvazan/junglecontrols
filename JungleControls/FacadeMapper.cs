@@ -77,7 +77,7 @@ namespace JungleControls
             var fields = (from field in model.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
                           where field.FieldType.IsGenericType && field.FieldType.GetGenericTypeDefinition() == typeof(Independent<>) && field.GetValue(model) != null
                           select field).ToList();
-            var properties = (from field in view.GetType().GetFields(BindingFlags.Public | BindingFlags.Static)
+            var properties = (from field in view.GetType().GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)
                               where field.FieldType == typeof(DependencyProperty) && field.Name.EndsWith("Property")
                               select (DependencyProperty)field.GetValue(null)).ToList();
             foreach (var property in properties)

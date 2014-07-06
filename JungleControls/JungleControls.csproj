@@ -53,6 +53,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FacadeControls\FacadeHeaderedContentControl.cs" />
     <Compile Include="FacadeControls\FacadeItemsControl.cs" />
     <Compile Include="FacadeMapper.cs" />
     <Compile Include="DataContentControl\DataContentControl.cs" />
@@ -86,10 +87,12 @@
     <Compile Include="SelectableTextBlock\SelectableTextBlockView.xaml.cs">
       <DependentUpon>SelectableTextBlockView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StatCounter.xaml.cs">
-      <DependentUpon>StatCounter.xaml</DependentUpon>
+    <Compile Include="StatCounter\StatCounter.cs" />
+    <Compile Include="StatCounter\StatCounterView.xaml.cs">
+      <DependentUpon>StatCounterView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StatCounterHeaderPosition.cs" />
+    <Compile Include="StatCounter\StatCounterHeaderPosition.cs" />
+    <Compile Include="StatCounter\StatCounterViewModel.cs" />
     <Compile Include="VisibilityEx.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -115,7 +118,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StatCounter.xaml">
+    <Page Include="StatCounter\StatCounterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
