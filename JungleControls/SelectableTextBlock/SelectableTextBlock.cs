@@ -23,6 +23,11 @@ namespace JungleControls
         public static readonly DependencyProperty TextWrappingProperty = DependencyProperty.Register("TextWrapping", typeof(TextWrapping), typeof(SelectableTextBlock), new FrameworkPropertyMetadata(TextWrapping.NoWrap));
         public TextWrapping TextWrapping { get { return (TextWrapping)GetValue(TextWrappingProperty); } set { SetValue(TextWrappingProperty, value); } }
 
+        static SelectableTextBlock()
+        {
+            IsTabStopProperty.OverrideMetadata(typeof(SelectableTextBlock), new FrameworkPropertyMetadata(false));
+        }
+
         public SelectableTextBlock()
         {
             TextDecorations = new TextDecorationCollection();

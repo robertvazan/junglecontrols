@@ -45,5 +45,10 @@ namespace JungleControls
 
         public static readonly DependencyProperty ModeProperty = DependencyProperty.Register("Mode", typeof(StatCounterMode), typeof(StatCounter), new FrameworkPropertyMetadata(StatCounterMode.Auto));
         public StatCounterMode Mode { get { return (StatCounterMode)GetValue(ModeProperty); } set { SetValue(ModeProperty, value); } }
+
+        static StatCounter()
+        {
+            IsTabStopProperty.OverrideMetadata(typeof(StatCounter), new FrameworkPropertyMetadata(false));
+        }
     }
 }
