@@ -12,5 +12,10 @@ namespace JungleControls
     {
         public static readonly DependencyProperty ContentDataContextProperty = DependencyProperty.Register("ContentDataContext", typeof(object), typeof(DataContentControl));
         public object ContentDataContext { get { return GetValue(ContentDataContextProperty); } set { SetValue(ContentDataContextProperty, value); } }
+
+        static DataContentControl()
+        {
+            IsTabStopProperty.OverrideMetadata(typeof(DataContentControl), new FrameworkPropertyMetadata(false));
+        }
     }
 }
