@@ -6,14 +6,19 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <a:DesignViewModelLocator x:Key="Locator"/>
-        <Style x:Key="{x:Type TabControl}" TargetType="{x:Type TabControl}">
+        <Style TargetType="{x:Type TabControl}">
             <Setter Property="Padding" Value="5" />
         </Style>
-        <Style x:Key="{x:Type jc:StatCounter}" TargetType="{x:Type jc:StatCounter}">
+        <Style TargetType="{x:Type jc:StatCounter}">
             <Setter Property="Margin" Value="5" />
         </Style>
-        <Style x:Key="{x:Type jc:SelectableTextBlock}" TargetType="{x:Type jc:SelectableTextBlock}">
+        <Style TargetType="{x:Type jc:SelectableTextBlock}">
             <Setter Property="Margin" Value="5" />
+        </Style>
+        <Style TargetType="{x:Type jc:PropertySheet}">
+            <Setter Property="HeaderMargin" Value="5,5,15,5" />
+            <Setter Property="HeaderFontWeight" Value="Bold" />
+            <Setter Property="CellMargin" Value="5" />
         </Style>
     </Application.Resources>
 </Application>
