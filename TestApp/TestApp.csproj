@@ -59,6 +59,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DelayedContentControlSampleView.xaml.cs">
+      <DependentUpon>DelayedContentControlSampleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DelayedContentControlSampleViewModel.cs" />
     <Compile Include="DesignViewModelLocator.cs" />
     <Compile Include="PropertySheetSampleView.xaml.cs">
       <DependentUpon>PropertySheetSampleView.xaml</DependentUpon>
@@ -71,6 +75,10 @@
       <DependentUpon>StatCounterSampleView.xaml</DependentUpon>
     </Compile>
     <Compile Include="StatCounterSampleViewModel.cs" />
+    <Page Include="DelayedContentControlSampleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

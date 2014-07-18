@@ -3,4 +3,7 @@
     <ControlTemplate x:Key="JungleControlsUniversalTemplate">
         <ContentPresenter x:Name="InternalPresenter" />
     </ControlTemplate>
+    <ControlTemplate x:Key="ContentControlExTemplate">
+        <ContentControl x:Name="InnerContentControl" />
+    </ControlTemplate>
 </ResourceDictionary>

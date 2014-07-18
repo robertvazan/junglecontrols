@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Presentation" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -53,13 +54,10 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DelayedContentControl.cs" />
     <Compile Include="FacadeControls\FacadeHeaderedContentControl.cs" />
     <Compile Include="FacadeControls\FacadeItemsControl.cs" />
     <Compile Include="FacadeMapper.cs" />
-    <Compile Include="DataContentControl\DataContentControl.cs" />
-    <Compile Include="DataContentControl\DataContentControlView.xaml.cs">
-      <DependentUpon>DataContentControlView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="FacadeControls\FacadeContentControl.cs" />
     <Compile Include="FacadeControls\FacadeControl.cs" />
     <Compile Include="FacadeControls\FacadeHelpers.cs" />
@@ -107,10 +105,6 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="DataContentControl\DataContentControlView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="PropertySheet\PropertySheetView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

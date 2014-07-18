@@ -20,5 +20,14 @@
             <Setter Property="HeaderFontWeight" Value="Bold" />
             <Setter Property="CellMargin" Value="5" />
         </Style>
+        <Style TargetType="{x:Type CheckBox}">
+            <Setter Property="Margin" Value="5" />
+        </Style>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="5" />
+        </Style>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="5" />
+        </Style>
     </Application.Resources>
 </Application>
