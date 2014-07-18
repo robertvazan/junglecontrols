@@ -13,11 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace JungleControls
+namespace TestApp
 {
-    partial class DataContentControlView : UserControl
+    public partial class DelayedContentControlSampleView : UserControl
     {
-        public DataContentControlView()
+        public DelayedContentControlSampleView()
         {
             InitializeComponent();
         }
