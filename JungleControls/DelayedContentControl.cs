@@ -11,6 +11,9 @@ namespace JungleControls
 {
     public class DelayedContentControl : ContentControl
     {
+        public static readonly DependencyProperty DispatcherPriorityProperty = DependencyProperty.Register("DispatcherPriority", typeof(DispatcherPriority), typeof(DelayedContentControl), new FrameworkPropertyMetadata(DispatcherPriority.DataBind));
+        public DispatcherPriority DispatcherPriority { get { return (DispatcherPriority)GetValue(DispatcherPriorityProperty); } set { SetValue(DispatcherPriorityProperty, value); } }
+
         ContentPresenter Presenter;
         bool IsDirty;
 
@@ -57,7 +60,7 @@ namespace JungleControls
             if (!IsDirty)
             {
                 IsDirty = true;
-                Dispatcher.BeginInvoke(Refresh, DispatcherPriority.DataBind);
+                Dispatcher.BeginInvoke(Refresh, DispatcherPriority);
             }
         }
 
