@@ -1,0 +1,72 @@
+﻿<UserControl x:Class="TestApp.LazyControlSampleView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:jc="clr-namespace:JungleControls;assembly=JungleControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             DataContext="{Binding LazyControl, Source={StaticResource Locator}}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Border BorderThickness="1" BorderBrush="Black" Margin="5">
+            <ScrollViewer>
+                <StackPanel>
+                    <TextBlock Text="Example of Complex Layout" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16" />
+                    <ItemsControl ItemsSource="{Binding Groups}" IsTabStop="False">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <jc:LazyControl Height="{Binding HeightHint}" Content="{Binding}">
+                                    <jc:LazyControl.ContentTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Margin="0,10">
+                                                <Grid Height="20">
+                                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" VerticalAlignment="Center" />
+                                                </Grid>
+                                                <ItemsControl ItemsSource="{Binding Rows}" IsTabStop="False">
+                                                    <ItemsControl.ItemTemplate>
+                                                        <DataTemplate>
+                                                            <jc:LazyControl Height="20" Content="{Binding}">
+                                                                <jc:LazyControl.ContentTemplate>
+                                                                    <DataTemplate>
+                                                                        <DockPanel>
+                                                                            <ItemsControl DockPanel.Dock="Right" ItemsSource="{Binding Bars}" Margin="10,0" VerticalAlignment="Center" IsTabStop="False">
+                                                                                <ItemsControl.ItemsPanel>
+                                                                                    <ItemsPanelTemplate>
+                                                                                        <StackPanel Orientation="Horizontal" />
+                                                                                    </ItemsPanelTemplate>
+                                                                                </ItemsControl.ItemsPanel>
+                                                                                <ItemsControl.ItemTemplate>
+                                                                                    <DataTemplate>
+                                                                                        <Rectangle Width="2" Height="{Binding}" VerticalAlignment="Bottom" Fill="Blue" />
+                                                                                    </DataTemplate>
+                                                                                </ItemsControl.ItemTemplate>
+                                                                            </ItemsControl>
+                                                                            <TextBlock Text="{Binding Name}" Margin="5,0" VerticalAlignment="Center" />
+                                                                        </DockPanel>
+                                                                    </DataTemplate>
+                                                                </jc:LazyControl.ContentTemplate>
+                                                            </jc:LazyControl>
+                                                        </DataTemplate>
+                                                    </ItemsControl.ItemTemplate>
+                                                </ItemsControl>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </jc:LazyControl.ContentTemplate>
+                                </jc:LazyControl>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <TextBlock Text="Summary:" FontWeight="Bold" />
+                    <TextBlock Text="{Binding TotalGroups, StringFormat='Lazy groups: {0}'}" Margin="5,2" />
+                    <TextBlock Text="{Binding TotalRows, StringFormat='Lazy rows: {0}'}" Margin="5,2" />
+                    <TextBlock Text="{Binding TotalBars, StringFormat='Blue bars: {0}'}" Margin="5,2,5,15" />
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+        <TextBlock Grid.Row="1" Text="{Binding MaterializedCount, StringFormat='Materialized lazy controls: {0}'}" />
+    </Grid>
+</UserControl>

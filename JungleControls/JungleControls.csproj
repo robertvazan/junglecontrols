@@ -62,6 +62,7 @@
     <Compile Include="FacadeControls\FacadeControl.cs" />
     <Compile Include="FacadeControls\FacadeHelpers.cs" />
     <Compile Include="FacadeControls\IFacadeControl.cs" />
+    <Compile Include="LazyControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

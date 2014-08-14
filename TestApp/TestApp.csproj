@@ -64,6 +64,12 @@
     </Compile>
     <Compile Include="DelayedContentControlSampleViewModel.cs" />
     <Compile Include="DesignViewModelLocator.cs" />
+    <Compile Include="LazyControlSampleGroup.cs" />
+    <Compile Include="LazyControlSampleRow.cs" />
+    <Compile Include="LazyControlSampleView.xaml.cs">
+      <DependentUpon>LazyControlSampleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LazyControlSampleViewModel.cs" />
     <Compile Include="PropertySheetSampleView.xaml.cs">
       <DependentUpon>PropertySheetSampleView.xaml</DependentUpon>
     </Compile>
@@ -76,6 +82,10 @@
     </Compile>
     <Compile Include="StatCounterSampleViewModel.cs" />
     <Page Include="DelayedContentControlSampleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LazyControlSampleView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

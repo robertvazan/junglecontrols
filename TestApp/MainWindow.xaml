@@ -13,8 +13,11 @@
         <TabItem Header="SelectableTextBlock">
             <a:SelectableTextBlockSample />
         </TabItem>
-        <TabItem Header="DelayedContentControl" IsSelected="True">
+        <TabItem Header="DelayedContentControl">
             <a:DelayedContentControlSampleView />
+        </TabItem>
+        <TabItem Header="LazyControl">
+            <a:LazyControlSampleView />
         </TabItem>
     </TabControl>
 </Window>
