@@ -12,5 +12,6 @@ namespace TestApp
         public object StatCounter { get { return ViewModel(() => new StatCounterSampleViewModel()); } }
         public object PropertySheet { get { return ViewModel(() => new PropertySheetSampleViewModel()); } }
         public object DelayedContentControl { get { return ViewModel(() => new DelayedContentControlSampleViewModel()); } }
+        public object LazyControl { get { return ViewModel(() => new LazyControlSampleViewModel()); } }
     }
 }

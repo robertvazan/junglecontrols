@@ -17,12 +17,7 @@ namespace JungleControls
         ContentPresenter Presenter;
         bool IsDirty;
 
-        static DelayedContentControl()
-        {
-            var resources = (ResourceDictionary)Application.LoadComponent(new Uri("/JungleControls;component/UniversalTemplate.xaml", UriKind.Relative));
-            Control.TemplateProperty.OverrideMetadata(typeof(DelayedContentControl), new FrameworkPropertyMetadata((ControlTemplate)resources["JungleControlsUniversalTemplate"]));
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(DelayedContentControl), new FrameworkPropertyMetadata((object)null));
-        }
+        static DelayedContentControl() { FacadeHelpers.Initialize<DelayedContentControl>(DefaultStyleKeyProperty); }
 
         public override void OnApplyTemplate()
         {
