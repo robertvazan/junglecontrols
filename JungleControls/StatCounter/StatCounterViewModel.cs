@@ -47,7 +47,7 @@ namespace JungleControls
             {
                 var value = ContentIndependent.Value;
                 if (ContentStringFormatIndependent.Value != null)
-                    return String.Format("{0:" + ContentStringFormatIndependent.Value + "}", value);
+                    return String.Format(ContentStringFormatIndependent.Value, value);
                 if (value == null)
                     return "";
                 var mode = ModeIndependent.Value;

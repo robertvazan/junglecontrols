@@ -43,6 +43,11 @@
                     <sys:Double>-1234.567</sys:Double>
                 </jc:StatCounter.Content>
             </jc:StatCounter>
+            <jc:StatCounter Header="Double Formatted" ContentStringFormat="{}{0:0,000.0} kg">
+                <jc:StatCounter.Content>
+                    <sys:Double>-1234.567</sys:Double>
+                </jc:StatCounter.Content>
+            </jc:StatCounter>
             <jc:StatCounter Header="Decimal">
                 <jc:StatCounter.Content>
                     <sys:Decimal>-1234.567</sys:Decimal>
