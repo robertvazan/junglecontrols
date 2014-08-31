@@ -13,11 +13,10 @@ using System.Windows.Media;
 
 namespace JungleControls
 {
-    public class StatCounter : HeaderedContentControl, IFacadeObject
+    public class StatCounter : HeaderedContentControl
     {
         static readonly FacadeType FacadeType;
-        readonly FacadeInstance FacadeInstanceRef;
-        FacadeInstance IFacadeObject.FacadeInstance { get { return FacadeInstanceRef; } }
+        readonly FacadeInstance FacadeInstance;
 
         public static readonly DependencyProperty HeaderPositionProperty = DependencyProperty.Register("HeaderPosition", typeof(StatCounterHeaderPosition), typeof(StatCounter), new FacadePropertyMetadata());
         public StatCounterHeaderPosition HeaderPosition { get { return (StatCounterHeaderPosition)GetValue(HeaderPositionProperty); } set { SetValue(HeaderPositionProperty, value); } }
@@ -58,17 +57,17 @@ namespace JungleControls
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(StatCounter), new FrameworkPropertyMetadata(typeof(StatCounter)));
             IsTabStopProperty.OverrideMetadata(typeof(StatCounter), new FrameworkPropertyMetadata(false));
-            FacadeType = new FacadeType(typeof(StatCounter), typeof(StatCounterModel));
+            FacadeType = new FacadeType(typeof(StatCounter), typeof(StatCounterModel), obj => ((StatCounter)obj).FacadeInstance);
         }
 
         public StatCounter()
         {
-            FacadeInstanceRef = new FacadeInstance(FacadeType, this);
+            FacadeInstance = new FacadeInstance(FacadeType, this);
         }
 
         public override void OnApplyTemplate()
         {
-            FacadeInstanceRef.ApplyModel(GetTemplateChild("Root"));
+            FacadeInstance.ApplyModel(GetTemplateChild("Root"));
             base.OnApplyTemplate();
         }
     }
