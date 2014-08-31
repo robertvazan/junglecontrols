@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assisticant.Fields;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,5 +19,6 @@ namespace TestApp
         public TimeSpan FewSeconds { get { return new TimeSpan(0, 0, 5); } }
         public TimeSpan FractionalSeconds { get { return new TimeSpan(0, 0, 0, 5, 753); } }
         public TimeSpan Milliseconds { get { return new TimeSpan(0, 0, 0, 0, 258); } }
+        public readonly Observable<int> BindingTest = new Observable<int>(123);
     }
 }

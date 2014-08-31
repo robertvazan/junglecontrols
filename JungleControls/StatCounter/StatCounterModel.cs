@@ -1,4 +1,5 @@
-﻿using Assisticant.Fields;
+﻿using Assisticant;
+using Assisticant.Fields;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,48 +10,47 @@ using System.Windows.Media;
 
 namespace JungleControls
 {
-    class StatCounterViewModel
+    class StatCounterModel
     {
-        readonly Observable<Brush> ForegroundIndependent = new Observable<Brush>();
-        readonly Observable<double> FontSizeIndependent = new Observable<double>();
-        readonly Observable<FontWeight> FontWeightIndependent = new Observable<FontWeight>();
-        readonly Observable<StatCounterHeaderPosition> HeaderPositionIndependent = new Observable<StatCounterHeaderPosition>();
-        readonly Observable<Brush> HeaderForegroundIndependent = new Observable<Brush>();
-        readonly Observable<double?> HeaderFontSizeIndependent = new Observable<double?>();
-        readonly Observable<FontWeight?> HeaderFontWeightIndependent = new Observable<FontWeight?>();
-        readonly Observable<double> SpacingIndependent = new Observable<double>();
-        readonly Observable<object> ContentIndependent = new Observable<object>();
-        readonly Observable<string> ContentStringFormatIndependent = new Observable<string>();
-        readonly Observable<Brush> ContentForegroundIndependent = new Observable<Brush>();
-        readonly Observable<double?> ContentFontSizeIndependent = new Observable<double?>();
-        readonly Observable<FontWeight?> ContentFontWeightIndependent = new Observable<FontWeight?>();
-        readonly Observable<StatCounterMode> ModeIndependent = new Observable<StatCounterMode>();
+        public FacadeProperty<StatCounterHeaderPosition> HeaderPosition;
+        public FacadeProperty<double> Spacing;
+        public FacadeProperty<Brush> Foreground;
+        public FacadeProperty<Brush> HeaderForeground;
+        public FacadeProperty<Brush> ContentForeground;
+        public FacadeProperty<double> FontSize;
+        public FacadeProperty<double?> HeaderFontSize;
+        public FacadeProperty<double?> ContentFontSize;
+        public FacadeProperty<FontWeight> FontWeight;
+        public FacadeProperty<FontWeight?> HeaderFontWeight;
+        public FacadeProperty<FontWeight?> ContentFontWeight;
+        public FacadeProperty<object> Content;
+        public FacadeProperty<string> ContentStringFormat;
+        public FacadeProperty<StatCounterMode> Mode;
 
-        public StatCounter Control { get; private set; }
-        public bool IsTop { get { return HeaderPositionIndependent.Value == StatCounterHeaderPosition.Top; } }
-        public bool IsBottom { get { return HeaderPositionIndependent.Value == StatCounterHeaderPosition.Bottom; } }
+        bool IsTop { get { return HeaderPosition.Value == StatCounterHeaderPosition.Top; } }
+        bool IsBottom { get { return HeaderPosition.Value == StatCounterHeaderPosition.Bottom; } }
         public int HeaderRow { get { return IsTop ? 0 : 1; } }
         public int ContentRow { get { return 1 - HeaderRow; } }
-        public double HalfSpacing { get { return SpacingIndependent.Value / 2; } }
+        public double HalfSpacing { get { return Spacing.Value / 2; } }
         public Thickness HeaderMargin { get { return new Thickness(0, IsBottom ? HalfSpacing : 0, 0, IsTop ? HalfSpacing : 0); } }
         public Thickness ContentMargin { get { return new Thickness(0, IsTop ? HalfSpacing : 0, 0, IsBottom ? HalfSpacing : 0); } }
-        public Brush HeaderForeground { get { return HeaderForegroundIndependent.Value ?? ForegroundIndependent.Value; } }
-        public Brush ContentForeground { get { return ContentForegroundIndependent.Value ?? ForegroundIndependent.Value; } }
-        public double HeaderFontSize { get { return HeaderFontSizeIndependent.Value ?? FontSizeIndependent.Value; } }
-        public double ContentFontSize { get { return ContentFontSizeIndependent.Value ?? 2 * FontSizeIndependent.Value; } }
-        public FontWeight HeaderFontWeight { get { return HeaderFontWeightIndependent.Value ?? FontWeightIndependent.Value; } }
-        public FontWeight ContentFontWeight { get { return ContentFontWeightIndependent.Value ?? FontWeightIndependent.Value; } }
+        public Brush EffectiveHeaderForeground { get { return HeaderForeground.Value ?? Foreground.Value; } }
+        public Brush EffectiveContentForeground { get { return ContentForeground.Value ?? Foreground.Value; } }
+        public double EffectiveHeaderFontSize { get { return HeaderFontSize.Value ?? FontSize.Value; } }
+        public double EffectiveContentFontSize { get { return ContentFontSize.Value ?? 2 * FontSize.Value; } }
+        public FontWeight EffectiveHeaderFontWeight { get { return HeaderFontWeight.Value ?? FontWeight.Value; } }
+        public FontWeight EffectiveContentFontWeight { get { return ContentFontWeight.Value ?? FontWeight.Value; } }
 
-        public string Content
+        public string FormattedContent
         {
             get
             {
-                var value = ContentIndependent.Value;
-                if (ContentStringFormatIndependent.Value != null)
-                    return String.Format(ContentStringFormatIndependent.Value, value);
+                var value = Content.Value;
+                if (ContentStringFormat.Value != null)
+                    return String.Format(ContentStringFormat.Value, value);
                 if (value == null)
                     return "";
-                var mode = ModeIndependent.Value;
+                var mode = Mode.Value;
                 if (mode == StatCounterMode.Auto)
                 {
                     if (value is int || value is long || value is short || value is byte || value is sbyte || value is uint || value is ulong || value is ushort)
@@ -107,12 +107,6 @@ namespace JungleControls
                         return value.ToString();
                 }
             }
-        }
-
-        public StatCounterViewModel(StatCounter control)
-        {
-            Control = control;
-            FacadeMapper.LiftAll(control, this);
         }
     }
 }
