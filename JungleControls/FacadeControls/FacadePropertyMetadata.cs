@@ -9,9 +9,24 @@ namespace JungleControls
 {
     public class FacadePropertyMetadata : FrameworkPropertyMetadata
     {
+        internal FacadeType FacadeType;
         internal int Index = -1;
 
-        public FacadePropertyMetadata() : base(FacadeType.NotifyModel) { }
-        public FacadePropertyMetadata(object defaultValue) : base(defaultValue, FacadeType.NotifyModel) { }
+        public FacadePropertyMetadata()
+        {
+            PropertyChangedCallback = NotifyModel;
+        }
+
+        public FacadePropertyMetadata(object defaultValue)
+            : base(defaultValue)
+        {
+            PropertyChangedCallback = NotifyModel;
+        }
+
+        void NotifyModel(object sender, DependencyPropertyChangedEventArgs args)
+        {
+            if (FacadeType != null && FacadeType.ComponentType == sender.GetType())
+                FacadeType.NotifyModel(sender, args);
+        }
     }
 }

@@ -11,7 +11,7 @@ namespace JungleControls
 {
     public abstract class FacadeProperty
     {
-        public abstract void Invalidate();
+        internal abstract void Invalidate();
     }
 
     public class FacadeProperty<T> : FacadeProperty
@@ -30,7 +30,7 @@ namespace JungleControls
             });
         }
 
-        public override void Invalidate()
+        internal override void Invalidate()
         {
             RefreshTrigger.OnSet();
         }
