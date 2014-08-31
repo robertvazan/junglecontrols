@@ -1,16 +1,16 @@
-﻿using System;
+﻿using Assisticant.Fields;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using UpdateControls.Fields;
 
 namespace JungleControls
 {
     class PropertySheetRowViewModel
     {
-        readonly Independent<object> HeaderIndependent = new Independent<object>();
+        readonly Observable<object> HeaderIndependent = new Observable<object>();
 
         public PropertySheetViewModel Sheet { get; private set; }
         public PropertySheet Control { get { return Sheet.Control; } }

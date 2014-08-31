@@ -1,22 +1,22 @@
-﻿using System;
+﻿using Assisticant.Collections;
+using Assisticant.Fields;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
-using UpdateControls.Collections;
-using UpdateControls.Fields;
 
 namespace JungleControls
 {
     class PropertySheetViewModel
     {
-        readonly IndependentList<PropertySheetRowViewModel> RowsIndependent = new IndependentList<PropertySheetRowViewModel>();
-        readonly Independent<FontWeight> FontWeightIndependent = new Independent<FontWeight>();
-        readonly Independent<FontWeight?> HeaderFontWeightIndependent = new Independent<FontWeight?>();
-        readonly Independent<Brush> ForegroundIndependent = new Independent<Brush>();
-        readonly Independent<Brush> HeaderForegroundIndependent = new Independent<Brush>();
+        readonly ObservableList<PropertySheetRowViewModel> RowsIndependent = new ObservableList<PropertySheetRowViewModel>();
+        readonly Observable<FontWeight> FontWeightIndependent = new Observable<FontWeight>();
+        readonly Observable<FontWeight?> HeaderFontWeightIndependent = new Observable<FontWeight?>();
+        readonly Observable<Brush> ForegroundIndependent = new Observable<Brush>();
+        readonly Observable<Brush> HeaderForegroundIndependent = new Observable<Brush>();
 
         public PropertySheet Control { get; private set; }
         public IList<PropertySheetRowViewModel> Rows { get { return RowsIndependent; } }

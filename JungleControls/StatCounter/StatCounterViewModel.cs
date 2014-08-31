@@ -1,30 +1,30 @@
-﻿using System;
+﻿using Assisticant.Fields;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Media;
-using UpdateControls.Fields;
 
 namespace JungleControls
 {
     class StatCounterViewModel
     {
-        readonly Independent<Brush> ForegroundIndependent = new Independent<Brush>();
-        readonly Independent<double> FontSizeIndependent = new Independent<double>();
-        readonly Independent<FontWeight> FontWeightIndependent = new Independent<FontWeight>();
-        readonly Independent<StatCounterHeaderPosition> HeaderPositionIndependent = new Independent<StatCounterHeaderPosition>();
-        readonly Independent<Brush> HeaderForegroundIndependent = new Independent<Brush>();
-        readonly Independent<double?> HeaderFontSizeIndependent = new Independent<double?>();
-        readonly Independent<FontWeight?> HeaderFontWeightIndependent = new Independent<FontWeight?>();
-        readonly Independent<double> SpacingIndependent = new Independent<double>();
-        readonly Independent<object> ContentIndependent = new Independent<object>();
-        readonly Independent<string> ContentStringFormatIndependent = new Independent<string>();
-        readonly Independent<Brush> ContentForegroundIndependent = new Independent<Brush>();
-        readonly Independent<double?> ContentFontSizeIndependent = new Independent<double?>();
-        readonly Independent<FontWeight?> ContentFontWeightIndependent = new Independent<FontWeight?>();
-        readonly Independent<StatCounterMode> ModeIndependent = new Independent<StatCounterMode>();
+        readonly Observable<Brush> ForegroundIndependent = new Observable<Brush>();
+        readonly Observable<double> FontSizeIndependent = new Observable<double>();
+        readonly Observable<FontWeight> FontWeightIndependent = new Observable<FontWeight>();
+        readonly Observable<StatCounterHeaderPosition> HeaderPositionIndependent = new Observable<StatCounterHeaderPosition>();
+        readonly Observable<Brush> HeaderForegroundIndependent = new Observable<Brush>();
+        readonly Observable<double?> HeaderFontSizeIndependent = new Observable<double?>();
+        readonly Observable<FontWeight?> HeaderFontWeightIndependent = new Observable<FontWeight?>();
+        readonly Observable<double> SpacingIndependent = new Observable<double>();
+        readonly Observable<object> ContentIndependent = new Observable<object>();
+        readonly Observable<string> ContentStringFormatIndependent = new Observable<string>();
+        readonly Observable<Brush> ContentForegroundIndependent = new Observable<Brush>();
+        readonly Observable<double?> ContentFontSizeIndependent = new Observable<double?>();
+        readonly Observable<FontWeight?> ContentFontWeightIndependent = new Observable<FontWeight?>();
+        readonly Observable<StatCounterMode> ModeIndependent = new Observable<StatCounterMode>();
 
         public StatCounter Control { get; private set; }
         public bool IsTop { get { return HeaderPositionIndependent.Value == StatCounterHeaderPosition.Top; } }
