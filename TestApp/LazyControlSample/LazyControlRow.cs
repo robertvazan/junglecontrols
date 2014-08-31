@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace TestApp
 {
-    class LazyControlSampleRow
+    class LazyControlRow
     {
-        public LazyControlSampleViewModel Sample { get { return Group.Sample; } }
-        public readonly LazyControlSampleGroup Group;
+        public LazyControlModel Sample { get { return Group.Sample; } }
+        public readonly LazyControlGroup Group;
         public int[] Bars { get; set; }
         public int Id;
         bool Seen;
@@ -26,7 +26,7 @@ namespace TestApp
             }
         }
 
-        public LazyControlSampleRow(LazyControlSampleGroup group, int id, Random random)
+        public LazyControlRow(LazyControlGroup group, int id, Random random)
         {
             Group = group;
             Id = id;

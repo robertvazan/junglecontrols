@@ -12,12 +12,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using UpdateControls.XAML;
 
 namespace TestApp
 {
-    public partial class DelayedContentControlSampleView : UserControl
+    public partial class PropertySheetView : UserControl
     {
-        public DelayedContentControlSampleView()
+        public PropertySheetView()
         {
             InitializeComponent();
         }

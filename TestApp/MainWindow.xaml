@@ -5,19 +5,19 @@
         Title="MainWindow" Height="700" Width="600">
     <TabControl>
         <TabItem Header="PropertySheet">
-            <a:PropertySheetSampleView />
+            <a:PropertySheetView />
         </TabItem>
         <TabItem Header="StatCounter">
             <a:StatCounterSampleView />
         </TabItem>
         <TabItem Header="SelectableTextBlock">
-            <a:SelectableTextBlockSample />
+            <a:SelectableTextBlockView />
         </TabItem>
         <TabItem Header="DelayedContentControl">
-            <a:DelayedContentControlSampleView />
+            <a:DelayedContentControlView />
         </TabItem>
         <TabItem Header="LazyControl">
-            <a:LazyControlSampleView />
+            <a:LazyControlView />
         </TabItem>
     </TabControl>
 </Window>
