@@ -1,0 +1,13 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:jc="clr-namespace:JungleControls">
+    <Style TargetType="jc:SelectableTextBlock">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="jc:SelectableTextBlock">
+                    <TextBox BorderThickness="0" Text="{TemplateBinding Text}" IsReadOnly="True" Background="{TemplateBinding Background}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" TextAlignment="{TemplateBinding TextAlignment}" TextDecorations="{TemplateBinding TextDecorations}" TextWrapping="{TemplateBinding TextWrapping}" IsTabStop="False" />
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

@@ -84,9 +84,6 @@
     <Compile Include="PropertySheet\PropertySheetRowViewModel.cs" />
     <Compile Include="PropertySheet\PropertySheetViewModel.cs" />
     <Compile Include="SelectableTextBlock\SelectableTextBlock.cs" />
-    <Compile Include="SelectableTextBlock\SelectableTextBlockView.xaml.cs">
-      <DependentUpon>SelectableTextBlockView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="StatCounter\StatCounterMode.cs" />
     <Compile Include="StatCounter\StatCounter.cs" />
     <Compile Include="StatCounter\StatCounterView.xaml.cs">
@@ -111,11 +108,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SelectableTextBlock\SelectableTextBlockView.xaml">
+    <Page Include="SelectableTextBlock\SelectableTextBlock.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StatCounter\StatCounterView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
