@@ -12,9 +12,8 @@ namespace TestApp
     class ExposeControlModel
     {
         public TextBlock ScrollMeAway { get; set; }
-        public ICommand ClickMe { get { return MakeCommand.Do(DoClickMe); } }
 
-        public void DoClickMe()
+        public void ClickMe()
         {
             ScrollMeAway.BringIntoView();
         }

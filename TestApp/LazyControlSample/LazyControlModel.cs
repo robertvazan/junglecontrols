@@ -9,9 +9,8 @@ namespace TestApp
 {
     class LazyControlModel
     {
-        readonly Observable<int> MaterializedCounter = new Observable<int>();
-        public int MaterializedCount { get { return MaterializedCounter.Value; } set { MaterializedCounter.Value = value; } }
-        public LazyControlGroup[] Groups { get; set; }
+        public readonly Observable<int> MaterializedCount = new Observable<int>();
+        public readonly LazyControlGroup[] Groups;
         public int TotalGroups { get { return Groups.Length; } }
         public int TotalRows { get { return Groups.Sum(g => g.Rows.Length); } }
         public int TotalBars { get { return TotalRows * Groups[0].Rows[0].Bars.Length; } }

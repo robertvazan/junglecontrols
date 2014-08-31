@@ -10,8 +10,8 @@ namespace TestApp
     {
         public LazyControlModel Sample { get { return Group.Sample; } }
         public readonly LazyControlGroup Group;
-        public int[] Bars { get; set; }
-        public int Id;
+        public readonly int[] Bars;
+        public readonly int Id;
         bool Seen;
         public string Name
         {
@@ -20,7 +20,7 @@ namespace TestApp
                 if (!Seen)
                 {
                     Seen = true;
-                    ++Sample.MaterializedCount;
+                    ++Sample.MaterializedCount.Value;
                 }
                 return String.Format("Group {0}, Row {1}", Group.Id, Id);
             }

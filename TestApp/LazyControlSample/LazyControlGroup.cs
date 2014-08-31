@@ -9,7 +9,7 @@ namespace TestApp
     class LazyControlGroup
     {
         public readonly LazyControlModel Sample;
-        public LazyControlRow[] Rows { get; set; }
+        public readonly LazyControlRow[] Rows;
         public readonly int Id;
         bool Seen;
         public string Name
@@ -19,7 +19,7 @@ namespace TestApp
                 if (!Seen)
                 {
                     Seen = true;
-                    ++Sample.MaterializedCount;
+                    ++Sample.MaterializedCount.Value;
                 }
                 return String.Format("Group {0}", Id);
             }
