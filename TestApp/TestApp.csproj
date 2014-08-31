@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -64,6 +65,10 @@
     </Compile>
     <Compile Include="DelayedContentControlSample\DelayedContentControlModel.cs" />
     <Compile Include="DesignViewModelLocator.cs" />
+    <Compile Include="ExposeControlSample\ExposeControlModel.cs" />
+    <Compile Include="ExposeControlSample\ExposeControlView.xaml.cs">
+      <DependentUpon>ExposeControlView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LazyControlSample\LazyControlGroup.cs" />
     <Compile Include="LazyControlSample\LazyControlRow.cs" />
     <Compile Include="LazyControlSample\LazyControlView.xaml.cs">
@@ -82,6 +87,10 @@
     </Compile>
     <Compile Include="StatCounterSample\StatCounterModel.cs" />
     <Page Include="DelayedContentControlSample\DelayedContentControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ExposeControlSample\ExposeControlView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
