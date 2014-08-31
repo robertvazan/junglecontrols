@@ -59,33 +59,33 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DelayedContentControlSampleView.xaml.cs">
-      <DependentUpon>DelayedContentControlSampleView.xaml</DependentUpon>
+    <Compile Include="DelayedContentControlSample\DelayedContentControlView.xaml.cs">
+      <DependentUpon>DelayedContentControlView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DelayedContentControlSampleViewModel.cs" />
+    <Compile Include="DelayedContentControlSample\DelayedContentControlModel.cs" />
     <Compile Include="DesignViewModelLocator.cs" />
-    <Compile Include="LazyControlSampleGroup.cs" />
-    <Compile Include="LazyControlSampleRow.cs" />
-    <Compile Include="LazyControlSampleView.xaml.cs">
-      <DependentUpon>LazyControlSampleView.xaml</DependentUpon>
+    <Compile Include="LazyControlSample\LazyControlGroup.cs" />
+    <Compile Include="LazyControlSample\LazyControlRow.cs" />
+    <Compile Include="LazyControlSample\LazyControlView.xaml.cs">
+      <DependentUpon>LazyControlView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LazyControlSampleViewModel.cs" />
-    <Compile Include="PropertySheetSampleView.xaml.cs">
-      <DependentUpon>PropertySheetSampleView.xaml</DependentUpon>
+    <Compile Include="LazyControlSample\LazyControlModel.cs" />
+    <Compile Include="PropertySheetSample\PropertySheetView.xaml.cs">
+      <DependentUpon>PropertySheetView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PropertySheetSampleViewModel.cs" />
-    <Compile Include="SelectableTextBlockSample.xaml.cs">
-      <DependentUpon>SelectableTextBlockSample.xaml</DependentUpon>
+    <Compile Include="PropertySheetSample\PropertySheetModel.cs" />
+    <Compile Include="SelectableTextBlockSample\SelectableTextBlockView.xaml.cs">
+      <DependentUpon>SelectableTextBlockView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StatCounterSampleView.xaml.cs">
-      <DependentUpon>StatCounterSampleView.xaml</DependentUpon>
+    <Compile Include="StatCounterSample\StatCounterView.xaml.cs">
+      <DependentUpon>StatCounterView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="StatCounterSampleViewModel.cs" />
-    <Page Include="DelayedContentControlSampleView.xaml">
+    <Compile Include="StatCounterSample\StatCounterModel.cs" />
+    <Page Include="DelayedContentControlSample\DelayedContentControlView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LazyControlSampleView.xaml">
+    <Page Include="LazyControlSample\LazyControlView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -101,15 +101,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="PropertySheetSampleView.xaml">
+    <Page Include="PropertySheetSample\PropertySheetView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SelectableTextBlockSample.xaml">
+    <Page Include="SelectableTextBlockSample\SelectableTextBlockView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="StatCounterSampleView.xaml">
+    <Page Include="StatCounterSample\StatCounterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

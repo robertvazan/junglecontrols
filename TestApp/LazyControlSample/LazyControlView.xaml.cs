@@ -12,13 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using UpdateControls.XAML;
 
 namespace TestApp
 {
-    public partial class PropertySheetSampleView : UserControl
+    public partial class LazyControlView : UserControl
     {
-        public PropertySheetSampleView()
+        public LazyControlView()
         {
             InitializeComponent();
         }

@@ -15,9 +15,9 @@ using System.Windows.Shapes;
 
 namespace TestApp
 {
-    public partial class SelectableTextBlockSample : UserControl
+    public partial class DelayedContentControlView : UserControl
     {
-        public SelectableTextBlockSample()
+        public DelayedContentControlView()
         {
             InitializeComponent();
         }

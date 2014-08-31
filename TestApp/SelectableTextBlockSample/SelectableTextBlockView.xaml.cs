@@ -15,9 +15,9 @@ using System.Windows.Shapes;
 
 namespace TestApp
 {
-    public partial class LazyControlSampleView : UserControl
+    public partial class SelectableTextBlockView : UserControl
     {
-        public LazyControlSampleView()
+        public SelectableTextBlockView()
         {
             InitializeComponent();
         }

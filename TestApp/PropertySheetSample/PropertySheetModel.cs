@@ -8,7 +8,7 @@ using UpdateControls.XAML;
 
 namespace TestApp
 {
-    class PropertySheetSampleViewModel
+    class PropertySheetModel
     {
         readonly Independent<string> InputValue = new Independent<string>("my input");
 
