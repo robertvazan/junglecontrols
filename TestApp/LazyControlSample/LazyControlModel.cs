@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Assisticant.Fields;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UpdateControls.Fields;
 
 namespace TestApp
 {
     class LazyControlModel
     {
-        readonly Independent<int> MaterializedCounter = new Independent<int>();
+        readonly Observable<int> MaterializedCounter = new Observable<int>();
         public int MaterializedCount { get { return MaterializedCounter.Value; } set { MaterializedCounter.Value = value; } }
         public LazyControlGroup[] Groups { get; set; }
         public int TotalGroups { get { return Groups.Length; } }

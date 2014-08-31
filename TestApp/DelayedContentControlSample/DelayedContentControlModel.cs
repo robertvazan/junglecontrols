@@ -1,15 +1,15 @@
-﻿using System;
+﻿using Assisticant.Fields;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using UpdateControls.Fields;
 
 namespace TestApp
 {
     class DelayedContentControlModel
     {
-        readonly Independent<bool> IsSecondModelValue = new Independent<bool>();
+        readonly Observable<bool> IsSecondModelValue = new Observable<bool>();
 
         public bool IsSecondModel { get { return IsSecondModelValue.Value; } set { IsSecondModelValue.Value = value; } }
         public object Content { get { return !IsSecondModelValue.Value ? (object)new DelayedContentControlFirst() : new DelayedContentControlSecond(); } }

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Assisticant;
+using Assisticant.Fields;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,9 +12,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using UpdateControls;
-using UpdateControls.Collections;
-using UpdateControls.Fields;
 
 namespace JungleControls
 {
@@ -57,7 +56,7 @@ namespace JungleControls
             handler(null, new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Reset));
         }
 
-        public static void Lift<T>(DependencyObject view, DependencyProperty property, Independent<T> independent)
+        public static void Lift<T>(DependencyObject view, DependencyProperty property, Observable<T> independent)
         {
             EventHandler handler = (sender, args) => independent.Value = (T)view.GetValue(property);
             DependencyPropertyDescriptor.FromProperty(property, view.GetType()).AddValueChanged(view, handler);
@@ -66,16 +65,16 @@ namespace JungleControls
 
         class LiftAllHelper<T>
         {
-            public static void ForwardLift(DependencyObject view, DependencyProperty property, Independent independent)
+            public static void ForwardLift(DependencyObject view, DependencyProperty property, Observable independent)
             {
-                Lift(view, property, (Independent<T>)independent);
+                Lift(view, property, (Observable<T>)independent);
             }
         }
 
         public static void LiftAll(DependencyObject view, object model, Func<string, string, bool> matcher)
         {
             var fields = (from field in model.GetType().GetFields(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance)
-                          where field.FieldType.IsGenericType && field.FieldType.GetGenericTypeDefinition() == typeof(Independent<>) && field.GetValue(model) != null
+                          where field.FieldType.IsGenericType && field.FieldType.GetGenericTypeDefinition() == typeof(Observable<>) && field.GetValue(model) != null
                           select field).ToList();
             var properties = (from field in view.GetType().GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)
                               where field.FieldType == typeof(DependencyProperty) && field.Name.EndsWith("Property")
