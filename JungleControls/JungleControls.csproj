@@ -57,9 +57,13 @@
     <Compile Include="DelayedContentControl.cs" />
     <Compile Include="ExposeControl.cs" />
     <Compile Include="FacadeControls\FacadeHeaderedContentControl.cs" />
+    <Compile Include="FacadeControls\FacadeInstance.cs" />
     <Compile Include="FacadeControls\FacadeItemsControl.cs" />
+    <Compile Include="FacadeControls\FacadeMapping.cs" />
     <Compile Include="FacadeControls\FacadeProperty.cs" />
     <Compile Include="FacadeControls\FacadePropertyMetadata.cs" />
+    <Compile Include="FacadeControls\FacadeType.cs" />
+    <Compile Include="FacadeControls\IFacadeObject.cs" />
     <Compile Include="FacadeMapper.cs" />
     <Compile Include="FacadeControls\FacadeContentControl.cs" />
     <Compile Include="FacadeControls\FacadeControl.cs" />
