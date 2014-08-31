@@ -19,5 +19,8 @@
         <TabItem Header="LazyControl">
             <a:LazyControlView />
         </TabItem>
+        <TabItem Header="ExposeControl">
+            <a:ExposeControlView />
+        </TabItem>
     </TabControl>
 </Window>
