@@ -9,7 +9,7 @@ using System.Windows.Markup;
 
 namespace JungleControls
 {
-    public class SelectableTextBlock : FacadeControl
+    public class SelectableTextBlock : Control
     {
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register("Text", typeof(string), typeof(SelectableTextBlock), new FrameworkPropertyMetadata(""));
         public string Text { get { return (string)GetValue(TextProperty); } set { SetValue(TextProperty, value); } }
@@ -26,6 +26,7 @@ namespace JungleControls
         static SelectableTextBlock()
         {
             IsTabStopProperty.OverrideMetadata(typeof(SelectableTextBlock), new FrameworkPropertyMetadata(false));
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(SelectableTextBlock), new FrameworkPropertyMetadata(typeof(SelectableTextBlock)));
         }
 
         public SelectableTextBlock()
