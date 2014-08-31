@@ -13,113 +13,63 @@ using System.Windows.Media;
 
 namespace JungleControls
 {
-    public class StatCounter : HeaderedContentControl
+    public class StatCounter : HeaderedContentControl, IFacadeObject
     {
-        static int ObservableCount;
-        FacadeProperty[] ModelFields = new FacadeProperty[ObservableCount];
-        StatCounterModel Model = new StatCounterModel();
+        static readonly FacadeType FacadeType;
+        readonly FacadeInstance FacadeInstanceRef;
+        FacadeInstance IFacadeObject.FacadeInstance { get { return FacadeInstanceRef; } }
 
-        public static readonly DependencyProperty HeaderPositionProperty = CreateObservable<StatCounterHeaderPosition>("HeaderPosition");
+        public static readonly DependencyProperty HeaderPositionProperty = DependencyProperty.Register("HeaderPosition", typeof(StatCounterHeaderPosition), typeof(StatCounter), new FacadePropertyMetadata());
         public StatCounterHeaderPosition HeaderPosition { get { return (StatCounterHeaderPosition)GetValue(HeaderPositionProperty); } set { SetValue(HeaderPositionProperty, value); } }
 
-        public static readonly DependencyProperty SpacingProperty = CreateObservable<double>("Spacing", 0.0);
+        public static readonly DependencyProperty SpacingProperty = DependencyProperty.Register("Spacing", typeof(double), typeof(StatCounter), new FacadePropertyMetadata(0.0));
         public double Spacing { get { return (double)GetValue(SpacingProperty); } set { SetValue(SpacingProperty, value); } }
 
-        public static readonly DependencyProperty HeaderForegroundProperty = CreateObservable<Brush>("HeaderForeground");
+        public static readonly DependencyProperty HeaderForegroundProperty = DependencyProperty.Register("HeaderForeground", typeof(Brush), typeof(StatCounter), new FacadePropertyMetadata());
         public Brush HeaderForeground { get { return (Brush)GetValue(HeaderForegroundProperty); } set { SetValue(HeaderForegroundProperty, value); } }
 
-        public static readonly DependencyProperty HeaderFontSizeProperty = CreateObservable<double?>("HeaderFontSize");
+        public static readonly DependencyProperty HeaderFontSizeProperty = DependencyProperty.Register("HeaderFontSize", typeof(double?), typeof(StatCounter), new FacadePropertyMetadata());
         [TypeConverter(typeof(FontSizeConverter))]
         public double? HeaderFontSize { get { return (double?)GetValue(HeaderFontSizeProperty); } set { SetValue(HeaderFontSizeProperty, value); } }
 
         public static readonly DependencyProperty HeaderAlignmentProperty = DependencyProperty.Register("HeaderAlignment", typeof(HorizontalAlignment), typeof(StatCounter), new FrameworkPropertyMetadata(HorizontalAlignment.Left));
         public HorizontalAlignment HeaderAlignment { get { return (HorizontalAlignment)GetValue(HeaderAlignmentProperty); } set { SetValue(HeaderAlignmentProperty, value); } }
 
-        public static readonly DependencyProperty HeaderFontWeightProperty = CreateObservable<FontWeight?>("HeaderFontWeight");
+        public static readonly DependencyProperty HeaderFontWeightProperty = DependencyProperty.Register("HeaderFontWeight", typeof(FontWeight?), typeof(StatCounter), new FacadePropertyMetadata());
         public FontWeight? HeaderFontWeight { get { return (FontWeight?)GetValue(HeaderFontWeightProperty); } set { SetValue(HeaderFontWeightProperty, value); } }
 
-        public static readonly DependencyProperty ContentForegroundProperty = CreateObservable<Brush>("ContentForeground");
+        public static readonly DependencyProperty ContentForegroundProperty = DependencyProperty.Register("ContentForeground", typeof(Brush), typeof(StatCounter), new FacadePropertyMetadata());
         public Brush ContentForeground { get { return (Brush)GetValue(ContentForegroundProperty); } set { SetValue(ContentForegroundProperty, value); } }
 
-        public static readonly DependencyProperty ContentFontSizeProperty = CreateObservable<double?>("ContentFontSize");
+        public static readonly DependencyProperty ContentFontSizeProperty = DependencyProperty.Register("ContentFontSize", typeof(double?), typeof(StatCounter), new FacadePropertyMetadata());
         [TypeConverter(typeof(FontSizeConverter))]
         public double? ContentFontSize { get { return (double?)GetValue(ContentFontSizeProperty); } set { SetValue(ContentFontSizeProperty, value); } }
 
         public static readonly DependencyProperty ContentAlignmentProperty = DependencyProperty.Register("ContentAlignment", typeof(HorizontalAlignment), typeof(StatCounter), new FrameworkPropertyMetadata(HorizontalAlignment.Left));
         public HorizontalAlignment ContentAlignment { get { return (HorizontalAlignment)GetValue(ContentAlignmentProperty); } set { SetValue(ContentAlignmentProperty, value); } }
 
-        public static readonly DependencyProperty ContentFontWeightProperty = CreateObservable<FontWeight?>("ContentFontWeight");
+        public static readonly DependencyProperty ContentFontWeightProperty = DependencyProperty.Register("ContentFontWeight", typeof(FontWeight?), typeof(StatCounter), new FacadePropertyMetadata());
         public FontWeight? ContentFontWeight { get { return (FontWeight?)GetValue(ContentFontWeightProperty); } set { SetValue(ContentFontWeightProperty, value); } }
 
-        public static readonly DependencyProperty ModeProperty = CreateObservable("Mode", StatCounterMode.Auto);
+        public static readonly DependencyProperty ModeProperty = DependencyProperty.Register("Mode", typeof(StatCounterMode), typeof(StatCounter), new FacadePropertyMetadata(StatCounterMode.Auto));
         public StatCounterMode Mode { get { return (StatCounterMode)GetValue(ModeProperty); } set { SetValue(ModeProperty, value); } }
 
         static StatCounter()
         {
-            IsTabStopProperty.OverrideMetadata(typeof(StatCounter), new FrameworkPropertyMetadata(false));
             DefaultStyleKeyProperty.OverrideMetadata(typeof(StatCounter), new FrameworkPropertyMetadata(typeof(StatCounter)));
-            var properties = (from field in typeof(HeaderedContentControl).GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)
-                              where field.FieldType == typeof(DependencyProperty) && field.Name.EndsWith("Property")
-                              select (DependencyProperty)field.GetValue(null)).ToList();
-            var fields = typeof(StatCounterModel).GetFields().Where(f => f.FieldType.IsGenericType && f.FieldType.GetGenericTypeDefinition() == typeof(FacadeProperty<>)).ToList();
-            foreach (var property in properties)
-            {
-                var field = fields.FirstOrDefault(f => f.Name == property.Name);
-                if (field != null)
-                    property.OverrideMetadata(typeof(StatCounter), new FacadePropertyMetadata(ObservableCount++, NotifyModel));
-            }
+            IsTabStopProperty.OverrideMetadata(typeof(StatCounter), new FrameworkPropertyMetadata(false));
+            FacadeType = new FacadeType(typeof(StatCounter), typeof(StatCounterModel));
         }
 
         public StatCounter()
         {
-            var properties = (from field in GetType().GetFields(BindingFlags.Public | BindingFlags.Static | BindingFlags.FlattenHierarchy)
-                              where field.FieldType == typeof(DependencyProperty) && field.Name.EndsWith("Property")
-                              select (DependencyProperty)field.GetValue(null)).ToList();
-            foreach (var field in Model.GetType().GetFields().Where(f => f.FieldType.IsGenericType && f.FieldType.GetGenericTypeDefinition() == typeof(FacadeProperty<>)))
-            {
-                var property = properties.FirstOrDefault(p => p.Name == field.Name);
-                if (property == null)
-                    throw new InvalidOperationException("No property corresponds to FacadeProperty: " + field.Name);
-                var metadata = property.GetMetadata(this) as FacadePropertyMetadata;
-                if (metadata == null)
-                    throw new InvalidOperationException("FacadePropertyMetadata must be used for observable property: " + field.Name);
-                if (field.FieldType.GenericTypeArguments[0] != property.PropertyType)
-                    throw new InvalidOperationException("Field associated to dependency property has different value type: " + field.Name);
-                var computed = Activator.CreateInstance(typeof(FacadeProperty<>).MakeGenericType(property.PropertyType), this, property);
-                ModelFields[metadata.ObservableIndex] = (FacadeProperty)computed;
-                field.SetValue(Model, computed);
-            }
+            FacadeInstanceRef = new FacadeInstance(FacadeType, this);
         }
 
         public override void OnApplyTemplate()
         {
-            var root = GetTemplateChild("Root") as FrameworkElement;
-            if (root != null)
-                root.DataContext = ForView.Wrap(Model);
+            FacadeInstanceRef.ApplyModel(GetTemplateChild("Root"));
             base.OnApplyTemplate();
-        }
-
-        static void NotifyModel(object sender, DependencyPropertyChangedEventArgs args)
-        {
-            var self = (StatCounter)sender;
-            var metadata = args.Property.GetMetadata(self) as FacadePropertyMetadata;
-            var computed = self.ModelFields[metadata.ObservableIndex];
-            computed.Invalidate();
-        }
-
-        static DependencyProperty CreateObservable<T>(string name)
-        {
-            return CreateObservable<T>(name, new FacadePropertyMetadata(ObservableCount++, NotifyModel));
-        }
-
-        static DependencyProperty CreateObservable<T>(string name, T value)
-        {
-            return CreateObservable<T>(name, new FacadePropertyMetadata(ObservableCount++, value, NotifyModel));
-        }
-
-        static DependencyProperty CreateObservable<T>(string name, FacadePropertyMetadata metadata)
-        {
-            return DependencyProperty.Register(name, typeof(T), typeof(StatCounter), metadata);
         }
     }
 }

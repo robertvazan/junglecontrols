@@ -9,18 +9,9 @@ namespace JungleControls
 {
     public class FacadePropertyMetadata : FrameworkPropertyMetadata
     {
-        public readonly int ObservableIndex;
+        internal int Index = -1;
 
-        public FacadePropertyMetadata(int index, PropertyChangedCallback changeCallback)
-            : base(changeCallback)
-        {
-            ObservableIndex = index;
-        }
-
-        public FacadePropertyMetadata(int index, object defaultValue, PropertyChangedCallback changeCallback)
-            : base(defaultValue, changeCallback)
-        {
-            ObservableIndex = index;
-        }
+        public FacadePropertyMetadata() : base(FacadeType.NotifyModel) { }
+        public FacadePropertyMetadata(object defaultValue) : base(defaultValue, FacadeType.NotifyModel) { }
     }
 }
