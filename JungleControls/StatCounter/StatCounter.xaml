@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:jc="clr-namespace:JungleControls">
+    <Style TargetType="jc:StatCounter">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="jc:StatCounter">
+                    <Grid x:Name="Root">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="{Binding HeaderRow}" Text="{TemplateBinding Header}" FontSize="{Binding EffectiveHeaderFontSize}" Foreground="{Binding EffectiveHeaderForeground}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" FontWeight="{Binding EffectiveHeaderFontWeight}" Margin="{Binding HeaderMargin}" />
+                        <TextBlock Grid.Row="{Binding ContentRow}" Text="{Binding FormattedContent}" FontSize="{Binding EffectiveContentFontSize}" Foreground="{Binding EffectiveContentForeground}" HorizontalAlignment="{TemplateBinding ContentAlignment}" FontWeight="{Binding EffectiveContentFontWeight}" Margin="{Binding ContentMargin}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

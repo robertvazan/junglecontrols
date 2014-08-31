@@ -12,6 +12,7 @@
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <WrapPanel>
             <jc:StatCounter Header="Resized" Content="123" HeaderFontSize="10" ContentFontSize="30" />
@@ -123,7 +124,12 @@
             <jc:StatCounter Header="Few Seconds" Content="{Binding FewSeconds}" />
             <jc:StatCounter Header="Fractional Seconds" Content="{Binding FractionalSeconds}" />
             <jc:StatCounter Header="Milliseconds" Content="{Binding Milliseconds}" />
+            <jc:StatCounter Header="Binding" Content="{Binding BindingTest}" />
         </WrapPanel>
-        <jc:StatCounter Grid.Row="1" Header="Header" Content="75%" HorizontalAlignment="Center" />
+        <DockPanel Grid.Row="1">
+            <TextBlock Text="Binding test:" />
+            <TextBox Text="{Binding BindingTest, UpdateSourceTrigger=PropertyChanged}" />
+        </DockPanel>
+        <jc:StatCounter Grid.Row="2" Header="Header" Content="75%" HorizontalAlignment="Center" />
     </Grid>
 </UserControl>
