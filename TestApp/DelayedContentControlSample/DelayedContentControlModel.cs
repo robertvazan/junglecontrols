@@ -9,10 +9,9 @@ namespace TestApp
 {
     class DelayedContentControlModel
     {
-        readonly Observable<bool> IsSecondModelValue = new Observable<bool>();
+        public readonly Observable<bool> IsSecondModel = new Observable<bool>();
 
-        public bool IsSecondModel { get { return IsSecondModelValue.Value; } set { IsSecondModelValue.Value = value; } }
-        public object Content { get { return !IsSecondModelValue.Value ? (object)new DelayedContentControlFirst() : new DelayedContentControlSecond(); } }
+        public object Content { get { return !IsSecondModel.Value ? (object)new DelayedContentControlFirst() : new DelayedContentControlSecond(); } }
     }
 
     class DelayedContentControlFirst { public string FirstContent { get { return "First content"; } } }

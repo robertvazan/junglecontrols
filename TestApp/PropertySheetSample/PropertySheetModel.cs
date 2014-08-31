@@ -9,8 +9,6 @@ namespace TestApp
 {
     class PropertySheetModel
     {
-        readonly Observable<string> InputValue = new Observable<string>("my input");
-
-        public string Input { get { return InputValue.Value; } set { InputValue.Value = value; } }
+        public readonly Observable<string> Input = new Observable<string>("my input");
     }
 }
