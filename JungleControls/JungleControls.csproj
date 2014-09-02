@@ -56,18 +56,12 @@
   <ItemGroup>
     <Compile Include="DelayedContentControl.cs" />
     <Compile Include="ExposeControl.cs" />
-    <Compile Include="FacadeControls\FacadeHeaderedContentControl.cs" />
+    <Compile Include="FacadeControls\FacadeHelpers.cs" />
     <Compile Include="FacadeControls\FacadeInstance.cs" />
-    <Compile Include="FacadeControls\FacadeItemsControl.cs" />
     <Compile Include="FacadeControls\FacadeMapping.cs" />
     <Compile Include="FacadeControls\FacadeProperty.cs" />
     <Compile Include="FacadeControls\FacadePropertyMetadata.cs" />
     <Compile Include="FacadeControls\FacadeType.cs" />
-    <Compile Include="FacadeMapper.cs" />
-    <Compile Include="FacadeControls\FacadeContentControl.cs" />
-    <Compile Include="FacadeControls\FacadeControl.cs" />
-    <Compile Include="FacadeControls\FacadeHelpers.cs" />
-    <Compile Include="FacadeControls\IFacadeControl.cs" />
     <Compile Include="LazyControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -83,11 +77,8 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="PropertySheet\PropertySheet.cs" />
-    <Compile Include="PropertySheet\PropertySheetView.xaml.cs">
-      <DependentUpon>PropertySheetView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="PropertySheet\PropertySheetRowViewModel.cs" />
-    <Compile Include="PropertySheet\PropertySheetViewModel.cs" />
+    <Compile Include="PropertySheet\PropertySheetRow.cs" />
+    <Compile Include="PropertySheet\PropertySheetModel.cs" />
     <Compile Include="SelectableTextBlock\SelectableTextBlock.cs" />
     <Compile Include="StatCounter\StatCounterMode.cs" />
     <Compile Include="StatCounter\StatCounter.cs" />
@@ -106,7 +97,7 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="PropertySheet\PropertySheetView.xaml">
+    <Page Include="PropertySheet\PropertySheet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -123,8 +114,8 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UniversalTemplate.xaml">
-      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

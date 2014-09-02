@@ -1,0 +1,29 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:jc="clr-namespace:JungleControls">
+    <Style TargetType="jc:PropertySheet">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="jc:PropertySheet">
+                    <ItemsControl x:Name="Root" Grid.IsSharedSizeScope="True" ItemsSource="{Binding Rows}" IsTabStop="False">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" SharedSizeGroup="HeaderSizeGroup" />
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    <Grid Margin="{Binding HeaderMargin, RelativeSource={RelativeSource AncestorType=jc:PropertySheet}}">
+                                        <TextBlock Visibility="{Binding SimpleHeaderVisible}" Text="{Binding Header}" Foreground="{Binding Sheet.EffectiveHeaderForeground}" FontWeight="{Binding Sheet.EffectiveHeaderFontWeight}" />
+                                        <ContentControl Visibility="{Binding TemplatedHeaderVisible}" Content="{Binding Header}" ContentTemplate="{Binding HeaderTemplate, RelativeSource={RelativeSource AncestorType=jc:PropertySheet}}" />
+                                    </Grid>
+                                    <ContentControl Grid.Column="1" Content="{Binding Content}" Margin="{Binding CellMargin, RelativeSource={RelativeSource AncestorType=jc:PropertySheet}}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
