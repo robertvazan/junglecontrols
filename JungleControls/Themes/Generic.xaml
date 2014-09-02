@@ -1,6 +1,8 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
     <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="/JungleControls;component/DelayedContentControl/DelayedContentControl.xaml" />
+        <ResourceDictionary Source="/JungleControls;component/LazyControl/LazyControl.xaml" />
         <ResourceDictionary Source="/JungleControls;component/PropertySheet/PropertySheet.xaml" />
         <ResourceDictionary Source="/JungleControls;component/SelectableTextBlock/SelectableTextBlock.xaml" />
         <ResourceDictionary Source="/JungleControls;component/StatCounter/StatCounter.xaml" />

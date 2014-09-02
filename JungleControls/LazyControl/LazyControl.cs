@@ -15,13 +15,13 @@ namespace JungleControls
 
         static LazyControl()
         {
-            FacadeHelpers.Initialize<LazyControl>(DefaultStyleKeyProperty);
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(LazyControl), new FrameworkPropertyMetadata(typeof(LazyControl)));
             IsTabStopProperty.OverrideMetadata(typeof(LazyControl), new FrameworkPropertyMetadata(false));
         }
 
         public override void OnApplyTemplate()
         {
-            LazyChild = GetTemplateChild("InternalPresenter") as ContentPresenter;
+            LazyChild = GetTemplateChild("Presenter") as ContentPresenter;
             if (LazyChild != null)
                 LayoutUpdated += HandleLayoutUpdated;
             base.OnApplyTemplate();

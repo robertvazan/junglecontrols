@@ -17,12 +17,15 @@ namespace JungleControls
         ContentPresenter Presenter;
         bool IsDirty;
 
-        static DelayedContentControl() { FacadeHelpers.Initialize<DelayedContentControl>(DefaultStyleKeyProperty); }
+        static DelayedContentControl()
+        {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(DelayedContentControl), new FrameworkPropertyMetadata(typeof(DelayedContentControl)));
+        }
 
         public override void OnApplyTemplate()
         {
             base.OnApplyTemplate();
-            Presenter = GetTemplateChild("InternalPresenter") as ContentPresenter;
+            Presenter = GetTemplateChild("Presenter") as ContentPresenter;
             Invalidate();
         }
 
