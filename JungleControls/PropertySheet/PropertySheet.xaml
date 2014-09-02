@@ -15,9 +15,9 @@
                                     </Grid.ColumnDefinitions>
                                     <Grid Margin="{Binding HeaderMargin, RelativeSource={RelativeSource AncestorType=jc:PropertySheet}}">
                                         <TextBlock Visibility="{Binding SimpleHeaderVisible}" Text="{Binding Header}" Foreground="{Binding Sheet.EffectiveHeaderForeground}" FontWeight="{Binding Sheet.EffectiveHeaderFontWeight}" />
-                                        <ContentControl Visibility="{Binding TemplatedHeaderVisible}" Content="{Binding Header}" ContentTemplate="{Binding HeaderTemplate, RelativeSource={RelativeSource AncestorType=jc:PropertySheet}}" />
+                                        <ContentControl Visibility="{Binding TemplatedHeaderVisible}" Content="{Binding Header}" ContentTemplate="{Binding HeaderTemplate, RelativeSource={RelativeSource AncestorType=jc:PropertySheet}}" IsTabStop="False" />
                                     </Grid>
-                                    <ContentControl Grid.Column="1" Content="{Binding Content}" Margin="{Binding CellMargin, RelativeSource={RelativeSource AncestorType=jc:PropertySheet}}" />
+                                    <ContentControl Grid.Column="1" Content="{Binding Content}" Margin="{Binding CellMargin, RelativeSource={RelativeSource AncestorType=jc:PropertySheet}}" IsTabStop="False" />
                                 </Grid>
                             </DataTemplate>
                         </ItemsControl.ItemTemplate>
