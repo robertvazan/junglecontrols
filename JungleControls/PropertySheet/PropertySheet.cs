@@ -14,7 +14,6 @@ namespace JungleControls
 {
     public class PropertySheet : ItemsControl
     {
-        static readonly FacadeType FacadeType;
         readonly FacadeInstance FacadeInstance;
         readonly PropertySheetModel Model;
 
@@ -22,16 +21,16 @@ namespace JungleControls
         public static void SetHeader(FrameworkElement element, object value) { element.SetValue(HeaderProperty, value); }
         public static object GetHeader(FrameworkElement element) { return element.GetValue(HeaderProperty); }
 
-        public static readonly DependencyProperty HeaderTemplateProperty = DependencyProperty.Register("HeaderTemplate", typeof(DataTemplate), typeof(PropertySheet), new FacadePropertyMetadata());
+        public static readonly DependencyProperty HeaderTemplateProperty = DependencyProperty.Register("HeaderTemplate", typeof(DataTemplate), typeof(PropertySheet));
         public DataTemplate HeaderTemplate { get { return (DataTemplate)GetValue(HeaderTemplateProperty); } set { SetValue(HeaderTemplateProperty, value); } }
 
         public static readonly DependencyProperty HeaderMarginProperty = DependencyProperty.Register("HeaderMargin", typeof(Thickness), typeof(PropertySheet));
         public Thickness HeaderMargin { get { return (Thickness)GetValue(HeaderMarginProperty); } set { SetValue(HeaderMarginProperty, value); } }
 
-        public static readonly DependencyProperty HeaderForegroundProperty = DependencyProperty.Register("HeaderForeground", typeof(Brush), typeof(PropertySheet), new FacadePropertyMetadata());
+        public static readonly DependencyProperty HeaderForegroundProperty = DependencyProperty.Register("HeaderForeground", typeof(Brush), typeof(PropertySheet));
         public Brush HeaderForeground { get { return (Brush)GetValue(HeaderForegroundProperty); } set { SetValue(HeaderForegroundProperty, value); } }
 
-        public static readonly DependencyProperty HeaderFontWeightProperty = DependencyProperty.Register("HeaderFontWeight", typeof(FontWeight?), typeof(PropertySheet), new FacadePropertyMetadata());
+        public static readonly DependencyProperty HeaderFontWeightProperty = DependencyProperty.Register("HeaderFontWeight", typeof(FontWeight?), typeof(PropertySheet));
         public FontWeight? HeaderFontWeight { get { return (FontWeight?)GetValue(HeaderFontWeightProperty); } set { SetValue(HeaderFontWeightProperty, value); } }
 
         public static readonly DependencyProperty CellMarginProperty = DependencyProperty.Register("CellMargin", typeof(Thickness), typeof(PropertySheet));
@@ -41,12 +40,11 @@ namespace JungleControls
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(PropertySheet), new FrameworkPropertyMetadata(typeof(PropertySheet)));
             IsTabStopProperty.OverrideMetadata(typeof(PropertySheet), new FrameworkPropertyMetadata(false));
-            FacadeType = new FacadeType(typeof(PropertySheet), typeof(PropertySheetModel), obj => ((PropertySheet)obj).FacadeInstance);
         }
 
         public PropertySheet()
         {
-            FacadeInstance = new FacadeInstance(FacadeType, this);
+            FacadeInstance = new FacadeInstance(this, typeof(PropertySheetModel));
             Model = (PropertySheetModel)FacadeInstance.GetModel();
         }
 
@@ -54,6 +52,13 @@ namespace JungleControls
         {
             FacadeInstance.ApplyModel(GetTemplateChild("Root"));
             base.OnApplyTemplate();
+        }
+
+        protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs args)
+        {
+            base.OnPropertyChanged(args);
+            if (FacadeInstance != null)
+                FacadeInstance.UpdateModel(args);
         }
 
         protected override void OnItemsChanged(NotifyCollectionChangedEventArgs e)

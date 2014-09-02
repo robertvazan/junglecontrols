@@ -10,14 +10,16 @@ namespace JungleControls
 {
     public class FacadeInstance
     {
+        static readonly Dictionary<Type, FacadeType> TypeMap = new Dictionary<Type, FacadeType>();
         readonly FacadeType FacadeType;
         readonly DependencyObject Facade;
         object Model;
-        FacadeProperty[] ModelFields;
+        readonly Dictionary<DependencyProperty, FacadeProperty> ModelFields = new Dictionary<DependencyProperty, FacadeProperty>();
 
-        public FacadeInstance(FacadeType facadeType, DependencyObject facade)
+        public FacadeInstance(DependencyObject facade, Type modelType)
         {
-            FacadeType = facadeType;
+            if (!TypeMap.TryGetValue(facade.GetType(), out FacadeType))
+                TypeMap[facade.GetType()] = FacadeType = new FacadeType(facade.GetType(), modelType);
             Facade = facade;
         }
 
@@ -33,29 +35,21 @@ namespace JungleControls
             if (Model == null)
             {
                 Model = Activator.CreateInstance(FacadeType.ModelType);
-                ModelFields = new FacadeProperty[FacadeType.FieldMappings.Count];
                 foreach (var mapping in FacadeType.FieldMappings)
                 {
-                    var computed = Activator.CreateInstance(typeof(FacadeProperty<>).MakeGenericType(mapping.FacadeProperty.PropertyType), Facade, mapping.FacadeProperty);
-                    ModelFields[mapping.PropertyMetadata.Index] = (FacadeProperty)computed;
-                    mapping.ModelField.SetValue(Model, computed);
+                    var computed = Activator.CreateInstance(typeof(FacadeProperty<>).MakeGenericType(mapping.Value.PropertyType), Facade, mapping.Value);
+                    ModelFields[mapping.Value] = (FacadeProperty)computed;
+                    mapping.Key.SetValue(Model, computed);
                 }
             }
             return Model;
         }
 
-        internal void NotifyModel(object sender, DependencyPropertyChangedEventArgs args)
+        public void UpdateModel(DependencyPropertyChangedEventArgs args)
         {
-            if (ModelFields != null)
-            {
-                if (sender != Facade)
-                    throw new InvalidOperationException("Misrouted property change notification");
-                var metadata = args.Property.GetMetadata(Facade) as FacadePropertyMetadata;
-                if (metadata == null)
-                    throw new InvalidOperationException("Received for notification that doesn't have FacadePropertyMetadata: " + args.Property);
-                var computed = ModelFields[metadata.Index];
+            FacadeProperty computed;
+            if (ModelFields.TryGetValue(args.Property, out computed))
                 computed.Invalidate();
-            }
         }
     }
 }
