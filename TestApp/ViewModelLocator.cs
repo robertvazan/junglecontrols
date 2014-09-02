@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TestApp
 {
-    class DesignViewModelLocator : ViewModelLocatorBase
+    class ViewModelLocator : ViewModelLocatorBase
     {
         public object StatCounter { get { return ViewModel(() => new StatCounterModel()); } }
         public object PropertySheet { get { return ViewModel(() => new PropertySheetModel()); } }
