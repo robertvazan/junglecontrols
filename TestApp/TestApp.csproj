@@ -64,7 +64,7 @@
       <DependentUpon>DelayedContentControlView.xaml</DependentUpon>
     </Compile>
     <Compile Include="DelayedContentControlSample\DelayedContentControlModel.cs" />
-    <Compile Include="DesignViewModelLocator.cs" />
+    <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ExposeControlSample\ExposeControlModel.cs" />
     <Compile Include="ExposeControlSample\ExposeControlView.xaml.cs">
       <DependentUpon>ExposeControlView.xaml</DependentUpon>

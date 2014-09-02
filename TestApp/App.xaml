@@ -5,7 +5,7 @@
              xmlns:a="clr-namespace:TestApp"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-        <a:DesignViewModelLocator x:Key="Locator"/>
+        <a:ViewModelLocator x:Key="Locator"/>
         <Style TargetType="{x:Type TabControl}">
             <Setter Property="Padding" Value="5" />
         </Style>
