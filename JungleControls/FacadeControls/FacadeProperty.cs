@@ -11,12 +11,13 @@ namespace JungleControls
 {
     public abstract class FacadeProperty
     {
-        internal abstract void Invalidate();
+        protected readonly Observable RefreshTrigger = new Observable();
+
+        internal void Invalidate() { RefreshTrigger.OnSet(); }
     }
 
     public class FacadeProperty<T> : FacadeProperty
     {
-        readonly Observable RefreshTrigger = new Observable();
         readonly Computed<T> Computed;
 
         public T Value { get { return Computed.Value; } }
@@ -28,11 +29,6 @@ namespace JungleControls
                 RefreshTrigger.OnGet();
                 return (T)obj.GetValue(property);
             });
-        }
-
-        internal override void Invalidate()
-        {
-            RefreshTrigger.OnSet();
         }
     }
 }
