@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>649</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -30,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <NoWarn>649</NoWarn>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Assisticant">
@@ -54,15 +56,14 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DelayedContentControl.cs" />
+    <Compile Include="DelayedContentControl\DelayedContentControl.cs" />
     <Compile Include="ExposeControl.cs" />
-    <Compile Include="FacadeControls\FacadeHelpers.cs" />
     <Compile Include="FacadeControls\FacadeInstance.cs" />
     <Compile Include="FacadeControls\FacadeMapping.cs" />
     <Compile Include="FacadeControls\FacadeProperty.cs" />
     <Compile Include="FacadeControls\FacadePropertyMetadata.cs" />
     <Compile Include="FacadeControls\FacadeType.cs" />
-    <Compile Include="LazyControl.cs" />
+    <Compile Include="LazyControl\LazyControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -97,6 +98,10 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="DelayedContentControl\DelayedContentControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="PropertySheet\PropertySheet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -113,7 +118,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UniversalTemplate.xaml">
+    <Page Include="LazyControl\LazyControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
