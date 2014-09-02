@@ -59,9 +59,7 @@
     <Compile Include="DelayedContentControl\DelayedContentControl.cs" />
     <Compile Include="ExposeControl.cs" />
     <Compile Include="FacadeControls\FacadeInstance.cs" />
-    <Compile Include="FacadeControls\FacadeMapping.cs" />
     <Compile Include="FacadeControls\FacadeProperty.cs" />
-    <Compile Include="FacadeControls\FacadePropertyMetadata.cs" />
     <Compile Include="FacadeControls\FacadeType.cs" />
     <Compile Include="LazyControl\LazyControl.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
