@@ -1,4 +1,5 @@
 ﻿using Assisticant;
+using Assisticant.Facades;
 using Assisticant.Fields;
 using System;
 using System.Collections.Generic;
@@ -15,7 +16,7 @@ namespace JungleControls
 {
     public class StatCounter : HeaderedContentControl
     {
-        readonly FacadeInstance FacadeInstance;
+        readonly StatCounterModel Model = new StatCounterModel();
 
         public static readonly DependencyProperty HeaderPositionProperty = DependencyProperty.Register("HeaderPosition", typeof(StatCounterHeaderPosition), typeof(StatCounter));
         public StatCounterHeaderPosition HeaderPosition { get { return (StatCounterHeaderPosition)GetValue(HeaderPositionProperty); } set { SetValue(HeaderPositionProperty, value); } }
@@ -60,20 +61,19 @@ namespace JungleControls
 
         public StatCounter()
         {
-            FacadeInstance = new FacadeInstance(this, typeof(StatCounterModel));
+            FacadeModel.UpdateAll(Model, this);
         }
 
         public override void OnApplyTemplate()
         {
-            FacadeInstance.ApplyModel(GetTemplateChild("Root"));
+            FacadeModel.Wrap(Model, GetTemplateChild("Root"));
             base.OnApplyTemplate();
         }
 
         protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs args)
         {
             base.OnPropertyChanged(args);
-            if (FacadeInstance != null)
-                FacadeInstance.UpdateModel(args);
+            FacadeModel.Update(Model, this, args);
         }
     }
 }
