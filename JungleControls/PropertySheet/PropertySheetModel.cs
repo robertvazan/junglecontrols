@@ -12,11 +12,11 @@ namespace JungleControls
 {
     class PropertySheetModel
     {
-        public FacadeProperty<FontWeight> FontWeight;
-        public FacadeProperty<FontWeight?> HeaderFontWeight;
-        public FacadeProperty<Brush> Foreground;
-        public FacadeProperty<Brush> HeaderForeground;
-        public FacadeProperty<DataTemplate> HeaderTemplate;
+        public readonly Observable<FontWeight> FontWeight = new Observable<FontWeight>();
+        public readonly Observable<FontWeight?> HeaderFontWeight = new Observable<FontWeight?>();
+        public readonly Observable<Brush> Foreground = new Observable<Brush>();
+        public readonly Observable<Brush> HeaderForeground = new Observable<Brush>();
+        public readonly Observable<DataTemplate> HeaderTemplate = new Observable<DataTemplate>();
 
         public ObservableList<Tuple<object, object>> Items = new ObservableList<Tuple<object, object>>();
         public IEnumerable<PropertySheetRow> Rows { get { return Items.Select(item => new PropertySheetRow(this, item.Item1, item.Item2)); } }

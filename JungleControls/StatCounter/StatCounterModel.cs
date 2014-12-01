@@ -12,20 +12,20 @@ namespace JungleControls
 {
     class StatCounterModel
     {
-        public FacadeProperty<StatCounterHeaderPosition> HeaderPosition;
-        public FacadeProperty<double> Spacing;
-        public FacadeProperty<Brush> Foreground;
-        public FacadeProperty<Brush> HeaderForeground;
-        public FacadeProperty<Brush> ContentForeground;
-        public FacadeProperty<double> FontSize;
-        public FacadeProperty<double?> HeaderFontSize;
-        public FacadeProperty<double?> ContentFontSize;
-        public FacadeProperty<FontWeight> FontWeight;
-        public FacadeProperty<FontWeight?> HeaderFontWeight;
-        public FacadeProperty<FontWeight?> ContentFontWeight;
-        public FacadeProperty<object> Content;
-        public FacadeProperty<string> ContentStringFormat;
-        public FacadeProperty<StatCounterMode> Mode;
+        public readonly Observable<StatCounterHeaderPosition> HeaderPosition = new Observable<StatCounterHeaderPosition>();
+        public readonly Observable<double> Spacing = new Observable<double>();
+        public readonly Observable<Brush> Foreground = new Observable<Brush>();
+        public readonly Observable<Brush> HeaderForeground = new Observable<Brush>();
+        public readonly Observable<Brush> ContentForeground = new Observable<Brush>();
+        public readonly Observable<double> FontSize = new Observable<double>();
+        public readonly Observable<double?> HeaderFontSize = new Observable<double?>();
+        public readonly Observable<double?> ContentFontSize = new Observable<double?>();
+        public readonly Observable<FontWeight> FontWeight = new Observable<FontWeight>();
+        public readonly Observable<FontWeight?> HeaderFontWeight = new Observable<FontWeight?>();
+        public readonly Observable<FontWeight?> ContentFontWeight = new Observable<FontWeight?>();
+        public readonly Observable<object> Content = new Observable<object>();
+        public readonly Observable<string> ContentStringFormat = new Observable<string>();
+        public readonly Observable<StatCounterMode> Mode = new Observable<StatCounterMode>();
 
         bool IsTop { get { return HeaderPosition.Value == StatCounterHeaderPosition.Top; } }
         bool IsBottom { get { return HeaderPosition.Value == StatCounterHeaderPosition.Bottom; } }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assisticant.Facades;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -14,8 +15,7 @@ namespace JungleControls
 {
     public class PropertySheet : ItemsControl
     {
-        readonly FacadeInstance FacadeInstance;
-        readonly PropertySheetModel Model;
+        readonly PropertySheetModel Model = new PropertySheetModel();
 
         public static readonly DependencyProperty HeaderProperty = DependencyProperty.RegisterAttached("Header", typeof(object), typeof(PropertySheet), new FrameworkPropertyMetadata(HandleHeaderChanged));
         public static void SetHeader(FrameworkElement element, object value) { element.SetValue(HeaderProperty, value); }
@@ -44,21 +44,19 @@ namespace JungleControls
 
         public PropertySheet()
         {
-            FacadeInstance = new FacadeInstance(this, typeof(PropertySheetModel));
-            Model = (PropertySheetModel)FacadeInstance.GetModel();
+            FacadeModel.UpdateAll(Model, this);
         }
 
         public override void OnApplyTemplate()
         {
-            FacadeInstance.ApplyModel(GetTemplateChild("Root"));
+            FacadeModel.Wrap(Model, GetTemplateChild("Root"));
             base.OnApplyTemplate();
         }
 
         protected override void OnPropertyChanged(DependencyPropertyChangedEventArgs args)
         {
             base.OnPropertyChanged(args);
-            if (FacadeInstance != null)
-                FacadeInstance.UpdateModel(args);
+            FacadeModel.Update(Model, this, args);
         }
 
         protected override void OnItemsChanged(NotifyCollectionChangedEventArgs e)
