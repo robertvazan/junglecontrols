@@ -36,15 +36,15 @@
   <ItemGroup>
     <Reference Include="Assisticant, Version=2.3.0.0, Culture=neutral, PublicKeyToken=19e83a8289e31a8f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Assisticant.1.1.3\lib\net45\Assisticant.dll</HintPath>
+      <HintPath>..\packages\Assisticant.1.1.4\lib\net45\Assisticant.dll</HintPath>
     </Reference>
-    <Reference Include="Assisticant.Facades, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Assisticant.Facades, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Assisticant.Facades.1.0.1.0\lib\net45\Assisticant.Facades.dll</HintPath>
+      <HintPath>..\packages\Assisticant.Facades.1.0.2.0\lib\net45\Assisticant.Facades.dll</HintPath>
     </Reference>
     <Reference Include="Assisticant.XAML, Version=2.3.0.0, Culture=neutral, PublicKeyToken=19e83a8289e31a8f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Assisticant.1.1.3\lib\net45\Assisticant.XAML.dll</HintPath>
+      <HintPath>..\packages\Assisticant.1.1.4\lib\net45\Assisticant.XAML.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
