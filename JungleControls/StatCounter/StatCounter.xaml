@@ -10,8 +10,8 @@
                             <RowDefinition Height="Auto" />
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
-                        <TextBlock Grid.Row="{Binding HeaderRow}" Text="{TemplateBinding Header}" FontSize="{Binding EffectiveHeaderFontSize}" Foreground="{Binding EffectiveHeaderForeground}" HorizontalAlignment="{TemplateBinding HeaderAlignment}" FontWeight="{Binding EffectiveHeaderFontWeight}" Margin="{Binding HeaderMargin}" />
-                        <TextBlock Grid.Row="{Binding ContentRow}" Text="{Binding FormattedContent}" FontSize="{Binding EffectiveContentFontSize}" Foreground="{Binding EffectiveContentForeground}" HorizontalAlignment="{TemplateBinding ContentAlignment}" FontWeight="{Binding EffectiveContentFontWeight}" Margin="{Binding ContentMargin}" />
+                        <TextBlock Grid.Row="{Binding HeaderRow}" Text="{TemplateBinding Header}" FontSize="{Binding EffectiveHeaderFontSize}" Foreground="{Binding EffectiveHeaderForeground}" HorizontalAlignment="{Binding HeaderAlignment, RelativeSource={RelativeSource TemplatedParent}}" FontWeight="{Binding EffectiveHeaderFontWeight}" Margin="{Binding HeaderMargin}" />
+                        <TextBlock Grid.Row="{Binding ContentRow}" Text="{Binding FormattedContent}" FontSize="{Binding EffectiveContentFontSize}" Foreground="{Binding EffectiveContentForeground}" HorizontalAlignment="{Binding ContentAlignment, RelativeSource={RelativeSource TemplatedParent}}" FontWeight="{Binding EffectiveContentFontWeight}" Margin="{Binding ContentMargin}" />
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>
