@@ -1,4 +1,5 @@
 ﻿using Assisticant.Facades;
+using AutoDependencyPropertyMarker;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,28 +14,20 @@ using System.Windows.Media;
 
 namespace JungleControls
 {
+    [AutoDependencyProperty]
     public class PropertySheet : ItemsControl
     {
         readonly PropertySheetModel Model = new PropertySheetModel();
 
+        public DataTemplate HeaderTemplate { get; set; }
+        public Thickness HeaderMargin { get; set; }
+        public Brush HeaderForeground { get; set; }
+        public FontWeight? HeaderFontWeight { get; set; }
+        public Thickness CellMargin { get; set; }
+
         public static readonly DependencyProperty HeaderProperty = DependencyProperty.RegisterAttached("Header", typeof(object), typeof(PropertySheet), new FrameworkPropertyMetadata(HandleHeaderChanged));
         public static void SetHeader(FrameworkElement element, object value) { element.SetValue(HeaderProperty, value); }
         public static object GetHeader(FrameworkElement element) { return element.GetValue(HeaderProperty); }
-
-        public static readonly DependencyProperty HeaderTemplateProperty = DependencyProperty.Register("HeaderTemplate", typeof(DataTemplate), typeof(PropertySheet));
-        public DataTemplate HeaderTemplate { get { return (DataTemplate)GetValue(HeaderTemplateProperty); } set { SetValue(HeaderTemplateProperty, value); } }
-
-        public static readonly DependencyProperty HeaderMarginProperty = DependencyProperty.Register("HeaderMargin", typeof(Thickness), typeof(PropertySheet));
-        public Thickness HeaderMargin { get { return (Thickness)GetValue(HeaderMarginProperty); } set { SetValue(HeaderMarginProperty, value); } }
-
-        public static readonly DependencyProperty HeaderForegroundProperty = DependencyProperty.Register("HeaderForeground", typeof(Brush), typeof(PropertySheet));
-        public Brush HeaderForeground { get { return (Brush)GetValue(HeaderForegroundProperty); } set { SetValue(HeaderForegroundProperty, value); } }
-
-        public static readonly DependencyProperty HeaderFontWeightProperty = DependencyProperty.Register("HeaderFontWeight", typeof(FontWeight?), typeof(PropertySheet));
-        public FontWeight? HeaderFontWeight { get { return (FontWeight?)GetValue(HeaderFontWeightProperty); } set { SetValue(HeaderFontWeightProperty, value); } }
-
-        public static readonly DependencyProperty CellMarginProperty = DependencyProperty.Register("CellMargin", typeof(Thickness), typeof(PropertySheet));
-        public Thickness CellMargin { get { return (Thickness)GetValue(CellMarginProperty); } set { SetValue(CellMarginProperty, value); } }
 
         static PropertySheet()
         {

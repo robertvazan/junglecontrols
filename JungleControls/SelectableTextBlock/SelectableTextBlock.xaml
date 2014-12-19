@@ -5,7 +5,7 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="jc:SelectableTextBlock">
-                    <TextBox BorderThickness="0" Text="{TemplateBinding Text}" IsReadOnly="True" Background="{TemplateBinding Background}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" TextAlignment="{TemplateBinding TextAlignment}" TextDecorations="{TemplateBinding TextDecorations}" TextWrapping="{TemplateBinding TextWrapping}" IsTabStop="False" />
+                    <TextBox BorderThickness="0" Text="{TemplateBinding Text}" IsReadOnly="True" Background="{TemplateBinding Background}" Foreground="{TemplateBinding Foreground}" Padding="{TemplateBinding Padding}" TextAlignment="{Binding TextAlignment, RelativeSource={RelativeSource TemplatedParent}}" TextDecorations="{Binding TextDecorations, RelativeSource={RelativeSource TemplatedParent}}" TextWrapping="{TemplateBinding TextWrapping}" IsTabStop="False" />
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
