@@ -1,0 +1,17 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:jc="clr-namespace:JungleControls">
+    <Style TargetType="jc:PrecisePopupWindow">
+        <Setter Property="UseLayoutRounding" Value="{Binding PopupControl.UseLayoutRounding}" />
+        <Setter Property="SnapsToDevicePixels" Value="{Binding PopupControl.SnapsToDevicePixels}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="jc:PrecisePopupWindow">
+                    <Border Background="{Binding PopupControl.Background}" Visibility="{Binding WindowVisibility}">
+                        <ContentControl Content="{Binding DataContext.PopupControl.Content, RelativeSource={RelativeSource TemplatedParent}}" ContentTemplate="{Binding DataContext.PopupControl.ContentTemplate, RelativeSource={RelativeSource TemplatedParent}}" ContentTemplateSelector="{Binding DataContext.PopupControl.ContentTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}" ContentStringFormat="{Binding DataContext.PopupControl.ContentStringFormat, RelativeSource={RelativeSource TemplatedParent}}" DataContext="{Binding PopupControl.DataContext}" />
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>    
+</ResourceDictionary>

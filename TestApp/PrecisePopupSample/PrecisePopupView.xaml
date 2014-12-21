@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="TestApp.PrecisePopupView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:jc="clr-namespace:JungleControls;assembly=JungleControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300"
+             DataContext="{Binding PrecisePopup, Source={StaticResource Locator}}">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <jc:PropertySheet>
+            <TextBox jc:PropertySheet.Header="Horizontal offset:" Text="{Binding HorizontalOffset, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBox jc:PropertySheet.Header="Vertical offset:" Text="{Binding VerticalOffset, UpdateSourceTrigger=PropertyChanged}" />
+        </jc:PropertySheet>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Rectangle Grid.RowSpan="3" HorizontalAlignment="Right" Width="1" Fill="Red" />
+            <Rectangle Grid.Column="2" Grid.RowSpan="3" HorizontalAlignment="Left" Width="1" Fill="Red" />
+            <Rectangle Grid.ColumnSpan="3" VerticalAlignment="Bottom" Height="1" Fill="Red" />
+            <Rectangle Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Top" Height="1" Fill="Red" />
+            <Button Grid.Row="1" Grid.Column="1" Margin="0" Name="PlacementButton" Command="{Binding OpenPopup}" Padding="10,5" Content="Click Me!" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <jc:PrecisePopup Name="MyPopup" PlacementTarget="{Binding ElementName=PlacementButton}" SuppressTarget="{Binding ElementName=PlacementButton}" IsOpen="{Binding IsOpen}" Background="#a0ffffff">
+                <jc:PrecisePopup.Resources>
+                    <ResourceDictionary>
+                        <Style TargetType="jc:PrecisePopupPlacement">
+                            <Setter Property="HorizontalOffset" Value="{Binding HorizontalOffset}" />
+                            <Setter Property="VerticalOffset" Value="{Binding VerticalOffset}" />
+                        </Style>
+                    </ResourceDictionary>
+                </jc:PrecisePopup.Resources>
+                <jc:PrecisePopup.Placements>
+                    <jc:PrecisePopupPlacement Name="BottomRight" />
+                    <jc:PrecisePopupPlacement Name="BottomLeft" HorizontalTargetAlignment="Right" HorizontalPopupAlignment="Right" />
+                    <jc:PrecisePopupPlacement Name="TopRight" VerticalTargetAlignment="Bottom" VerticalPopupAlignment="Bottom" />
+                    <jc:PrecisePopupPlacement Name="TopLeft" HorizontalTargetAlignment="Right" HorizontalPopupAlignment="Right" VerticalTargetAlignment="Bottom" VerticalPopupAlignment="Bottom" />
+                </jc:PrecisePopup.Placements>
+                <Border Width="200" Height="200" BorderBrush="Gray" BorderThickness="2">
+                    <TextBlock Text="{Binding SelectedPlacement.Name, RelativeSource={RelativeSource AncestorType=jc:PrecisePopup}}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                </Border>
+            </jc:PrecisePopup>
+        </Grid>
+    </Grid>
+</UserControl>

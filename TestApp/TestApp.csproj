@@ -66,6 +66,10 @@
       <DependentUpon>DelayedContentControlView.xaml</DependentUpon>
     </Compile>
     <Compile Include="DelayedContentControlSample\DelayedContentControlModel.cs" />
+    <Compile Include="PrecisePopupSample\PrecisePopupModel.cs" />
+    <Compile Include="PrecisePopupSample\PrecisePopupView.xaml.cs">
+      <DependentUpon>PrecisePopupView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ExposeControlSample\ExposeControlModel.cs" />
     <Compile Include="ExposeControlSample\ExposeControlView.xaml.cs">
@@ -112,6 +116,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="PrecisePopupSample\PrecisePopupView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="PropertySheetSample\PropertySheetView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

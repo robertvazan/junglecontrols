@@ -22,5 +22,8 @@
         <TabItem Header="ExposeControl">
             <a:ExposeControlView />
         </TabItem>
+        <TabItem Header="PrecisePopup" IsSelected="True">
+            <a:PrecisePopupView />
+        </TabItem>
     </TabControl>
 </Window>
