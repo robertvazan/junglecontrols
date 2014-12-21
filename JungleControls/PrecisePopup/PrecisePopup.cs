@@ -2,6 +2,7 @@
 using Assisticant.Facades;
 using AutoDependencyPropertyMarker;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,18 @@ namespace JungleControls
         static readonly DependencyPropertyKey PlacementsKey = DependencyProperty.RegisterReadOnly("Placements", typeof(PrecisePopupPlacements), typeof(PrecisePopup), new FrameworkPropertyMetadata());
         public static readonly DependencyProperty PlacementsProperty = PlacementsKey.DependencyProperty;
         public PrecisePopupPlacements Placements { get { return (PrecisePopupPlacements)GetValue(PlacementsProperty); } }
+
+        protected override IEnumerator LogicalChildren
+        {
+            get
+            {
+                var inherited = base.LogicalChildren;
+                while (inherited.MoveNext())
+                    yield return inherited.Current;
+                foreach (var item in Placements)
+                    yield return item;
+            }
+        }
 
         static PrecisePopup()
         {
