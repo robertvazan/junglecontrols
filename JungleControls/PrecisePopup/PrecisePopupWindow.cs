@@ -71,7 +71,7 @@ namespace JungleControls
         {
             if (InputHitTest(e.GetPosition(this)) == null)
             {
-                if (Model.SuppressTarget.Value.InputHitTest(e.GetPosition(Model.SuppressTarget.Value)) != null)
+                if (Model.SuppressTarget.Value != null && Model.SuppressTarget.Value.InputHitTest(e.GetPosition(Model.SuppressTarget.Value)) != null)
                     e.Handled = true;
                 Model.PopupControl.IsOpen = false;
             }
