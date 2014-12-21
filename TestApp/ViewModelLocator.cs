@@ -14,5 +14,6 @@ namespace TestApp
         public object DelayedContentControl { get { return ViewModel(() => new DelayedContentControlModel()); } }
         public object LazyControl { get { return ViewModel(() => new LazyControlModel()); } }
         public object ExposeControl { get { return ViewModel(() => new ExposeControlModel()); } }
+        public object PrecisePopup { get { return ViewModel(() => new PrecisePopupModel()); } }
     }
 }

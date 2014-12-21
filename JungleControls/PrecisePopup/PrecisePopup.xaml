@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:jc="clr-namespace:JungleControls">
+    <Style TargetType="jc:PrecisePopup">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="jc:PrecisePopup" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

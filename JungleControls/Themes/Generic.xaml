@@ -3,6 +3,8 @@
     <ResourceDictionary.MergedDictionaries>
         <ResourceDictionary Source="/JungleControls;component/DelayedContentControl/DelayedContentControl.xaml" />
         <ResourceDictionary Source="/JungleControls;component/LazyControl/LazyControl.xaml" />
+        <ResourceDictionary Source="/JungleControls;component/PrecisePopup/PrecisePopup.xaml" />
+        <ResourceDictionary Source="/JungleControls;component/PrecisePopup/PrecisePopupWindow.xaml" />
         <ResourceDictionary Source="/JungleControls;component/PropertySheet/PropertySheet.xaml" />
         <ResourceDictionary Source="/JungleControls;component/SelectableTextBlock/SelectableTextBlock.xaml" />
         <ResourceDictionary Source="/JungleControls;component/StatCounter/StatCounter.xaml" />
