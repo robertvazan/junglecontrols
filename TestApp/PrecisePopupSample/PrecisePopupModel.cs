@@ -15,5 +15,6 @@ namespace TestApp
         public readonly Observable<double> VerticalOffset = new Observable<double>();
 
         public void OpenPopup() { IsOpen.Value = true; }
+        public void ClosePopup() { IsOpen.Value = false; }
     }
 }

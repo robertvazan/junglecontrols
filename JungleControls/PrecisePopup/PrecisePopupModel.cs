@@ -46,7 +46,6 @@ namespace JungleControls
         public readonly Observable<Rect> ScreenBounds = new Observable<Rect>();
         readonly Computed<PrecisePopupCandidate[]> Candidates;
         public PrecisePopupCandidate SelectedCandidate { get { return Candidates.Value.OrderBy(c => c.Extreme.ClippedArea).First(); } }
-        public Observable<Visibility> WindowVisibility = new Observable<Visibility>();
         public bool IsOpen
         {
             get { return PopupWindow != null; }
@@ -83,7 +82,6 @@ namespace JungleControls
                     var boundsPos = transform.Transform(new Point(targetScreen.WorkingArea.Left, targetScreen.WorkingArea.Top));
                     var boundsSize = transform.Transform(new Point(targetScreen.WorkingArea.Right, targetScreen.WorkingArea.Bottom)) - boundsPos;
                     ScreenBounds.Value = new Rect(boundsPos, boundsSize);
-                    WindowVisibility.Value = Visibility.Hidden;
                     PopupWindow = new PrecisePopupWindow(this);
                     PopupWindow.Owner = Window.GetWindow(PopupControl);
                     TextOptions.SetTextFormattingMode(PopupWindow, TextOptions.GetTextFormattingMode(PopupControl));
