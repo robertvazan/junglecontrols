@@ -24,7 +24,6 @@ namespace JungleControls
             TopmostProperty.OverrideMetadata(typeof(PrecisePopupWindow), new FrameworkPropertyMetadata(true));
             WindowStyleProperty.OverrideMetadata(typeof(PrecisePopupWindow), new FrameworkPropertyMetadata(WindowStyle.None));
             ResizeModeProperty.OverrideMetadata(typeof(PrecisePopupWindow), new FrameworkPropertyMetadata(ResizeMode.NoResize));
-            SizeToContentProperty.OverrideMetadata(typeof(PrecisePopupWindow), new FrameworkPropertyMetadata(SizeToContent.WidthAndHeight));
             ShowInTaskbarProperty.OverrideMetadata(typeof(PrecisePopupWindow), new FrameworkPropertyMetadata(false));
             AllowsTransparencyProperty.OverrideMetadata(typeof(PrecisePopupWindow), new FrameworkPropertyMetadata(true));
         }
@@ -33,14 +32,23 @@ namespace JungleControls
         {
             Model = model;
             DataContext = FacadeModel.Wrap(Model);
+            Width = 0;
+            Height = 0;
             PositioningJob = new ComputedJob(() =>
             {
                 Left = Model.SelectedCandidate.X;
                 Top = Model.SelectedCandidate.Y;
+                SizeToContent = SizeToContent.WidthAndHeight;
                 Model.PopupControl.UpdateSelectedPlacement();
             });
             PositioningJob.Start();
             Loaded += (s, args) => Mouse.Capture(this, CaptureMode.SubTree);
+        }
+
+        public override void OnApplyTemplate()
+        {
+            (GetTemplateChild("Root") as FrameworkElement).SizeChanged += ContentSizeChanged;
+            base.OnApplyTemplate();
         }
 
         protected override void OnPreviewMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -100,19 +108,12 @@ namespace JungleControls
             Dispatcher.BeginInvoke(new Action(() => Close()), DispatcherPriority.Input);
         }
 
-        protected override void OnLocationChanged(EventArgs e)
+        void ContentSizeChanged(object sender, SizeChangedEventArgs e)
         {
-            base.OnLocationChanged(e);
-        }
-
-        protected override void OnRenderSizeChanged(SizeChangedInfo sizeInfo)
-        {
-            base.OnRenderSizeChanged(sizeInfo);
-            if (Math.Abs(Model.PopupWidth.Value - sizeInfo.NewSize.Width) > 0.001 || Math.Abs(Model.PopupHeight.Value - sizeInfo.NewSize.Height) > 0.001)
+            if (Math.Abs(Model.PopupWidth.Value - e.NewSize.Width) > 0.001 || Math.Abs(Model.PopupHeight.Value - e.NewSize.Height) > 0.001)
             {
-                Model.PopupWidth.Value = sizeInfo.NewSize.Width;
-                Model.PopupHeight.Value = sizeInfo.NewSize.Height;
-                Model.WindowVisibility.Value = Visibility.Visible;
+                Model.PopupWidth.Value = e.NewSize.Width;
+                Model.PopupHeight.Value = e.NewSize.Height;
             }
         }
     }

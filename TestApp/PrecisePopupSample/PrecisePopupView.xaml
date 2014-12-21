@@ -48,7 +48,10 @@
                     <jc:PrecisePopupPlacement Name="TopLeft" HorizontalTargetAlignment="Right" HorizontalPopupAlignment="Right" VerticalTargetAlignment="Bottom" VerticalPopupAlignment="Bottom" />
                 </jc:PrecisePopup.Placements>
                 <Border Width="200" Height="200" BorderBrush="Gray" BorderThickness="2">
-                    <TextBlock Text="{Binding SelectedPlacement.Name, RelativeSource={RelativeSource AncestorType=jc:PrecisePopup}}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                    <Grid>
+                        <TextBlock Text="{Binding SelectedPlacement.Name, RelativeSource={RelativeSource AncestorType=jc:PrecisePopup}}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Dismiss" Command="{Binding ClosePopup}" />
+                    </Grid>
                 </Border>
             </jc:PrecisePopup>
         </Grid>
