@@ -74,6 +74,7 @@
     <Compile Include="LazyControl\LazyControl.cs" />
     <Compile Include="PrecisePopup\PrecisePopupCandidate.cs" />
     <Compile Include="PrecisePopup\PrecisePopupModel.cs" />
+    <Compile Include="PrecisePopup\PrecisePopupPanel.cs" />
     <Compile Include="PrecisePopup\PrecisePopupPlacement.cs" />
     <Compile Include="PrecisePopup\PrecisePopupPlacementModel.cs" />
     <Compile Include="PrecisePopup\PrecisePopupPlacements.cs" />

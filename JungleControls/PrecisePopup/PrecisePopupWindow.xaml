@@ -7,9 +7,9 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="jc:PrecisePopupWindow">
-                    <ScrollViewer Background="{Binding PopupControl.Background}" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                    <jc:PrecisePopupPanel Background="{Binding PopupControl.Background}">
                         <ContentControl Name="Root" Content="{Binding DataContext.PopupControl.Content, RelativeSource={RelativeSource TemplatedParent}}" ContentTemplate="{Binding DataContext.PopupControl.ContentTemplate, RelativeSource={RelativeSource TemplatedParent}}" ContentTemplateSelector="{Binding DataContext.PopupControl.ContentTemplateSelector, RelativeSource={RelativeSource TemplatedParent}}" ContentStringFormat="{Binding DataContext.PopupControl.ContentStringFormat, RelativeSource={RelativeSource TemplatedParent}}" DataContext="{Binding PopupControl.DataContext}" />
-                    </ScrollViewer>
+                    </jc:PrecisePopupPanel>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
