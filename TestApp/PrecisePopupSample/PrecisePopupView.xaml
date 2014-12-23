@@ -33,23 +33,15 @@
             <Rectangle Grid.Row="2" Grid.ColumnSpan="3" VerticalAlignment="Top" Height="1" Fill="Red" />
             <Button Grid.Row="1" Grid.Column="1" Margin="0" Name="PlacementButton" Command="{Binding OpenPopup}" Padding="10,5" Content="Click Me!" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <jc:PrecisePopup Name="MyPopup" PlacementTarget="{Binding ElementName=PlacementButton}" SuppressTarget="{Binding ElementName=PlacementButton}" IsOpen="{Binding IsOpen}" Background="#a0ffffff">
-                <jc:PrecisePopup.Resources>
-                    <ResourceDictionary>
-                        <Style TargetType="jc:PrecisePopupPlacement">
-                            <Setter Property="HorizontalOffset" Value="{Binding HorizontalOffset}" />
-                            <Setter Property="VerticalOffset" Value="{Binding VerticalOffset}" />
-                        </Style>
-                    </ResourceDictionary>
-                </jc:PrecisePopup.Resources>
                 <jc:PrecisePopup.Placements>
-                    <jc:PrecisePopupPlacement Name="BottomRight" />
-                    <jc:PrecisePopupPlacement Name="BottomLeft" HorizontalTargetAlignment="Right" HorizontalPopupAlignment="Right" />
-                    <jc:PrecisePopupPlacement Name="TopRight" VerticalTargetAlignment="Bottom" VerticalPopupAlignment="Bottom" />
-                    <jc:PrecisePopupPlacement Name="TopLeft" HorizontalTargetAlignment="Right" HorizontalPopupAlignment="Right" VerticalTargetAlignment="Bottom" VerticalPopupAlignment="Bottom" />
+                    <jc:PrecisePopupPlacement Tag="BottomRight" HorizontalOffset="{Binding HorizontalOffset}" VerticalOffset="{Binding VerticalOffset}" />
+                    <jc:PrecisePopupPlacement Tag="BottomLeft" HorizontalTargetAlignment="Right" HorizontalPopupAlignment="Right" HorizontalOffset="{Binding HorizontalOffset}" VerticalOffset="{Binding VerticalOffset}" />
+                    <jc:PrecisePopupPlacement Tag="TopRight" VerticalTargetAlignment="Bottom" VerticalPopupAlignment="Bottom" HorizontalOffset="{Binding HorizontalOffset}" VerticalOffset="{Binding VerticalOffset}" />
+                    <jc:PrecisePopupPlacement Tag="TopLeft" HorizontalTargetAlignment="Right" HorizontalPopupAlignment="Right" VerticalTargetAlignment="Bottom" VerticalPopupAlignment="Bottom" HorizontalOffset="{Binding HorizontalOffset}" VerticalOffset="{Binding VerticalOffset}" />
                 </jc:PrecisePopup.Placements>
                 <Border Width="200" Height="200" BorderBrush="Gray" BorderThickness="2">
                     <Grid>
-                        <TextBlock Text="{Binding SelectedPlacement.Name, RelativeSource={RelativeSource AncestorType=jc:PrecisePopup}}" HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        <TextBlock Text="{Binding SelectedPlacement.Tag, RelativeSource={RelativeSource AncestorType=jc:PrecisePopup}}" HorizontalAlignment="Center" VerticalAlignment="Center" />
                         <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Content="Dismiss" Command="{Binding ClosePopup}" />
                     </Grid>
                 </Border>

@@ -38,9 +38,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Assisticant.1.1.4\lib\net45\Assisticant.dll</HintPath>
     </Reference>
-    <Reference Include="Assisticant.Facades, Version=1.0.4.0, Culture=neutral, PublicKeyToken=8693a7693e4d4e55, processorArchitecture=MSIL">
+    <Reference Include="Assisticant.Facades, Version=1.1.0.0, Culture=neutral, PublicKeyToken=8693a7693e4d4e55, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Assisticant.Facades.1.0.4.0\lib\net45\Assisticant.Facades.dll</HintPath>
+      <HintPath>..\packages\Assisticant.Facades.1.1.0.0\lib\net45\Assisticant.Facades.dll</HintPath>
     </Reference>
     <Reference Include="Assisticant.XAML, Version=2.3.0.0, Culture=neutral, PublicKeyToken=19e83a8289e31a8f, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

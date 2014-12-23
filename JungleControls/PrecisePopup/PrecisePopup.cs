@@ -23,26 +23,11 @@ namespace JungleControls
         [AutoDependencyProperty(Options = FrameworkPropertyMetadataOptions.BindsTwoWayByDefault)]
         public bool IsOpen { get; set; }
         public bool AllowsTransparency { get; set; }
+        public PrecisePopupPlacements Placements { get; set; }
 
         static readonly DependencyPropertyKey SelectedPlacementKey = DependencyProperty.RegisterReadOnly("SelectedPlacement", typeof(PrecisePopupPlacement), typeof(PrecisePopup), new FrameworkPropertyMetadata());
         public static readonly DependencyProperty SelectedPlacementProperty = SelectedPlacementKey.DependencyProperty;
         public PrecisePopupPlacement SelectedPlacement { get { return (PrecisePopupPlacement)GetValue(SelectedPlacementProperty); } }
-
-        static readonly DependencyPropertyKey PlacementsKey = DependencyProperty.RegisterReadOnly("Placements", typeof(PrecisePopupPlacements), typeof(PrecisePopup), new FrameworkPropertyMetadata());
-        public static readonly DependencyProperty PlacementsProperty = PlacementsKey.DependencyProperty;
-        public PrecisePopupPlacements Placements { get { return (PrecisePopupPlacements)GetValue(PlacementsProperty); } }
-
-        protected override IEnumerator LogicalChildren
-        {
-            get
-            {
-                var inherited = base.LogicalChildren;
-                while (inherited.MoveNext())
-                    yield return inherited.Current;
-                foreach (var item in Placements)
-                    yield return item;
-            }
-        }
 
         static PrecisePopup()
         {
@@ -53,7 +38,7 @@ namespace JungleControls
         public PrecisePopup()
         {
             Model = new PrecisePopupModel(this);
-            SetValue(PlacementsKey, new PrecisePopupPlacements(this));
+            Placements = new PrecisePopupPlacements();
             FacadeModel.UpdateAll(Model, this);
         }
 
@@ -63,8 +48,6 @@ namespace JungleControls
             base.OnPropertyChanged(e);
         }
 
-        internal void AddPlacement(PrecisePopupPlacement placement) { AddLogicalChild(placement); }
-        internal void RemovePlacement(PrecisePopupPlacement placement) { RemoveLogicalChild(placement); }
         internal void UpdateSelectedPlacement() { SetValue(SelectedPlacementKey, Model.IsOpen ? Model.SelectedCandidate.Placement.PlacementControl : null); }
     }
 }
