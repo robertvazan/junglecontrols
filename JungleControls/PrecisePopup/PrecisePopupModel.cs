@@ -1,4 +1,5 @@
-﻿using Assisticant.Fields;
+﻿using Assisticant.Collections;
+using Assisticant.Fields;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace JungleControls
         PrecisePopupWindow PopupWindow;
         public readonly Observable<FrameworkElement> PlacementTarget = new Observable<FrameworkElement>();
         public readonly Observable<FrameworkElement> SuppressTarget = new Observable<FrameworkElement>();
+        public readonly ObservableList<PrecisePopupPlacement> Placements = new ObservableList<PrecisePopupPlacement>();
         public readonly Observable<double> TargetX = new Observable<double>();
         public readonly Observable<double> TargetY = new Observable<double>();
         public readonly Observable<double> TargetWidth = new Observable<double>();
@@ -44,8 +46,11 @@ namespace JungleControls
             }
         }
         public readonly Observable<Rect> ScreenBounds = new Observable<Rect>();
-        readonly Computed<PrecisePopupCandidate[]> Candidates;
-        public PrecisePopupCandidate SelectedCandidate { get { return Candidates.Value.OrderBy(c => c.Extreme.ClippedArea).First(); } }
+        PrecisePopupCandidate[] Candidates
+        {
+            get { return (Placements.Count != 0 ? Placements.ToArray() : new[] { new PrecisePopupPlacement() }).Select(p => new PrecisePopupCandidate(this, p.Model)).ToArray(); }
+        }
+        public PrecisePopupCandidate SelectedCandidate { get { return Candidates.OrderBy(c => c.Extreme.ClippedArea).First(); } }
         public bool IsOpen
         {
             get { return PopupWindow != null; }
@@ -90,15 +95,6 @@ namespace JungleControls
             }
         }
 
-        public PrecisePopupModel(PrecisePopup control)
-        {
-            PopupControl = control;
-            Candidates = new Computed<PrecisePopupCandidate[]>(() =>
-            {
-                if (PopupControl.Placements.Count == 0)
-                    return new[] { new PrecisePopupCandidate(this, new PrecisePopupPlacement().Model) };
-                return PopupControl.Placements.Select(p => new PrecisePopupCandidate(this, p.Model)).ToArray();
-            });
-        }
+        public PrecisePopupModel(PrecisePopup control) { PopupControl = control; }
     }
 }

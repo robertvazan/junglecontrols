@@ -10,10 +10,11 @@ using System.Windows;
 namespace JungleControls
 {
     [AutoDependencyProperty]
-    public class PrecisePopupPlacement : FrameworkElement
+    public class PrecisePopupPlacement : Freezable
     {
         internal readonly PrecisePopupPlacementModel Model;
 
+        public object Tag { get; set; }
         public HorizontalAlignment HorizontalTargetAlignment { get; set; }
         public VerticalAlignment VerticalTargetAlignment { get; set; }
         public HorizontalAlignment HorizontalPopupAlignment { get; set; }
@@ -32,5 +33,7 @@ namespace JungleControls
             FacadeModel.Update(Model, this, e);
             base.OnPropertyChanged(e);
         }
+
+        protected override Freezable CreateInstanceCore() { return new PrecisePopupPlacement(); }
     }
 }
