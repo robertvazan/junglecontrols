@@ -9,7 +9,7 @@ using System.Windows;
 
 namespace JungleControls
 {
-    public class PrecisePopupPlacements : FreezableCollection<PrecisePopupPlacement>
+    public class PrecisePopupPlacementCollection : FreezableCollection<PrecisePopupPlacement>
     {
     }
 }

@@ -22,8 +22,11 @@
         <TabItem Header="ExposeControl">
             <a:ExposeControlView />
         </TabItem>
-        <TabItem Header="PrecisePopup" IsSelected="True">
+        <TabItem Header="PrecisePopup">
             <a:PrecisePopupView />
+        </TabItem>
+        <TabItem Header="DataPipe" IsSelected="True">
+            <a:DataPipeView />
         </TabItem>
     </TabControl>
 </Window>

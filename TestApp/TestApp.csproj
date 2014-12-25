@@ -62,6 +62,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataPipe\DataPipeModel.cs" />
+    <Compile Include="DataPipe\DataPipeView.xaml.cs">
+      <DependentUpon>DataPipeView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DelayedContentControlSample\DelayedContentControlView.xaml.cs">
       <DependentUpon>DelayedContentControlView.xaml</DependentUpon>
     </Compile>
@@ -92,6 +96,10 @@
       <DependentUpon>StatCounterView.xaml</DependentUpon>
     </Compile>
     <Compile Include="StatCounterSample\StatCounterModel.cs" />
+    <Page Include="DataPipe\DataPipeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DelayedContentControlSample\DelayedContentControlView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

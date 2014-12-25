@@ -23,7 +23,7 @@ namespace JungleControls
         [AutoDependencyProperty(Options = FrameworkPropertyMetadataOptions.BindsTwoWayByDefault)]
         public bool IsOpen { get; set; }
         public bool AllowsTransparency { get; set; }
-        public PrecisePopupPlacements Placements { get; set; }
+        public PrecisePopupPlacementCollection Placements { get; set; }
 
         static readonly DependencyPropertyKey SelectedPlacementKey = DependencyProperty.RegisterReadOnly("SelectedPlacement", typeof(PrecisePopupPlacement), typeof(PrecisePopup), new FrameworkPropertyMetadata());
         public static readonly DependencyProperty SelectedPlacementProperty = SelectedPlacementKey.DependencyProperty;
@@ -38,7 +38,7 @@ namespace JungleControls
         public PrecisePopup()
         {
             Model = new PrecisePopupModel(this);
-            Placements = new PrecisePopupPlacements();
+            Placements = new PrecisePopupPlacementCollection();
             FacadeModel.UpdateAll(Model, this);
         }
 
