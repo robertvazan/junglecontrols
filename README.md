@@ -1,0 +1,3 @@
+Collection of opensource controls for WPF: PropertySheet, SelectableTextBlock, StatCounter, PrecisePopup, LazyControl, ...
+
+Documentation: [JungleControls: Free WPF controls for you app](http://blog.angeloflogic.com/2014/07/junglecontrols-free-wpf-controls-for.html)
