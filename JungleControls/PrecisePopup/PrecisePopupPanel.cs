@@ -10,24 +10,36 @@ namespace JungleControls
 {
     class PrecisePopupPanel : Panel
     {
+        internal PrecisePopupModel Model;
+
         protected override Size MeasureOverride(Size availableSize)
         {
-            var x = 0.0;
-            var y = 0.0;
             foreach (UIElement element in InternalChildren)
             {
-                element.Measure(new Size(Double.PositiveInfinity, Double.PositiveInfinity));
-                x = Math.Max(x, element.DesiredSize.Width);
-                y = Math.Max(y, element.DesiredSize.Height);
+                if (Model != null)
+                {
+                    element.Measure(new Size(Double.PositiveInfinity, Double.PositiveInfinity));
+                    if (Math.Abs(Model.PopupWidth.Value - element.DesiredSize.Width) > 0.001 || Math.Abs(Model.PopupHeight.Value - element.DesiredSize.Height) > 0.001)
+                    {
+                        Model.PopupWidth.Value = element.DesiredSize.Width;
+                        Model.PopupHeight.Value = element.DesiredSize.Height;
+                    }
+                }
+                element.Measure(availableSize);
+                return element.DesiredSize;
             }
-            return new Size(x, y);
+            return Size.Empty;
         }
 
         protected override Size ArrangeOverride(Size finalSize)
         {
+            Console.WriteLine("Arranging to {0}x{1}", finalSize.Width, finalSize.Height);
             foreach (UIElement element in InternalChildren)
-                element.Arrange(new Rect(new Point(), DesiredSize));
-            return DesiredSize;
+            {
+                Console.WriteLine("Arranging {0}", element);
+                element.Arrange(new Rect(new Point(), finalSize));
+            }
+            return finalSize;
         }
     }
 }

@@ -16,6 +16,7 @@ namespace JungleControls
     {
         readonly PrecisePopupModel Model;
         readonly ComputedJob PositioningJob;
+        PrecisePopupPanel Panel;
         bool IsHidden;
 
         static PrecisePopupWindow()
@@ -36,9 +37,10 @@ namespace JungleControls
             Height = 0;
             PositioningJob = new ComputedJob(() =>
             {
-                Left = Model.SelectedCandidate.X;
-                Top = Model.SelectedCandidate.Y;
-                SizeToContent = SizeToContent.WidthAndHeight;
+                Left = Model.SelectedCandidate.ClippedX;
+                Top = Model.SelectedCandidate.ClippedY;
+                Width = Model.SelectedCandidate.ClippedWidth;
+                Height = Model.SelectedCandidate.ClippedHeight;
                 Model.PopupControl.UpdateSelectedPlacement();
             });
             PositioningJob.Start();
@@ -47,7 +49,8 @@ namespace JungleControls
 
         public override void OnApplyTemplate()
         {
-            (GetTemplateChild("Root") as FrameworkElement).SizeChanged += ContentSizeChanged;
+            Panel = GetTemplateChild("Panel") as PrecisePopupPanel;
+            Panel.Model = Model;
             base.OnApplyTemplate();
         }
 
@@ -106,15 +109,6 @@ namespace JungleControls
                 Mouse.Capture(null);
             Hide();
             Dispatcher.BeginInvoke(new Action(() => Close()), DispatcherPriority.Input);
-        }
-
-        void ContentSizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            if (Math.Abs(Model.PopupWidth.Value - e.NewSize.Width) > 0.001 || Math.Abs(Model.PopupHeight.Value - e.NewSize.Height) > 0.001)
-            {
-                Model.PopupWidth.Value = e.NewSize.Width;
-                Model.PopupHeight.Value = e.NewSize.Height;
-            }
         }
     }
 }
