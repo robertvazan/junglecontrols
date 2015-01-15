@@ -20,13 +20,13 @@ namespace JungleControls
             get
             {
                 var x = Popup.TargetX.Value;
-                if (Placement.HorizontalTargetAlignment.Value == HorizontalAlignment.Right)
+                if (Placement.HorizontalTargetAlignment.Value == PrecisePopupHorizontalAlignment.Right)
                     x += Popup.TargetWidth.Value;
-                else if (Placement.HorizontalTargetAlignment.Value != HorizontalAlignment.Left)
+                else if (Placement.HorizontalTargetAlignment.Value != PrecisePopupHorizontalAlignment.Left)
                     x += Popup.TargetWidth.Value / 2;
-                if (Placement.HorizontalPopupAlignment.Value == HorizontalAlignment.Right)
+                if (Placement.HorizontalPopupAlignment.Value == PrecisePopupHorizontalAlignment.Right)
                     x -= PopupWidth;
-                else if (Placement.HorizontalPopupAlignment.Value != HorizontalAlignment.Left)
+                else if (Placement.HorizontalPopupAlignment.Value != PrecisePopupHorizontalAlignment.Left)
                     x -= PopupWidth / 2;
                 return x + Placement.HorizontalOffset.Value;
             }
@@ -36,17 +36,21 @@ namespace JungleControls
             get
             {
                 var y = Popup.TargetY.Value;
-                if (Placement.VerticalTargetAlignment.Value == VerticalAlignment.Bottom)
+                if (Placement.VerticalTargetAlignment.Value == PrecisePopupVerticalAlignment.Bottom)
                     y += Popup.TargetHeight.Value;
-                else if (Placement.VerticalTargetAlignment.Value != VerticalAlignment.Top)
+                else if (Placement.VerticalTargetAlignment.Value != PrecisePopupVerticalAlignment.Top)
                     y += Popup.TargetHeight.Value / 2;
-                if (Placement.VerticalPopupAlignment.Value == VerticalAlignment.Bottom)
+                if (Placement.VerticalPopupAlignment.Value == PrecisePopupVerticalAlignment.Bottom)
                     y -= PopupHeight;
-                else if (Placement.VerticalPopupAlignment.Value != VerticalAlignment.Top)
+                else if (Placement.VerticalPopupAlignment.Value != PrecisePopupVerticalAlignment.Top)
                     y -= PopupHeight / 2;
                 return y + Placement.VerticalOffset.Value;
             }
         }
+        public double ClippedX { get { return !Placement.ClipLeft ? X : Math.Max(X, Popup.ScreenBounds.Value.Left); } }
+        public double ClippedY { get { return !Placement.ClipTop ? Y : Math.Max(Y, Popup.ScreenBounds.Value.Top); } }
+        public double ClippedWidth { get { return (!Placement.ClipRight ? X + PopupWidth : Math.Min(X + PopupWidth, Popup.ScreenBounds.Value.Right)) - ClippedX; } }
+        public double ClippedHeight { get { return (!Placement.ClipBottom ? Y + PopupHeight : Math.Min(Y + PopupHeight, Popup.ScreenBounds.Value.Bottom)) - ClippedY; } }
         public double ClippedArea
         {
             get
