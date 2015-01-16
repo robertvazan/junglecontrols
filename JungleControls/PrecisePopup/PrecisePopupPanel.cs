@@ -33,12 +33,8 @@ namespace JungleControls
 
         protected override Size ArrangeOverride(Size finalSize)
         {
-            Console.WriteLine("Arranging to {0}x{1}", finalSize.Width, finalSize.Height);
             foreach (UIElement element in InternalChildren)
-            {
-                Console.WriteLine("Arranging {0}", element);
                 element.Arrange(new Rect(new Point(), finalSize));
-            }
             return finalSize;
         }
     }
