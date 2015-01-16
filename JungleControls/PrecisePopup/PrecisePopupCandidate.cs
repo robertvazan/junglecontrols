@@ -15,36 +15,89 @@ namespace JungleControls
         public readonly PrecisePopupCandidate Extreme;
         double PopupWidth { get { return IsMaxSize ? Popup.MaxPopupWidth : Popup.PopupWidth.Value; } }
         double PopupHeight { get { return IsMaxSize ? Popup.MaxPopupHeight : Popup.PopupHeight.Value; } }
+        Rect ScreenBounds { get { return Popup.ScreenBounds.Value; } }
+        double TargetX { get { return Popup.TargetX.Value + Placement.HorizontalOffset.Value; } }
+        double TargetY { get { return Popup.TargetY.Value + Placement.VerticalOffset.Value; } }
+        double PivotX
+        {
+            get
+            {
+                switch (Placement.HorizontalTargetAlignment.Value)
+                {
+                    case PrecisePopupHorizontalAlignment.Left: return TargetX;
+                    case PrecisePopupHorizontalAlignment.Right: return TargetX + Popup.TargetWidth.Value;
+                    case PrecisePopupHorizontalAlignment.Center: return TargetX + Popup.TargetWidth.Value / 2;
+                    default: throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+        double PivotY
+        {
+            get
+            {
+                switch (Placement.VerticalTargetAlignment.Value)
+                {
+                    case PrecisePopupVerticalAlignment.Top: return TargetY;
+                    case PrecisePopupVerticalAlignment.Bottom: return TargetY + Popup.TargetHeight.Value;
+                    case PrecisePopupVerticalAlignment.Center: return TargetY + Popup.TargetHeight.Value / 2;
+                    default: throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+        double RawMaxWidth
+        {
+            get
+            {
+                switch (Placement.HorizontalPopupAlignment.Value)
+                {
+                    case PrecisePopupHorizontalAlignment.Left: return ScreenBounds.Right - PivotX;
+                    case PrecisePopupHorizontalAlignment.Right: return PivotX - ScreenBounds.Left;
+                    case PrecisePopupHorizontalAlignment.Center: return 2 * Math.Min(ScreenBounds.Right - PivotX, PivotX - ScreenBounds.Left);
+                    default: throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+        double RawMaxHeight
+        {
+            get
+            {
+                switch (Placement.VerticalPopupAlignment.Value)
+                {
+                    case PrecisePopupVerticalAlignment.Top: return ScreenBounds.Bottom - PivotY;
+                    case PrecisePopupVerticalAlignment.Bottom: return PivotY - ScreenBounds.Top;
+                    case PrecisePopupVerticalAlignment.Center: return 2 * Math.Min(ScreenBounds.Bottom - PivotY, PivotY - ScreenBounds.Top);
+                    default: throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+        public double MaxWidth { get { return !IsMaxSize && Placement.ClipToScreen.Value ? Math.Max(1, RawMaxWidth) : Double.PositiveInfinity; } }
+        public double MaxHeight { get { return !IsMaxSize && Placement.ClipToScreen.Value ? Math.Max(1, RawMaxHeight) : Double.PositiveInfinity; } }
+        double LimitedWidth { get { return Math.Min(PopupWidth, MaxWidth); } }
+        double LimitedHeight { get { return Math.Min(PopupHeight, MaxHeight); } }
         public double X
         {
             get
             {
-                var x = Popup.TargetX.Value;
-                if (Placement.HorizontalTargetAlignment.Value == HorizontalAlignment.Right)
-                    x += Popup.TargetWidth.Value;
-                else if (Placement.HorizontalTargetAlignment.Value != HorizontalAlignment.Left)
-                    x += Popup.TargetWidth.Value / 2;
-                if (Placement.HorizontalPopupAlignment.Value == HorizontalAlignment.Right)
-                    x -= PopupWidth;
-                else if (Placement.HorizontalPopupAlignment.Value != HorizontalAlignment.Left)
-                    x -= PopupWidth / 2;
-                return x + Placement.HorizontalOffset.Value;
+                switch (Placement.HorizontalPopupAlignment.Value)
+                {
+                    case PrecisePopupHorizontalAlignment.Left: return PivotX;
+                    case PrecisePopupHorizontalAlignment.Right: return PivotX - LimitedWidth;
+                    case PrecisePopupHorizontalAlignment.Center: return PivotX - LimitedWidth / 2;
+                    default: throw new ArgumentOutOfRangeException();
+                }
             }
         }
         public double Y
         {
             get
             {
-                var y = Popup.TargetY.Value;
-                if (Placement.VerticalTargetAlignment.Value == VerticalAlignment.Bottom)
-                    y += Popup.TargetHeight.Value;
-                else if (Placement.VerticalTargetAlignment.Value != VerticalAlignment.Top)
-                    y += Popup.TargetHeight.Value / 2;
-                if (Placement.VerticalPopupAlignment.Value == VerticalAlignment.Bottom)
-                    y -= PopupHeight;
-                else if (Placement.VerticalPopupAlignment.Value != VerticalAlignment.Top)
-                    y -= PopupHeight / 2;
-                return y + Placement.VerticalOffset.Value;
+                switch (Placement.VerticalPopupAlignment.Value)
+                {
+                    case PrecisePopupVerticalAlignment.Top: return PivotY;
+                    case PrecisePopupVerticalAlignment.Bottom: return PivotY - LimitedHeight;
+                    case PrecisePopupVerticalAlignment.Center: return PivotY - LimitedHeight / 2;
+                    default: throw new ArgumentOutOfRangeException();
+                }
             }
         }
         public double ClippedArea
