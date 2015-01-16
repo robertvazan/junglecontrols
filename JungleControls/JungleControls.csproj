@@ -76,14 +76,12 @@
     <Compile Include="LazyControl\LazyControl.cs" />
     <Compile Include="PrecisePopup\PrecisePopupCandidate.cs" />
     <Compile Include="PrecisePopup\PrecisePopupHorizontalAlignment.cs" />
-    <Compile Include="PrecisePopup\PrecisePopupHorizontalClip.cs" />
     <Compile Include="PrecisePopup\PrecisePopupModel.cs" />
     <Compile Include="PrecisePopup\PrecisePopupPanel.cs" />
     <Compile Include="PrecisePopup\PrecisePopupPlacement.cs" />
     <Compile Include="PrecisePopup\PrecisePopupPlacementModel.cs" />
     <Compile Include="PrecisePopup\PrecisePopupPlacementCollection.cs" />
     <Compile Include="PrecisePopup\PrecisePopupVerticalAlignment.cs" />
-    <Compile Include="PrecisePopup\PrecisePopupVerticalClip.cs" />
     <Compile Include="PrecisePopup\PrecisePopupWindow.cs" />
     <Compile Include="PrecisePopup\PrecisePopup.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">

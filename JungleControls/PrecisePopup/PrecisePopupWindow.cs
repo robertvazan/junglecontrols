@@ -16,7 +16,6 @@ namespace JungleControls
     {
         readonly PrecisePopupModel Model;
         readonly ComputedJob PositioningJob;
-        PrecisePopupPanel Panel;
         bool IsHidden;
 
         static PrecisePopupWindow()
@@ -37,10 +36,13 @@ namespace JungleControls
             Height = 0;
             PositioningJob = new ComputedJob(() =>
             {
-                Left = Model.SelectedCandidate.ClippedX;
-                Top = Model.SelectedCandidate.ClippedY;
-                Width = Model.SelectedCandidate.ClippedWidth;
-                Height = Model.SelectedCandidate.ClippedHeight;
+                Console.WriteLine("Placing window at ({0},{1})", Model.SelectedCandidate.X, Model.SelectedCandidate.Y);
+                Left = Model.SelectedCandidate.X;
+                Top = Model.SelectedCandidate.Y;
+                Console.WriteLine("Max window size set to {0}x{1}", Model.SelectedCandidate.MaxWidth, Model.SelectedCandidate.MaxHeight);
+                MaxWidth = Model.SelectedCandidate.MaxWidth;
+                MaxHeight = Model.SelectedCandidate.MaxHeight;
+                SizeToContent = SizeToContent.WidthAndHeight;
                 Model.PopupControl.UpdateSelectedPlacement();
             });
             PositioningJob.Start();
@@ -49,8 +51,7 @@ namespace JungleControls
 
         public override void OnApplyTemplate()
         {
-            Panel = GetTemplateChild("Panel") as PrecisePopupPanel;
-            Panel.Model = Model;
+            (GetTemplateChild("Panel") as PrecisePopupPanel).Model = Model;
             base.OnApplyTemplate();
         }
 

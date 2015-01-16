@@ -21,8 +21,7 @@ namespace JungleControls
         public PrecisePopupVerticalAlignment VerticalPopupAlignment { get; set; }
         public double HorizontalOffset { get; set; }
         public double VerticalOffset { get; set; }
-        public PrecisePopupHorizontalClip HorizontalClipToScreen { get; set; }
-        public PrecisePopupVerticalClip VerticalClipToScreen { get; set; }
+        public bool ClipToScreen { get; set; }
 
         public PrecisePopupPlacement()
         {
