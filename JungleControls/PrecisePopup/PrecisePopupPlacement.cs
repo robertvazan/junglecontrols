@@ -15,12 +15,13 @@ namespace JungleControls
         internal readonly PrecisePopupPlacementModel Model;
 
         public object Tag { get; set; }
-        public HorizontalAlignment HorizontalTargetAlignment { get; set; }
-        public VerticalAlignment VerticalTargetAlignment { get; set; }
-        public HorizontalAlignment HorizontalPopupAlignment { get; set; }
-        public VerticalAlignment VerticalPopupAlignment { get; set; }
+        public PrecisePopupHorizontalAlignment HorizontalTargetAlignment { get; set; }
+        public PrecisePopupVerticalAlignment VerticalTargetAlignment { get; set; }
+        public PrecisePopupHorizontalAlignment HorizontalPopupAlignment { get; set; }
+        public PrecisePopupVerticalAlignment VerticalPopupAlignment { get; set; }
         public double HorizontalOffset { get; set; }
         public double VerticalOffset { get; set; }
+        public bool ClipToScreen { get; set; }
 
         public PrecisePopupPlacement()
         {

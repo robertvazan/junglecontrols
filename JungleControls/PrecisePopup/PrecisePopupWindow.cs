@@ -36,8 +36,12 @@ namespace JungleControls
             Height = 0;
             PositioningJob = new ComputedJob(() =>
             {
+                Console.WriteLine("Placing window at ({0},{1})", Model.SelectedCandidate.X, Model.SelectedCandidate.Y);
                 Left = Model.SelectedCandidate.X;
                 Top = Model.SelectedCandidate.Y;
+                Console.WriteLine("Max window size set to {0}x{1}", Model.SelectedCandidate.MaxWidth, Model.SelectedCandidate.MaxHeight);
+                MaxWidth = Model.SelectedCandidate.MaxWidth;
+                MaxHeight = Model.SelectedCandidate.MaxHeight;
                 SizeToContent = SizeToContent.WidthAndHeight;
                 Model.PopupControl.UpdateSelectedPlacement();
             });
@@ -47,7 +51,7 @@ namespace JungleControls
 
         public override void OnApplyTemplate()
         {
-            (GetTemplateChild("Root") as FrameworkElement).SizeChanged += ContentSizeChanged;
+            (GetTemplateChild("Panel") as PrecisePopupPanel).Model = Model;
             base.OnApplyTemplate();
         }
 
@@ -106,15 +110,6 @@ namespace JungleControls
                 Mouse.Capture(null);
             Hide();
             Dispatcher.BeginInvoke(new Action(() => Close()), DispatcherPriority.Input);
-        }
-
-        void ContentSizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            if (Math.Abs(Model.PopupWidth.Value - e.NewSize.Width) > 0.001 || Math.Abs(Model.PopupHeight.Value - e.NewSize.Height) > 0.001)
-            {
-                Model.PopupWidth.Value = e.NewSize.Width;
-                Model.PopupHeight.Value = e.NewSize.Height;
-            }
         }
     }
 }
