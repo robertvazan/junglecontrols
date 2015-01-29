@@ -16,5 +16,6 @@ namespace TestApp
         public object ExposeControl { get { return ViewModel(() => new ExposeControlModel()); } }
         public object PrecisePopup { get { return ViewModel(() => new PrecisePopupModel()); } }
         public object DataPipe { get { return ViewModel(() => new DataPipeModel()); } }
+        public object ColoredImage { get { return ViewModel(() => new ColoredImageModel()); } }
     }
 }

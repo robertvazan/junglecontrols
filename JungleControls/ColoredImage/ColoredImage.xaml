@@ -1,0 +1,20 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:jc="clr-namespace:JungleControls">
+    <Style TargetType="jc:ColoredImage">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="jc:ColoredImage">
+                    <Border Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}">
+                        <Border Background="{TemplateBinding Foreground}" Margin="{TemplateBinding Padding}">
+                            <Border.OpacityMask>
+                                <ImageBrush ImageSource="{Binding Source, RelativeSource={RelativeSource TemplatedParent}}" Stretch="{Binding Stretch, RelativeSource={RelativeSource TemplatedParent}}" />
+                            </Border.OpacityMask>
+                            <Image Source="{Binding Source, RelativeSource={RelativeSource TemplatedParent}}" Stretch="{Binding Stretch, RelativeSource={RelativeSource TemplatedParent}}" Visibility="Hidden" />
+                        </Border>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

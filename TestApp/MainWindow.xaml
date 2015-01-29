@@ -25,8 +25,11 @@
         <TabItem Header="PrecisePopup">
             <a:PrecisePopupView />
         </TabItem>
-        <TabItem Header="DataPipe" IsSelected="True">
+        <TabItem Header="DataPipe">
             <a:DataPipeView />
+        </TabItem>
+        <TabItem Header="ColoredImage" IsSelected="True">
+            <a:ColoredImageView />
         </TabItem>
     </TabControl>
 </Window>
