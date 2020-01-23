@@ -1,5 +1,5 @@
 // Part of JungleControls: https://blog.machinezoo.com/junglecontrols-free-wpf-controls-for
-﻿﻿using Assisticant;
+using Assisticant;
 using Assisticant.Facades;
 using System;
 using System.Collections.Generic;

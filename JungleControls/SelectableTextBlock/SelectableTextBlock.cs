@@ -1,5 +1,5 @@
 // Part of JungleControls: https://blog.machinezoo.com/junglecontrols-free-wpf-controls-for
-﻿﻿using AutoDependencyPropertyMarker;
+using AutoDependencyPropertyMarker;
 using System;
 using System.Collections.Generic;
 using System.Linq;
