@@ -1,4 +1,5 @@
-﻿using Assisticant.Facades;
+// Part of JungleControls: https://blog.machinezoo.com/junglecontrols-free-wpf-controls-for
+﻿﻿using Assisticant.Facades;
 using AutoDependencyPropertyMarker;
 using System;
 using System.Collections.Generic;

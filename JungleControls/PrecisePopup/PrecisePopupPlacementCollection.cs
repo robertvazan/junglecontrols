@@ -1,4 +1,5 @@
-﻿using Assisticant.Collections;
+// Part of JungleControls: https://blog.machinezoo.com/junglecontrols-free-wpf-controls-for
+﻿﻿using Assisticant.Collections;
 using System;
 using System.Collections;
 using System.Collections.Generic;

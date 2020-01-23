@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+// Part of JungleControls: https://blog.machinezoo.com/junglecontrols-free-wpf-controls-for
+﻿﻿using System.Reflection;
 using System.Resources;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
