@@ -1,3 +1,4 @@
+// Part of JungleControls: https://blog.machinezoo.com/junglecontrols-free-wpf-controls-for
 using System;
 using System.Collections.Generic;
 using System.Linq;
