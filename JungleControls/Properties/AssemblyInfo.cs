@@ -13,7 +13,7 @@ using System.Windows;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Robert Važan")]
 [assembly: AssemblyProduct("JungleControls")]
-[assembly: AssemblyCopyright("Copyright © 2014 Robert Važan")]
+[assembly: AssemblyCopyright("Copyright © 2014-2021 Robert Važan")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
