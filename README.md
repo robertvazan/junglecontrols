@@ -4,3 +4,5 @@
 
 JungleControls is a collection of opensource controls for WPF: PropertySheet, SelectableTextBlock, StatCounter, PrecisePopup, LazyControl, ...
 
+Documentation: [JungleControls: Free WPF controls for your app](https://blog.machinezoo.com/junglecontrols-free-wpf-controls-for)
+
